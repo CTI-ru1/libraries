@@ -57,8 +57,8 @@
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>2.6</version>
                 <configuration>
-                    <configLocation>${main.basedir}/sun_checks.xml</configLocation>
-                    <suppressionsLocation>${main.basedir}/suppresions.xml</suppressionsLocation>
+                    <configLocation>sun_checks.xml</configLocation>
+                    <suppressionsLocation>suppresions.xml</suppressionsLocation>
                     <excludes>**/controller/protobuf/**/*</excludes>
                 </configuration>
             </plugin>
