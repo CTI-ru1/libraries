@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>uberdust</groupId>
+        <artifactId>libraries</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <groupId>uberdust</groupId>
+    <artifactId>Cache</artifactId>
+    <version>1.0</version>
+    <packaging>jar</packaging>
+    <name>ÜberDust - Cache</name>
+
+    <properties>
+        <main.basedir>${project.parent.basedir}</main.basedir>
+        <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
+    </properties>
+
+
+    <repositories>
+        <repository>
+            <id>java.net</id>
+            <name>java.net</name>
+            <url>http://download.java.net/maven/2/</url>
+        </repository>
+        <repository>
+            <id>repository.ru1</id>
+            <url>http://ru1.cti.gr/maven</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <layout>default</layout>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.9</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>1.6.11</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache-core</artifactId>
+            <version>2.5.1</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache-terracotta</artifactId>
+            <version>2.5.1</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.dstovall</groupId>
+                <artifactId>onejar-maven-plugin</artifactId>
+                <version>1.4.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>one-jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>aspectj-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>test-compile</goal>
+                        </goals>
+                        <configuration>
+                            <source>1.6</source>
+                            <target>1.6</target>
+                        </configuration>
+                    </execution>
+                </executions>
+                <configuration>
+                    <weaveDependencies>
+                        <weaveDependency>
+                            <groupId>org.aspectj</groupId>
+                            <artifactId>aspectjrt</artifactId>
+                        </weaveDependency>
+                    </weaveDependencies>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+
+    <distributionManagement>
+        <!-- use the following if you're not using a snapshot version. -->
+        <repository>
+            <id>repository.ru1</id>
+            <name>Ru1 Repo</name>
+            <url>scp://ru1.cti.gr/srv/maven</url>
+        </repository>
+    </distributionManagement>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>onejar-maven-plugin.googlecode.com</id>
+            <url>http://onejar-maven-plugin.googlecode.com/svn/mavenrepo</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+</project>
+
+

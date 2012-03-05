@@ -17,6 +17,7 @@
     <modules>
         <module>WebSocketsLibrary</module>
         <module>UberLogger</module>
+        <module>Cache</module>
     </modules>
 
     <repositories>
