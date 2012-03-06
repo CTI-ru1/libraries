@@ -30,6 +30,7 @@ public final class InsertReadingWebSocketIMPL implements WebSocket.OnBinaryMessa
         LOGGER.info("Binary message arrived : data (" + Arrays.toString(data) + ")");
         LOGGER.info("Binary message arrived : data.offset (" + offset + ")");
         LOGGER.info("Binary message arrived : data.length (" + length + ")");
+        InsertReadingWebSocketClient.getInstance().update(data, offset, length);
     }
 
     /**
@@ -70,5 +71,6 @@ public final class InsertReadingWebSocketIMPL implements WebSocket.OnBinaryMessa
     @Override
     public void onMessage(final String data) {
         LOGGER.info("Text message arrived : data (" + data + ")");
+        InsertReadingWebSocketClient.getInstance().update(data);
     }
 }

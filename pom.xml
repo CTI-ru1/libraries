@@ -18,6 +18,7 @@
         <module>WebSocketsLibrary</module>
         <module>UberLogger</module>
         <module>Cache</module>
+        <module>NetworkManager</module>
     </modules>
 
     <repositories>

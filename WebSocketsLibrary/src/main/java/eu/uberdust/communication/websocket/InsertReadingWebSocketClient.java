@@ -11,12 +11,13 @@ import org.eclipse.jetty.websocket.WebSocketClientFactory;
 
 import java.io.IOException;
 import java.net.URI;
+import java.util.Observable;
 import java.util.Timer;
 
 /**
  * Insert New Reading Web Socket Client.
  */
-public final class InsertReadingWebSocketClient {
+public final class InsertReadingWebSocketClient extends Observable {
 
     /**
      * static instance(ourInstance) initialized as null.
@@ -235,5 +236,15 @@ public final class InsertReadingWebSocketClient {
      */
     public void restPing() {
         InsertReadingRestClient.getInstance().callRestfulWebService(webSocketUrl.replace(WS_PREFIX, HTTP_PREFIX));
+    }
+
+    protected void update(final String data) {
+        this.setChanged();
+        this.notifyObservers(data);
+    }
+
+    protected void update(final byte[] data, final int offset, final int length) {
+        this.setChanged();
+        this.notifyObservers(data);
     }
 }
