@@ -1,7 +1,7 @@
 package eu.uberdust.communication.websocket.listener;
 
-import eu.uberdust.communication.rest.InsertReadingRestClient;
-import eu.uberdust.communication.websocket.listener.tasks.PingTask;
+import eu.uberdust.communication.rest.UberdustRestClient;
+import eu.uberdust.communication.websocket.task.ListenerPingTask;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.eclipse.jetty.websocket.WebSocket;
@@ -101,7 +101,7 @@ public final class WSocketClient extends Observable {
         LOGGER.info("WSocketClient initialized");
         timer = new Timer();
         connect();
-        timer.scheduleAtFixedRate(new PingTask(timer), PingTask.DELAY, PingTask.DELAY);
+        timer.scheduleAtFixedRate(new ListenerPingTask(timer), ListenerPingTask.DELAY, ListenerPingTask.DELAY);
     }
 
 
@@ -165,7 +165,7 @@ public final class WSocketClient extends Observable {
 
 
     public void restPing() {
-        InsertReadingRestClient.getInstance().callRestfulWebService(webSocketUrl.replace(WS_PREFIX, HTTP_PREFIX));
+        UberdustRestClient.getInstance().callRestfulWebService(webSocketUrl.replace(WS_PREFIX, HTTP_PREFIX));
     }
 
     protected void update(String data) {

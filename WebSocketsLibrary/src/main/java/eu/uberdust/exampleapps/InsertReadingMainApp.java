@@ -1,7 +1,7 @@
 package eu.uberdust.exampleapps;
 
-import eu.uberdust.communication.rest.InsertReadingRestClient;
-import eu.uberdust.communication.websocket.InsertReadingWebSocketClient;
+import eu.uberdust.communication.rest.UberdustRestClient;
+import eu.uberdust.communication.websocket.insert.InsertReadingWebSocketClient;
 import eu.uberdust.reading.LinkReading;
 import eu.uberdust.reading.NodeReading;
 import org.apache.log4j.Logger;
@@ -74,14 +74,14 @@ public final class InsertReadingMainApp {
         // insert node reading using REST
         LOGGER.info("Calling REST at (" + restBaseUrl + nodeReading1.toRestString() + ")");
         String result =
-                InsertReadingRestClient.getInstance().callRestfulWebService(restBaseUrl + nodeReading1.toRestString());
+                UberdustRestClient.getInstance().callRestfulWebService(restBaseUrl + nodeReading1.toRestString());
         if (!result.contains("OK")) {
             LOGGER.error("Could not insert reading");
             throw new RuntimeException("Could not insert reading");
         }
         LOGGER.info("Calling REST at (" + restBaseUrl + nodeReading2.toRestString() + ")");
         result =
-                InsertReadingRestClient.getInstance().callRestfulWebService(restBaseUrl + nodeReading2.toRestString());
+                UberdustRestClient.getInstance().callRestfulWebService(restBaseUrl + nodeReading2.toRestString());
         if (!result.contains("OK")) {
             LOGGER.error("Could not insert reading");
             throw new RuntimeException("Could not insert reading");
@@ -110,14 +110,14 @@ public final class InsertReadingMainApp {
 //        // insert node reading using REST
 //        LOGGER.info("Calling REST at (" + restBaseUrl + nodeReading1.toRestString() + ")");
 //        result =
-//                InsertReadingRestClient.getInstance().callRestfulWebService(restBaseUrl + nodeReading1.toRestString());
+//                UberdustRestClient.getInstance().callRestfulWebService(restBaseUrl + nodeReading1.toRestString());
 //        if (!result.contains("OK")) {
 //            LOGGER.error("Could not insert reading");
 //            throw new RuntimeException("Could not insert reading");
 //        }
 //        LOGGER.info("Calling REST at (" + restBaseUrl + nodeReading2.toRestString() + ")");
 //        result =
-//                InsertReadingRestClient.getInstance().callRestfulWebService(restBaseUrl + nodeReading2.toRestString());
+//                UberdustRestClient.getInstance().callRestfulWebService(restBaseUrl + nodeReading2.toRestString());
 //        if (!result.contains("OK")) {
 //            LOGGER.error("Could not insert reading");
 //            throw new RuntimeException("Could not insert reading");

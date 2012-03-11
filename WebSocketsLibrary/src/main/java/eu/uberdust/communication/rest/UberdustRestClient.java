@@ -10,17 +10,17 @@ import java.net.URLConnection;
 /**
  * Implementation of a InsertReading client using Uberdust's REST interface.
  */
-public final class InsertReadingRestClient {
+public final class UberdustRestClient {
 
     /**
      * static instance(ourInstance) initialized as null.
      */
-    private static InsertReadingRestClient ourInstance = null;
+    private static UberdustRestClient ourInstance = null;
 
     /**
      * Logger.
      */
-    private static final Logger LOGGER = Logger.getLogger(InsertReadingRestClient.class);
+    private static final Logger LOGGER = Logger.getLogger(UberdustRestClient.class);
 
     /**
      * RestClient is loaded on the first execution of RestClient.getInstance()
@@ -28,10 +28,10 @@ public final class InsertReadingRestClient {
      *
      * @return ourInstance
      */
-    public static InsertReadingRestClient getInstance() {
-        synchronized (InsertReadingRestClient.class) {
+    public static UberdustRestClient getInstance() {
+        synchronized (UberdustRestClient.class) {
             if (ourInstance == null) {
-                ourInstance = new InsertReadingRestClient();
+                ourInstance = new UberdustRestClient();
             }
         }
         return ourInstance;
@@ -40,7 +40,7 @@ public final class InsertReadingRestClient {
     /**
      * Private constructor suppresses generation of a (public) default constructor.
      */
-    private InsertReadingRestClient() {
+    private UberdustRestClient() {
         // empty constructor
     }
 

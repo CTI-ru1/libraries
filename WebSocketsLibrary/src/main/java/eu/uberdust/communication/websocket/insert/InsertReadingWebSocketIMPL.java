@@ -1,4 +1,4 @@
-package eu.uberdust.communication.websocket;
+package eu.uberdust.communication.websocket.insert;
 
 
 import org.apache.log4j.Logger;

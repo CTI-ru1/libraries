@@ -1,13 +1,13 @@
 package eu.uberdust.communication.websocket.task;
 
-import eu.uberdust.communication.websocket.InsertReadingWebSocketClient;
+import eu.uberdust.communication.websocket.command.WSCommandReceiverClient;
 
 import java.util.TimerTask;
 
 /**
  * Ping task timer class.
  */
-public class PingTask extends TimerTask {
+public class CommandPingTask extends TimerTask {
 
     /**
      * Delay.
@@ -18,12 +18,12 @@ public class PingTask extends TimerTask {
      * Constructor.
      */
 
-    public PingTask() {
+    public CommandPingTask() {
         super();
     }
 
     @Override
     public final void run() {
-        InsertReadingWebSocketClient.getInstance().ping();
+        WSCommandReceiverClient.getInstance().ping();
     }
 }

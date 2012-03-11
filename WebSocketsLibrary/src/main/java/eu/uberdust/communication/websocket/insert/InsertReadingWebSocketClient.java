@@ -1,7 +1,7 @@
-package eu.uberdust.communication.websocket;
+package eu.uberdust.communication.websocket.insert;
 
-import eu.uberdust.communication.rest.InsertReadingRestClient;
-import eu.uberdust.communication.websocket.task.PingTask;
+import eu.uberdust.communication.rest.UberdustRestClient;
+import eu.uberdust.communication.websocket.task.InsertPingTask;
 import eu.uberdust.reading.LinkReading;
 import eu.uberdust.reading.NodeReading;
 import org.apache.log4j.Logger;
@@ -188,7 +188,7 @@ public final class InsertReadingWebSocketClient extends Observable {
      */
     private void startPingingTask() {
         timer = new Timer();
-        timer.scheduleAtFixedRate(new PingTask(), PingTask.DELAY, PingTask.DELAY);
+        timer.scheduleAtFixedRate(new InsertPingTask(), InsertPingTask.DELAY, InsertPingTask.DELAY);
     }
 
     /**
@@ -220,7 +220,6 @@ public final class InsertReadingWebSocketClient extends Observable {
      */
     public void disconnect() {
         try {
-//            stopPingingTask();
             connection.disconnect();
             if (factory.isRunning()) {
                 factory.destroy();
@@ -235,7 +234,7 @@ public final class InsertReadingWebSocketClient extends Observable {
      * Checks the Rest Interface to see if connection is available.
      */
     public void restPing() {
-        InsertReadingRestClient.getInstance().callRestfulWebService(webSocketUrl.replace(WS_PREFIX, HTTP_PREFIX));
+        UberdustRestClient.getInstance().callRestfulWebService(webSocketUrl.replace(WS_PREFIX, HTTP_PREFIX));
     }
 
     protected void update(final String data) {

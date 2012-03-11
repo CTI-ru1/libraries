@@ -1,4 +1,4 @@
-import eu.uberdust.communication.websocket.InsertReadingWebSocketClient;
+import eu.uberdust.communication.websocket.insert.InsertReadingWebSocketClient;
 import eu.uberdust.reading.NodeReading;
 
 import java.io.IOException;
