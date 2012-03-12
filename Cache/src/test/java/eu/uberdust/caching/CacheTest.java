@@ -24,10 +24,16 @@ public class CacheTest {
         CacheTest cacheTest = new CacheTest();
         for (int j = 0; j < 20; j++) {
             for (int i = 0; i < 10; i++) {
-                cacheTest.cacheTest(i);
+                  cacheTest.addNodeReading(j);
+                //cacheTest.cacheTest(i);
             }
             Thread.sleep(10000);
+            cacheTest.addNodeReading(j);
         }
 
+    }
+    @EvictCache(cacheName = "oeo")
+    public void addNodeReading(int i ){
+        System.out.println(i);
     }
 }

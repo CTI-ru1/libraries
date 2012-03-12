@@ -31,6 +31,20 @@ public class CachingAspect {
     private void cache() {
     }
 
+    @Pointcut("@annotation( thisCachename )")
+    @SuppressWarnings("unused")
+    private void evictCache(EvictCache thisCachename) {
+    }
+
+    @Around("evictCache(thisCachename)")
+    public Object processRequest(final ProceedingJoinPoint thisJoinPoint, EvictCache thisCachename) throws Throwable {
+
+        final String roles = thisCachename.cacheName();
+        LOGGER.info("Cache Name:" + roles);
+
+        return thisJoinPoint.proceed();
+    }
+
     /**
      * Returns objects from the cache if necessary.
      */
@@ -40,7 +54,6 @@ public class CachingAspect {
         final String thisJoinPointArgs = getJointPointArgs(thisJoinPoint);
         final String objName = thisJoinPointName + "-" + thisJoinPointArgs;
         LOGGER.info("Injecting method: " + objName);
-
 
 
         if (singletonManager.cacheExists(thisJoinPointName)) {
@@ -79,7 +92,7 @@ public class CachingAspect {
      * Convenience method that returns the class- and method-name for a given join point.
      */
     public final String getJoinPointName(final JoinPoint joinPoint) {
-        return joinPoint.getThis().getClass().getCanonicalName()+ "." + joinPoint.getSignature().getName();
+        return joinPoint.getThis().getClass().getCanonicalName() + "." + joinPoint.getSignature().getName();
     }
 
     /**
