@@ -31,20 +31,6 @@ public class CachingAspect {
     private void cache() {
     }
 
-    @Pointcut("@annotation( thisCachename )")
-    @SuppressWarnings("unused")
-    private void evictCache(EvictCache thisCachename) {
-    }
-
-    @Around("evictCache(thisCachename)")
-    public Object processRequest(final ProceedingJoinPoint thisJoinPoint, EvictCache thisCachename) throws Throwable {
-
-        final String roles = thisCachename.cacheName();
-        LOGGER.info("Cache Name:" + roles);
-
-        return thisJoinPoint.proceed();
-    }
-
     /**
      * Returns objects from the cache if necessary.
      */
@@ -87,6 +73,24 @@ public class CachingAspect {
             }
         }
     }
+
+    @Pointcut("@annotation( thisCachename )")
+    @SuppressWarnings("unused")
+    private void evictCache(EvictCache thisCachename) {
+    }
+
+    @Around("evictCache(thisCachename)")
+    public Object processRequest(final ProceedingJoinPoint thisJoinPoint, EvictCache thisCachename) throws Throwable {
+        if (thisJoinPoint.getKind().equals(ProceedingJoinPoint.METHOD_CALL)) {
+            return thisJoinPoint.proceed();
+        } else {
+            final String roles = thisCachename.cacheName();
+            LOGGER.info("Cache Name:" + roles);
+
+            return thisJoinPoint.proceed();
+        }
+    }
+
 
     /**
      * Convenience method that returns the class- and method-name for a given join point.
