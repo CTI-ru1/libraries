@@ -61,7 +61,7 @@
                 <configuration>
                     <configLocation>sun_checks.xml</configLocation>
                     <suppressionsLocation>suppresions.xml</suppressionsLocation>
-                    <excludes>**/controller/protobuf/**/*</excludes>
+                    <excludes>**/protobuf/**/*</excludes>
                 </configuration>
             </plugin>
             <plugin>

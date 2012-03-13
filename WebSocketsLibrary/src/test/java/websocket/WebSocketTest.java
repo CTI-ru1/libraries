@@ -1,3 +1,5 @@
+package websocket;
+
 import eu.uberdust.communication.websocket.insert.InsertReadingWebSocketClient;
 import eu.uberdust.reading.NodeReading;
 

@@ -1,0 +1,23 @@
+package communication;
+
+option java_package = "eu.uberdust.communication.protobuf";
+option java_outer_classname = "Message";
+
+message Control {
+    required string destination = 1;
+    optional string capability = 2;
+    optional string lastValue = 3;
+    optional string payload = 4;
+}
+
+message NodeReadings {
+    message Reading {
+        required string node = 1;
+        required string capability = 2;
+        required double timestamp = 3;
+        optional string stringReading = 4;
+        optional double doubleReading = 5;
+    }
+
+  repeated Reading reading = 1;
+}

@@ -1,4 +1,4 @@
-package eu.uberdust.exampleapps;
+package websocket;
 
 import eu.uberdust.communication.rest.UberdustRestClient;
 import eu.uberdust.communication.websocket.insert.InsertReadingWebSocketClient;
