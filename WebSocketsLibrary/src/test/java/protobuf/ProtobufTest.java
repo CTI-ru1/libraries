@@ -69,6 +69,16 @@ public class ProtobufTest {
         System.out.println(nodeReadings.getReadingCount());
 
 
+        //Link Reading Usage Example
+        final ArrayList<Message.LinkReadings.Reading> linkReadings = new ArrayList<Message.LinkReadings.Reading>();
+        linkReadings.add(Message.LinkReadings.Reading.newBuilder()
+                .setSource("nodeID")
+                .setTarget("nodeID")
+                .setCapability("node Capability")
+                .setTimestamp(System.currentTimeMillis())
+                .setStringReading("222")
+                .build());
+
     }
 
 }

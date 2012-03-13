@@ -11,7 +11,9 @@ message Control {
 }
 
 message NodeReadings {
+
     message Reading {
+
         required string node = 1;
         required string capability = 2;
         required double timestamp = 3;
@@ -20,4 +22,19 @@ message NodeReadings {
     }
 
   repeated Reading reading = 1;
+}
+
+message LinkReadings{
+
+    message Reading {
+
+        required string source = 1;
+        required string target = 2;
+        required string capability = 3;
+        required double timestamp = 4;
+        optional string stringReading = 5;
+        optional double doubleReading = 6;
+    }
+
+    repeated Reading reading = 1;
 }

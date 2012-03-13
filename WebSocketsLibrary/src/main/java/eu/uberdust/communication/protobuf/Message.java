@@ -1208,6 +1208,835 @@ public final class Message {
     // @@protoc_insertion_point(class_scope:communication.NodeReadings)
   }
   
+  public static final class LinkReadings extends
+      com.google.protobuf.GeneratedMessage {
+    // Use LinkReadings.newBuilder() to construct.
+    private LinkReadings() {
+      initFields();
+    }
+    private LinkReadings(boolean noInit) {}
+    
+    private static final LinkReadings defaultInstance;
+    public static LinkReadings getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public LinkReadings getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return eu.uberdust.communication.protobuf.Message.internal_static_communication_LinkReadings_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return eu.uberdust.communication.protobuf.Message.internal_static_communication_LinkReadings_fieldAccessorTable;
+    }
+    
+    public static final class Reading extends
+        com.google.protobuf.GeneratedMessage {
+      // Use Reading.newBuilder() to construct.
+      private Reading() {
+        initFields();
+      }
+      private Reading(boolean noInit) {}
+      
+      private static final Reading defaultInstance;
+      public static Reading getDefaultInstance() {
+        return defaultInstance;
+      }
+      
+      public Reading getDefaultInstanceForType() {
+        return defaultInstance;
+      }
+      
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return eu.uberdust.communication.protobuf.Message.internal_static_communication_LinkReadings_Reading_descriptor;
+      }
+      
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return eu.uberdust.communication.protobuf.Message.internal_static_communication_LinkReadings_Reading_fieldAccessorTable;
+      }
+      
+      // required string source = 1;
+      public static final int SOURCE_FIELD_NUMBER = 1;
+      private boolean hasSource;
+      private java.lang.String source_ = "";
+      public boolean hasSource() { return hasSource; }
+      public java.lang.String getSource() { return source_; }
+      
+      // required string target = 2;
+      public static final int TARGET_FIELD_NUMBER = 2;
+      private boolean hasTarget;
+      private java.lang.String target_ = "";
+      public boolean hasTarget() { return hasTarget; }
+      public java.lang.String getTarget() { return target_; }
+      
+      // required string capability = 3;
+      public static final int CAPABILITY_FIELD_NUMBER = 3;
+      private boolean hasCapability;
+      private java.lang.String capability_ = "";
+      public boolean hasCapability() { return hasCapability; }
+      public java.lang.String getCapability() { return capability_; }
+      
+      // required double timestamp = 4;
+      public static final int TIMESTAMP_FIELD_NUMBER = 4;
+      private boolean hasTimestamp;
+      private double timestamp_ = 0D;
+      public boolean hasTimestamp() { return hasTimestamp; }
+      public double getTimestamp() { return timestamp_; }
+      
+      // optional string stringReading = 5;
+      public static final int STRINGREADING_FIELD_NUMBER = 5;
+      private boolean hasStringReading;
+      private java.lang.String stringReading_ = "";
+      public boolean hasStringReading() { return hasStringReading; }
+      public java.lang.String getStringReading() { return stringReading_; }
+      
+      // optional double doubleReading = 6;
+      public static final int DOUBLEREADING_FIELD_NUMBER = 6;
+      private boolean hasDoubleReading;
+      private double doubleReading_ = 0D;
+      public boolean hasDoubleReading() { return hasDoubleReading; }
+      public double getDoubleReading() { return doubleReading_; }
+      
+      private void initFields() {
+      }
+      public final boolean isInitialized() {
+        if (!hasSource) return false;
+        if (!hasTarget) return false;
+        if (!hasCapability) return false;
+        if (!hasTimestamp) return false;
+        return true;
+      }
+      
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        getSerializedSize();
+        if (hasSource()) {
+          output.writeString(1, getSource());
+        }
+        if (hasTarget()) {
+          output.writeString(2, getTarget());
+        }
+        if (hasCapability()) {
+          output.writeString(3, getCapability());
+        }
+        if (hasTimestamp()) {
+          output.writeDouble(4, getTimestamp());
+        }
+        if (hasStringReading()) {
+          output.writeString(5, getStringReading());
+        }
+        if (hasDoubleReading()) {
+          output.writeDouble(6, getDoubleReading());
+        }
+        getUnknownFields().writeTo(output);
+      }
+      
+      private int memoizedSerializedSize = -1;
+      public int getSerializedSize() {
+        int size = memoizedSerializedSize;
+        if (size != -1) return size;
+      
+        size = 0;
+        if (hasSource()) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeStringSize(1, getSource());
+        }
+        if (hasTarget()) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeStringSize(2, getTarget());
+        }
+        if (hasCapability()) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeStringSize(3, getCapability());
+        }
+        if (hasTimestamp()) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeDoubleSize(4, getTimestamp());
+        }
+        if (hasStringReading()) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeStringSize(5, getStringReading());
+        }
+        if (hasDoubleReading()) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeDoubleSize(6, getDoubleReading());
+        }
+        size += getUnknownFields().getSerializedSize();
+        memoizedSerializedSize = size;
+        return size;
+      }
+      
+      public static eu.uberdust.communication.protobuf.Message.LinkReadings.Reading parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return newBuilder().mergeFrom(data).buildParsed();
+      }
+      public static eu.uberdust.communication.protobuf.Message.LinkReadings.Reading parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return newBuilder().mergeFrom(data, extensionRegistry)
+                 .buildParsed();
+      }
+      public static eu.uberdust.communication.protobuf.Message.LinkReadings.Reading parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return newBuilder().mergeFrom(data).buildParsed();
+      }
+      public static eu.uberdust.communication.protobuf.Message.LinkReadings.Reading parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return newBuilder().mergeFrom(data, extensionRegistry)
+                 .buildParsed();
+      }
+      public static eu.uberdust.communication.protobuf.Message.LinkReadings.Reading parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return newBuilder().mergeFrom(input).buildParsed();
+      }
+      public static eu.uberdust.communication.protobuf.Message.LinkReadings.Reading parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return newBuilder().mergeFrom(input, extensionRegistry)
+                 .buildParsed();
+      }
+      public static eu.uberdust.communication.protobuf.Message.LinkReadings.Reading parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        Builder builder = newBuilder();
+        if (builder.mergeDelimitedFrom(input)) {
+          return builder.buildParsed();
+        } else {
+          return null;
+        }
+      }
+      public static eu.uberdust.communication.protobuf.Message.LinkReadings.Reading parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        Builder builder = newBuilder();
+        if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+          return builder.buildParsed();
+        } else {
+          return null;
+        }
+      }
+      public static eu.uberdust.communication.protobuf.Message.LinkReadings.Reading parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return newBuilder().mergeFrom(input).buildParsed();
+      }
+      public static eu.uberdust.communication.protobuf.Message.LinkReadings.Reading parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return newBuilder().mergeFrom(input, extensionRegistry)
+                 .buildParsed();
+      }
+      
+      public static Builder newBuilder() { return Builder.create(); }
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder(eu.uberdust.communication.protobuf.Message.LinkReadings.Reading prototype) {
+        return newBuilder().mergeFrom(prototype);
+      }
+      public Builder toBuilder() { return newBuilder(this); }
+      
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessage.Builder<Builder> {
+        private eu.uberdust.communication.protobuf.Message.LinkReadings.Reading result;
+        
+        // Construct using eu.uberdust.communication.protobuf.Message.LinkReadings.Reading.newBuilder()
+        private Builder() {}
+        
+        private static Builder create() {
+          Builder builder = new Builder();
+          builder.result = new eu.uberdust.communication.protobuf.Message.LinkReadings.Reading();
+          return builder;
+        }
+        
+        protected eu.uberdust.communication.protobuf.Message.LinkReadings.Reading internalGetResult() {
+          return result;
+        }
+        
+        public Builder clear() {
+          if (result == null) {
+            throw new IllegalStateException(
+              "Cannot call clear() after build().");
+          }
+          result = new eu.uberdust.communication.protobuf.Message.LinkReadings.Reading();
+          return this;
+        }
+        
+        public Builder clone() {
+          return create().mergeFrom(result);
+        }
+        
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return eu.uberdust.communication.protobuf.Message.LinkReadings.Reading.getDescriptor();
+        }
+        
+        public eu.uberdust.communication.protobuf.Message.LinkReadings.Reading getDefaultInstanceForType() {
+          return eu.uberdust.communication.protobuf.Message.LinkReadings.Reading.getDefaultInstance();
+        }
+        
+        public boolean isInitialized() {
+          return result.isInitialized();
+        }
+        public eu.uberdust.communication.protobuf.Message.LinkReadings.Reading build() {
+          if (result != null && !isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return buildPartial();
+        }
+        
+        private eu.uberdust.communication.protobuf.Message.LinkReadings.Reading buildParsed()
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          if (!isInitialized()) {
+            throw newUninitializedMessageException(
+              result).asInvalidProtocolBufferException();
+          }
+          return buildPartial();
+        }
+        
+        public eu.uberdust.communication.protobuf.Message.LinkReadings.Reading buildPartial() {
+          if (result == null) {
+            throw new IllegalStateException(
+              "build() has already been called on this Builder.");
+          }
+          eu.uberdust.communication.protobuf.Message.LinkReadings.Reading returnMe = result;
+          result = null;
+          return returnMe;
+        }
+        
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof eu.uberdust.communication.protobuf.Message.LinkReadings.Reading) {
+            return mergeFrom((eu.uberdust.communication.protobuf.Message.LinkReadings.Reading)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+        
+        public Builder mergeFrom(eu.uberdust.communication.protobuf.Message.LinkReadings.Reading other) {
+          if (other == eu.uberdust.communication.protobuf.Message.LinkReadings.Reading.getDefaultInstance()) return this;
+          if (other.hasSource()) {
+            setSource(other.getSource());
+          }
+          if (other.hasTarget()) {
+            setTarget(other.getTarget());
+          }
+          if (other.hasCapability()) {
+            setCapability(other.getCapability());
+          }
+          if (other.hasTimestamp()) {
+            setTimestamp(other.getTimestamp());
+          }
+          if (other.hasStringReading()) {
+            setStringReading(other.getStringReading());
+          }
+          if (other.hasDoubleReading()) {
+            setDoubleReading(other.getDoubleReading());
+          }
+          this.mergeUnknownFields(other.getUnknownFields());
+          return this;
+        }
+        
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+            com.google.protobuf.UnknownFieldSet.newBuilder(
+              this.getUnknownFields());
+          while (true) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                this.setUnknownFields(unknownFields.build());
+                return this;
+              default: {
+                if (!parseUnknownField(input, unknownFields,
+                                       extensionRegistry, tag)) {
+                  this.setUnknownFields(unknownFields.build());
+                  return this;
+                }
+                break;
+              }
+              case 10: {
+                setSource(input.readString());
+                break;
+              }
+              case 18: {
+                setTarget(input.readString());
+                break;
+              }
+              case 26: {
+                setCapability(input.readString());
+                break;
+              }
+              case 33: {
+                setTimestamp(input.readDouble());
+                break;
+              }
+              case 42: {
+                setStringReading(input.readString());
+                break;
+              }
+              case 49: {
+                setDoubleReading(input.readDouble());
+                break;
+              }
+            }
+          }
+        }
+        
+        
+        // required string source = 1;
+        public boolean hasSource() {
+          return result.hasSource();
+        }
+        public java.lang.String getSource() {
+          return result.getSource();
+        }
+        public Builder setSource(java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  result.hasSource = true;
+          result.source_ = value;
+          return this;
+        }
+        public Builder clearSource() {
+          result.hasSource = false;
+          result.source_ = getDefaultInstance().getSource();
+          return this;
+        }
+        
+        // required string target = 2;
+        public boolean hasTarget() {
+          return result.hasTarget();
+        }
+        public java.lang.String getTarget() {
+          return result.getTarget();
+        }
+        public Builder setTarget(java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  result.hasTarget = true;
+          result.target_ = value;
+          return this;
+        }
+        public Builder clearTarget() {
+          result.hasTarget = false;
+          result.target_ = getDefaultInstance().getTarget();
+          return this;
+        }
+        
+        // required string capability = 3;
+        public boolean hasCapability() {
+          return result.hasCapability();
+        }
+        public java.lang.String getCapability() {
+          return result.getCapability();
+        }
+        public Builder setCapability(java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  result.hasCapability = true;
+          result.capability_ = value;
+          return this;
+        }
+        public Builder clearCapability() {
+          result.hasCapability = false;
+          result.capability_ = getDefaultInstance().getCapability();
+          return this;
+        }
+        
+        // required double timestamp = 4;
+        public boolean hasTimestamp() {
+          return result.hasTimestamp();
+        }
+        public double getTimestamp() {
+          return result.getTimestamp();
+        }
+        public Builder setTimestamp(double value) {
+          result.hasTimestamp = true;
+          result.timestamp_ = value;
+          return this;
+        }
+        public Builder clearTimestamp() {
+          result.hasTimestamp = false;
+          result.timestamp_ = 0D;
+          return this;
+        }
+        
+        // optional string stringReading = 5;
+        public boolean hasStringReading() {
+          return result.hasStringReading();
+        }
+        public java.lang.String getStringReading() {
+          return result.getStringReading();
+        }
+        public Builder setStringReading(java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  result.hasStringReading = true;
+          result.stringReading_ = value;
+          return this;
+        }
+        public Builder clearStringReading() {
+          result.hasStringReading = false;
+          result.stringReading_ = getDefaultInstance().getStringReading();
+          return this;
+        }
+        
+        // optional double doubleReading = 6;
+        public boolean hasDoubleReading() {
+          return result.hasDoubleReading();
+        }
+        public double getDoubleReading() {
+          return result.getDoubleReading();
+        }
+        public Builder setDoubleReading(double value) {
+          result.hasDoubleReading = true;
+          result.doubleReading_ = value;
+          return this;
+        }
+        public Builder clearDoubleReading() {
+          result.hasDoubleReading = false;
+          result.doubleReading_ = 0D;
+          return this;
+        }
+        
+        // @@protoc_insertion_point(builder_scope:communication.LinkReadings.Reading)
+      }
+      
+      static {
+        defaultInstance = new Reading(true);
+        eu.uberdust.communication.protobuf.Message.internalForceInit();
+        defaultInstance.initFields();
+      }
+      
+      // @@protoc_insertion_point(class_scope:communication.LinkReadings.Reading)
+    }
+    
+    // repeated .communication.LinkReadings.Reading reading = 1;
+    public static final int READING_FIELD_NUMBER = 1;
+    private java.util.List<eu.uberdust.communication.protobuf.Message.LinkReadings.Reading> reading_ =
+      java.util.Collections.emptyList();
+    public java.util.List<eu.uberdust.communication.protobuf.Message.LinkReadings.Reading> getReadingList() {
+      return reading_;
+    }
+    public int getReadingCount() { return reading_.size(); }
+    public eu.uberdust.communication.protobuf.Message.LinkReadings.Reading getReading(int index) {
+      return reading_.get(index);
+    }
+    
+    private void initFields() {
+    }
+    public final boolean isInitialized() {
+      for (eu.uberdust.communication.protobuf.Message.LinkReadings.Reading element : getReadingList()) {
+        if (!element.isInitialized()) return false;
+      }
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (eu.uberdust.communication.protobuf.Message.LinkReadings.Reading element : getReadingList()) {
+        output.writeMessage(1, element);
+      }
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      for (eu.uberdust.communication.protobuf.Message.LinkReadings.Reading element : getReadingList()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, element);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    public static eu.uberdust.communication.protobuf.Message.LinkReadings parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static eu.uberdust.communication.protobuf.Message.LinkReadings parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static eu.uberdust.communication.protobuf.Message.LinkReadings parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static eu.uberdust.communication.protobuf.Message.LinkReadings parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static eu.uberdust.communication.protobuf.Message.LinkReadings parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static eu.uberdust.communication.protobuf.Message.LinkReadings parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static eu.uberdust.communication.protobuf.Message.LinkReadings parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static eu.uberdust.communication.protobuf.Message.LinkReadings parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static eu.uberdust.communication.protobuf.Message.LinkReadings parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static eu.uberdust.communication.protobuf.Message.LinkReadings parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(eu.uberdust.communication.protobuf.Message.LinkReadings prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> {
+      private eu.uberdust.communication.protobuf.Message.LinkReadings result;
+      
+      // Construct using eu.uberdust.communication.protobuf.Message.LinkReadings.newBuilder()
+      private Builder() {}
+      
+      private static Builder create() {
+        Builder builder = new Builder();
+        builder.result = new eu.uberdust.communication.protobuf.Message.LinkReadings();
+        return builder;
+      }
+      
+      protected eu.uberdust.communication.protobuf.Message.LinkReadings internalGetResult() {
+        return result;
+      }
+      
+      public Builder clear() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "Cannot call clear() after build().");
+        }
+        result = new eu.uberdust.communication.protobuf.Message.LinkReadings();
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(result);
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return eu.uberdust.communication.protobuf.Message.LinkReadings.getDescriptor();
+      }
+      
+      public eu.uberdust.communication.protobuf.Message.LinkReadings getDefaultInstanceForType() {
+        return eu.uberdust.communication.protobuf.Message.LinkReadings.getDefaultInstance();
+      }
+      
+      public boolean isInitialized() {
+        return result.isInitialized();
+      }
+      public eu.uberdust.communication.protobuf.Message.LinkReadings build() {
+        if (result != null && !isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return buildPartial();
+      }
+      
+      private eu.uberdust.communication.protobuf.Message.LinkReadings buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        if (!isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return buildPartial();
+      }
+      
+      public eu.uberdust.communication.protobuf.Message.LinkReadings buildPartial() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "build() has already been called on this Builder.");
+        }
+        if (result.reading_ != java.util.Collections.EMPTY_LIST) {
+          result.reading_ =
+            java.util.Collections.unmodifiableList(result.reading_);
+        }
+        eu.uberdust.communication.protobuf.Message.LinkReadings returnMe = result;
+        result = null;
+        return returnMe;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof eu.uberdust.communication.protobuf.Message.LinkReadings) {
+          return mergeFrom((eu.uberdust.communication.protobuf.Message.LinkReadings)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(eu.uberdust.communication.protobuf.Message.LinkReadings other) {
+        if (other == eu.uberdust.communication.protobuf.Message.LinkReadings.getDefaultInstance()) return this;
+        if (!other.reading_.isEmpty()) {
+          if (result.reading_.isEmpty()) {
+            result.reading_ = new java.util.ArrayList<eu.uberdust.communication.protobuf.Message.LinkReadings.Reading>();
+          }
+          result.reading_.addAll(other.reading_);
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                return this;
+              }
+              break;
+            }
+            case 10: {
+              eu.uberdust.communication.protobuf.Message.LinkReadings.Reading.Builder subBuilder = eu.uberdust.communication.protobuf.Message.LinkReadings.Reading.newBuilder();
+              input.readMessage(subBuilder, extensionRegistry);
+              addReading(subBuilder.buildPartial());
+              break;
+            }
+          }
+        }
+      }
+      
+      
+      // repeated .communication.LinkReadings.Reading reading = 1;
+      public java.util.List<eu.uberdust.communication.protobuf.Message.LinkReadings.Reading> getReadingList() {
+        return java.util.Collections.unmodifiableList(result.reading_);
+      }
+      public int getReadingCount() {
+        return result.getReadingCount();
+      }
+      public eu.uberdust.communication.protobuf.Message.LinkReadings.Reading getReading(int index) {
+        return result.getReading(index);
+      }
+      public Builder setReading(int index, eu.uberdust.communication.protobuf.Message.LinkReadings.Reading value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.reading_.set(index, value);
+        return this;
+      }
+      public Builder setReading(int index, eu.uberdust.communication.protobuf.Message.LinkReadings.Reading.Builder builderForValue) {
+        result.reading_.set(index, builderForValue.build());
+        return this;
+      }
+      public Builder addReading(eu.uberdust.communication.protobuf.Message.LinkReadings.Reading value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        if (result.reading_.isEmpty()) {
+          result.reading_ = new java.util.ArrayList<eu.uberdust.communication.protobuf.Message.LinkReadings.Reading>();
+        }
+        result.reading_.add(value);
+        return this;
+      }
+      public Builder addReading(eu.uberdust.communication.protobuf.Message.LinkReadings.Reading.Builder builderForValue) {
+        if (result.reading_.isEmpty()) {
+          result.reading_ = new java.util.ArrayList<eu.uberdust.communication.protobuf.Message.LinkReadings.Reading>();
+        }
+        result.reading_.add(builderForValue.build());
+        return this;
+      }
+      public Builder addAllReading(
+          java.lang.Iterable<? extends eu.uberdust.communication.protobuf.Message.LinkReadings.Reading> values) {
+        if (result.reading_.isEmpty()) {
+          result.reading_ = new java.util.ArrayList<eu.uberdust.communication.protobuf.Message.LinkReadings.Reading>();
+        }
+        super.addAll(values, result.reading_);
+        return this;
+      }
+      public Builder clearReading() {
+        result.reading_ = java.util.Collections.emptyList();
+        return this;
+      }
+      
+      // @@protoc_insertion_point(builder_scope:communication.LinkReadings)
+    }
+    
+    static {
+      defaultInstance = new LinkReadings(true);
+      eu.uberdust.communication.protobuf.Message.internalForceInit();
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:communication.LinkReadings)
+  }
+  
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_communication_Control_descriptor;
   private static
@@ -1223,6 +2052,16 @@ public final class Message {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_communication_NodeReadings_Reading_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_communication_LinkReadings_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_communication_LinkReadings_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_communication_LinkReadings_Reading_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_communication_LinkReadings_Reading_fieldAccessorTable;
   
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -1239,8 +2078,13 @@ public final class Message {
       "nication.NodeReadings.Reading\032l\n\007Reading" +
       "\022\014\n\004node\030\001 \002(\t\022\022\n\ncapability\030\002 \002(\t\022\021\n\tti" +
       "mestamp\030\003 \002(\001\022\025\n\rstringReading\030\004 \001(\t\022\025\n\r" +
-      "doubleReading\030\005 \001(\001B-\n\"eu.uberdust.commu" +
-      "nication.protobufB\007Message"
+      "doubleReading\030\005 \001(\001\"\304\001\n\014LinkReadings\0224\n\007" +
+      "reading\030\001 \003(\0132#.communication.LinkReadin" +
+      "gs.Reading\032~\n\007Reading\022\016\n\006source\030\001 \002(\t\022\016\n",
+      "\006target\030\002 \002(\t\022\022\n\ncapability\030\003 \002(\t\022\021\n\ttim" +
+      "estamp\030\004 \002(\001\022\025\n\rstringReading\030\005 \001(\t\022\025\n\rd" +
+      "oubleReading\030\006 \001(\001B-\n\"eu.uberdust.commun" +
+      "ication.protobufB\007Message"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -1271,6 +2115,22 @@ public final class Message {
               new java.lang.String[] { "Node", "Capability", "Timestamp", "StringReading", "DoubleReading", },
               eu.uberdust.communication.protobuf.Message.NodeReadings.Reading.class,
               eu.uberdust.communication.protobuf.Message.NodeReadings.Reading.Builder.class);
+          internal_static_communication_LinkReadings_descriptor =
+            getDescriptor().getMessageTypes().get(2);
+          internal_static_communication_LinkReadings_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_communication_LinkReadings_descriptor,
+              new java.lang.String[] { "Reading", },
+              eu.uberdust.communication.protobuf.Message.LinkReadings.class,
+              eu.uberdust.communication.protobuf.Message.LinkReadings.Builder.class);
+          internal_static_communication_LinkReadings_Reading_descriptor =
+            internal_static_communication_LinkReadings_descriptor.getNestedTypes().get(0);
+          internal_static_communication_LinkReadings_Reading_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_communication_LinkReadings_Reading_descriptor,
+              new java.lang.String[] { "Source", "Target", "Capability", "Timestamp", "StringReading", "DoubleReading", },
+              eu.uberdust.communication.protobuf.Message.LinkReadings.Reading.class,
+              eu.uberdust.communication.protobuf.Message.LinkReadings.Reading.Builder.class);
           return null;
         }
       };
