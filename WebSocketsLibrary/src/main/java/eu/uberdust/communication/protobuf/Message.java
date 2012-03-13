@@ -8,11 +8,31 @@ public final class Message {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
+  public interface ControlOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+    
+    // required string destination = 1;
+    boolean hasDestination();
+    String getDestination();
+    
+    // optional string capability = 2;
+    boolean hasCapability();
+    String getCapability();
+    
+    // optional string lastValue = 3;
+    boolean hasLastValue();
+    String getLastValue();
+    
+    // optional string payload = 4;
+    boolean hasPayload();
+    String getPayload();
+  }
   public static final class Control extends
-      com.google.protobuf.GeneratedMessage {
+      com.google.protobuf.GeneratedMessage
+      implements ControlOrBuilder {
     // Use Control.newBuilder() to construct.
-    private Control() {
-      initFields();
+    private Control(Builder builder) {
+      super(builder);
     }
     private Control(boolean noInit) {}
     
@@ -35,55 +55,168 @@ public final class Message {
       return eu.uberdust.communication.protobuf.Message.internal_static_communication_Control_fieldAccessorTable;
     }
     
+    private int bitField0_;
     // required string destination = 1;
     public static final int DESTINATION_FIELD_NUMBER = 1;
-    private boolean hasDestination;
-    private java.lang.String destination_ = "";
-    public boolean hasDestination() { return hasDestination; }
-    public java.lang.String getDestination() { return destination_; }
+    private java.lang.Object destination_;
+    public boolean hasDestination() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    public String getDestination() {
+      java.lang.Object ref = destination_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+          destination_ = s;
+        }
+        return s;
+      }
+    }
+    private com.google.protobuf.ByteString getDestinationBytes() {
+      java.lang.Object ref = destination_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+        destination_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
     
     // optional string capability = 2;
     public static final int CAPABILITY_FIELD_NUMBER = 2;
-    private boolean hasCapability;
-    private java.lang.String capability_ = "";
-    public boolean hasCapability() { return hasCapability; }
-    public java.lang.String getCapability() { return capability_; }
+    private java.lang.Object capability_;
+    public boolean hasCapability() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    public String getCapability() {
+      java.lang.Object ref = capability_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+          capability_ = s;
+        }
+        return s;
+      }
+    }
+    private com.google.protobuf.ByteString getCapabilityBytes() {
+      java.lang.Object ref = capability_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+        capability_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
     
     // optional string lastValue = 3;
     public static final int LASTVALUE_FIELD_NUMBER = 3;
-    private boolean hasLastValue;
-    private java.lang.String lastValue_ = "";
-    public boolean hasLastValue() { return hasLastValue; }
-    public java.lang.String getLastValue() { return lastValue_; }
+    private java.lang.Object lastValue_;
+    public boolean hasLastValue() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    public String getLastValue() {
+      java.lang.Object ref = lastValue_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+          lastValue_ = s;
+        }
+        return s;
+      }
+    }
+    private com.google.protobuf.ByteString getLastValueBytes() {
+      java.lang.Object ref = lastValue_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+        lastValue_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
     
     // optional string payload = 4;
     public static final int PAYLOAD_FIELD_NUMBER = 4;
-    private boolean hasPayload;
-    private java.lang.String payload_ = "";
-    public boolean hasPayload() { return hasPayload; }
-    public java.lang.String getPayload() { return payload_; }
+    private java.lang.Object payload_;
+    public boolean hasPayload() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    public String getPayload() {
+      java.lang.Object ref = payload_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+          payload_ = s;
+        }
+        return s;
+      }
+    }
+    private com.google.protobuf.ByteString getPayloadBytes() {
+      java.lang.Object ref = payload_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+        payload_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
     
     private void initFields() {
+      destination_ = "";
+      capability_ = "";
+      lastValue_ = "";
+      payload_ = "";
     }
+    private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
-      if (!hasDestination) return false;
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+      
+      if (!hasDestination()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
       return true;
     }
     
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (hasDestination()) {
-        output.writeString(1, getDestination());
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getDestinationBytes());
       }
-      if (hasCapability()) {
-        output.writeString(2, getCapability());
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getCapabilityBytes());
       }
-      if (hasLastValue()) {
-        output.writeString(3, getLastValue());
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, getLastValueBytes());
       }
-      if (hasPayload()) {
-        output.writeString(4, getPayload());
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeBytes(4, getPayloadBytes());
       }
       getUnknownFields().writeTo(output);
     }
@@ -94,25 +227,32 @@ public final class Message {
       if (size != -1) return size;
     
       size = 0;
-      if (hasDestination()) {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeStringSize(1, getDestination());
+          .computeBytesSize(1, getDestinationBytes());
       }
-      if (hasCapability()) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeStringSize(2, getCapability());
+          .computeBytesSize(2, getCapabilityBytes());
       }
-      if (hasLastValue()) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeStringSize(3, getLastValue());
+          .computeBytesSize(3, getLastValueBytes());
       }
-      if (hasPayload()) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeStringSize(4, getPayload());
+          .computeBytesSize(4, getPayloadBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
+    }
+    
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
     }
     
     public static eu.uberdust.communication.protobuf.Message.Control parseFrom(
@@ -189,34 +329,57 @@ public final class Message {
     }
     public Builder toBuilder() { return newBuilder(this); }
     
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> {
-      private eu.uberdust.communication.protobuf.Message.Control result;
-      
-      // Construct using eu.uberdust.communication.protobuf.Message.Control.newBuilder()
-      private Builder() {}
-      
-      private static Builder create() {
-        Builder builder = new Builder();
-        builder.result = new eu.uberdust.communication.protobuf.Message.Control();
-        return builder;
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements eu.uberdust.communication.protobuf.Message.ControlOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return eu.uberdust.communication.protobuf.Message.internal_static_communication_Control_descriptor;
       }
       
-      protected eu.uberdust.communication.protobuf.Message.Control internalGetResult() {
-        return result;
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return eu.uberdust.communication.protobuf.Message.internal_static_communication_Control_fieldAccessorTable;
+      }
+      
+      // Construct using eu.uberdust.communication.protobuf.Message.Control.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+      
+      private Builder(BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
       }
       
       public Builder clear() {
-        if (result == null) {
-          throw new IllegalStateException(
-            "Cannot call clear() after build().");
-        }
-        result = new eu.uberdust.communication.protobuf.Message.Control();
+        super.clear();
+        destination_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        capability_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        lastValue_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
+        payload_ = "";
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
       
       public Builder clone() {
-        return create().mergeFrom(result);
+        return create().mergeFrom(buildPartial());
       }
       
       public com.google.protobuf.Descriptors.Descriptor
@@ -228,33 +391,47 @@ public final class Message {
         return eu.uberdust.communication.protobuf.Message.Control.getDefaultInstance();
       }
       
-      public boolean isInitialized() {
-        return result.isInitialized();
-      }
       public eu.uberdust.communication.protobuf.Message.Control build() {
-        if (result != null && !isInitialized()) {
+        eu.uberdust.communication.protobuf.Message.Control result = buildPartial();
+        if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
-        return buildPartial();
+        return result;
       }
       
       private eu.uberdust.communication.protobuf.Message.Control buildParsed()
           throws com.google.protobuf.InvalidProtocolBufferException {
-        if (!isInitialized()) {
+        eu.uberdust.communication.protobuf.Message.Control result = buildPartial();
+        if (!result.isInitialized()) {
           throw newUninitializedMessageException(
             result).asInvalidProtocolBufferException();
         }
-        return buildPartial();
+        return result;
       }
       
       public eu.uberdust.communication.protobuf.Message.Control buildPartial() {
-        if (result == null) {
-          throw new IllegalStateException(
-            "build() has already been called on this Builder.");
+        eu.uberdust.communication.protobuf.Message.Control result = new eu.uberdust.communication.protobuf.Message.Control(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
         }
-        eu.uberdust.communication.protobuf.Message.Control returnMe = result;
-        result = null;
-        return returnMe;
+        result.destination_ = destination_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.capability_ = capability_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.lastValue_ = lastValue_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.payload_ = payload_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
       }
       
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -284,6 +461,14 @@ public final class Message {
         return this;
       }
       
+      public final boolean isInitialized() {
+        if (!hasDestination()) {
+          
+          return false;
+        }
+        return true;
+      }
+      
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -296,118 +481,185 @@ public final class Message {
           switch (tag) {
             case 0:
               this.setUnknownFields(unknownFields.build());
+              onChanged();
               return this;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
                 this.setUnknownFields(unknownFields.build());
+                onChanged();
                 return this;
               }
               break;
             }
             case 10: {
-              setDestination(input.readString());
+              bitField0_ |= 0x00000001;
+              destination_ = input.readBytes();
               break;
             }
             case 18: {
-              setCapability(input.readString());
+              bitField0_ |= 0x00000002;
+              capability_ = input.readBytes();
               break;
             }
             case 26: {
-              setLastValue(input.readString());
+              bitField0_ |= 0x00000004;
+              lastValue_ = input.readBytes();
               break;
             }
             case 34: {
-              setPayload(input.readString());
+              bitField0_ |= 0x00000008;
+              payload_ = input.readBytes();
               break;
             }
           }
         }
       }
       
+      private int bitField0_;
       
       // required string destination = 1;
+      private java.lang.Object destination_ = "";
       public boolean hasDestination() {
-        return result.hasDestination();
+        return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      public java.lang.String getDestination() {
-        return result.getDestination();
+      public String getDestination() {
+        java.lang.Object ref = destination_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+          destination_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
       }
-      public Builder setDestination(java.lang.String value) {
+      public Builder setDestination(String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  result.hasDestination = true;
-        result.destination_ = value;
+  bitField0_ |= 0x00000001;
+        destination_ = value;
+        onChanged();
         return this;
       }
       public Builder clearDestination() {
-        result.hasDestination = false;
-        result.destination_ = getDefaultInstance().getDestination();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        destination_ = getDefaultInstance().getDestination();
+        onChanged();
         return this;
+      }
+      void setDestination(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000001;
+        destination_ = value;
+        onChanged();
       }
       
       // optional string capability = 2;
+      private java.lang.Object capability_ = "";
       public boolean hasCapability() {
-        return result.hasCapability();
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
-      public java.lang.String getCapability() {
-        return result.getCapability();
+      public String getCapability() {
+        java.lang.Object ref = capability_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+          capability_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
       }
-      public Builder setCapability(java.lang.String value) {
+      public Builder setCapability(String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  result.hasCapability = true;
-        result.capability_ = value;
+  bitField0_ |= 0x00000002;
+        capability_ = value;
+        onChanged();
         return this;
       }
       public Builder clearCapability() {
-        result.hasCapability = false;
-        result.capability_ = getDefaultInstance().getCapability();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        capability_ = getDefaultInstance().getCapability();
+        onChanged();
         return this;
+      }
+      void setCapability(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000002;
+        capability_ = value;
+        onChanged();
       }
       
       // optional string lastValue = 3;
+      private java.lang.Object lastValue_ = "";
       public boolean hasLastValue() {
-        return result.hasLastValue();
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
-      public java.lang.String getLastValue() {
-        return result.getLastValue();
+      public String getLastValue() {
+        java.lang.Object ref = lastValue_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+          lastValue_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
       }
-      public Builder setLastValue(java.lang.String value) {
+      public Builder setLastValue(String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  result.hasLastValue = true;
-        result.lastValue_ = value;
+  bitField0_ |= 0x00000004;
+        lastValue_ = value;
+        onChanged();
         return this;
       }
       public Builder clearLastValue() {
-        result.hasLastValue = false;
-        result.lastValue_ = getDefaultInstance().getLastValue();
+        bitField0_ = (bitField0_ & ~0x00000004);
+        lastValue_ = getDefaultInstance().getLastValue();
+        onChanged();
         return this;
+      }
+      void setLastValue(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000004;
+        lastValue_ = value;
+        onChanged();
       }
       
       // optional string payload = 4;
+      private java.lang.Object payload_ = "";
       public boolean hasPayload() {
-        return result.hasPayload();
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
-      public java.lang.String getPayload() {
-        return result.getPayload();
+      public String getPayload() {
+        java.lang.Object ref = payload_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+          payload_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
       }
-      public Builder setPayload(java.lang.String value) {
+      public Builder setPayload(String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  result.hasPayload = true;
-        result.payload_ = value;
+  bitField0_ |= 0x00000008;
+        payload_ = value;
+        onChanged();
         return this;
       }
       public Builder clearPayload() {
-        result.hasPayload = false;
-        result.payload_ = getDefaultInstance().getPayload();
+        bitField0_ = (bitField0_ & ~0x00000008);
+        payload_ = getDefaultInstance().getPayload();
+        onChanged();
         return this;
+      }
+      void setPayload(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000008;
+        payload_ = value;
+        onChanged();
       }
       
       // @@protoc_insertion_point(builder_scope:communication.Control)
@@ -415,18 +667,31 @@ public final class Message {
     
     static {
       defaultInstance = new Control(true);
-      eu.uberdust.communication.protobuf.Message.internalForceInit();
       defaultInstance.initFields();
     }
     
     // @@protoc_insertion_point(class_scope:communication.Control)
   }
   
+  public interface NodeReadingsOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+    
+    // repeated .communication.NodeReadings.Reading reading = 1;
+    java.util.List<eu.uberdust.communication.protobuf.Message.NodeReadings.Reading> 
+        getReadingList();
+    eu.uberdust.communication.protobuf.Message.NodeReadings.Reading getReading(int index);
+    int getReadingCount();
+    java.util.List<? extends eu.uberdust.communication.protobuf.Message.NodeReadings.ReadingOrBuilder> 
+        getReadingOrBuilderList();
+    eu.uberdust.communication.protobuf.Message.NodeReadings.ReadingOrBuilder getReadingOrBuilder(
+        int index);
+  }
   public static final class NodeReadings extends
-      com.google.protobuf.GeneratedMessage {
+      com.google.protobuf.GeneratedMessage
+      implements NodeReadingsOrBuilder {
     // Use NodeReadings.newBuilder() to construct.
-    private NodeReadings() {
-      initFields();
+    private NodeReadings(Builder builder) {
+      super(builder);
     }
     private NodeReadings(boolean noInit) {}
     
@@ -449,11 +714,35 @@ public final class Message {
       return eu.uberdust.communication.protobuf.Message.internal_static_communication_NodeReadings_fieldAccessorTable;
     }
     
+    public interface ReadingOrBuilder
+        extends com.google.protobuf.MessageOrBuilder {
+      
+      // required string node = 1;
+      boolean hasNode();
+      String getNode();
+      
+      // required string capability = 2;
+      boolean hasCapability();
+      String getCapability();
+      
+      // required double timestamp = 3;
+      boolean hasTimestamp();
+      double getTimestamp();
+      
+      // optional string stringReading = 4;
+      boolean hasStringReading();
+      String getStringReading();
+      
+      // optional double doubleReading = 5;
+      boolean hasDoubleReading();
+      double getDoubleReading();
+    }
     public static final class Reading extends
-        com.google.protobuf.GeneratedMessage {
+        com.google.protobuf.GeneratedMessage
+        implements ReadingOrBuilder {
       // Use Reading.newBuilder() to construct.
-      private Reading() {
-        initFields();
+      private Reading(Builder builder) {
+        super(builder);
       }
       private Reading(boolean noInit) {}
       
@@ -476,67 +765,168 @@ public final class Message {
         return eu.uberdust.communication.protobuf.Message.internal_static_communication_NodeReadings_Reading_fieldAccessorTable;
       }
       
+      private int bitField0_;
       // required string node = 1;
       public static final int NODE_FIELD_NUMBER = 1;
-      private boolean hasNode;
-      private java.lang.String node_ = "";
-      public boolean hasNode() { return hasNode; }
-      public java.lang.String getNode() { return node_; }
+      private java.lang.Object node_;
+      public boolean hasNode() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      public String getNode() {
+        java.lang.Object ref = node_;
+        if (ref instanceof String) {
+          return (String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          String s = bs.toStringUtf8();
+          if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+            node_ = s;
+          }
+          return s;
+        }
+      }
+      private com.google.protobuf.ByteString getNodeBytes() {
+        java.lang.Object ref = node_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+          node_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
       
       // required string capability = 2;
       public static final int CAPABILITY_FIELD_NUMBER = 2;
-      private boolean hasCapability;
-      private java.lang.String capability_ = "";
-      public boolean hasCapability() { return hasCapability; }
-      public java.lang.String getCapability() { return capability_; }
+      private java.lang.Object capability_;
+      public boolean hasCapability() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      public String getCapability() {
+        java.lang.Object ref = capability_;
+        if (ref instanceof String) {
+          return (String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          String s = bs.toStringUtf8();
+          if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+            capability_ = s;
+          }
+          return s;
+        }
+      }
+      private com.google.protobuf.ByteString getCapabilityBytes() {
+        java.lang.Object ref = capability_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+          capability_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
       
       // required double timestamp = 3;
       public static final int TIMESTAMP_FIELD_NUMBER = 3;
-      private boolean hasTimestamp;
-      private double timestamp_ = 0D;
-      public boolean hasTimestamp() { return hasTimestamp; }
-      public double getTimestamp() { return timestamp_; }
+      private double timestamp_;
+      public boolean hasTimestamp() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      public double getTimestamp() {
+        return timestamp_;
+      }
       
       // optional string stringReading = 4;
       public static final int STRINGREADING_FIELD_NUMBER = 4;
-      private boolean hasStringReading;
-      private java.lang.String stringReading_ = "";
-      public boolean hasStringReading() { return hasStringReading; }
-      public java.lang.String getStringReading() { return stringReading_; }
+      private java.lang.Object stringReading_;
+      public boolean hasStringReading() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      public String getStringReading() {
+        java.lang.Object ref = stringReading_;
+        if (ref instanceof String) {
+          return (String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          String s = bs.toStringUtf8();
+          if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+            stringReading_ = s;
+          }
+          return s;
+        }
+      }
+      private com.google.protobuf.ByteString getStringReadingBytes() {
+        java.lang.Object ref = stringReading_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+          stringReading_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
       
       // optional double doubleReading = 5;
       public static final int DOUBLEREADING_FIELD_NUMBER = 5;
-      private boolean hasDoubleReading;
-      private double doubleReading_ = 0D;
-      public boolean hasDoubleReading() { return hasDoubleReading; }
-      public double getDoubleReading() { return doubleReading_; }
+      private double doubleReading_;
+      public boolean hasDoubleReading() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      public double getDoubleReading() {
+        return doubleReading_;
+      }
       
       private void initFields() {
+        node_ = "";
+        capability_ = "";
+        timestamp_ = 0D;
+        stringReading_ = "";
+        doubleReading_ = 0D;
       }
+      private byte memoizedIsInitialized = -1;
       public final boolean isInitialized() {
-        if (!hasNode) return false;
-        if (!hasCapability) return false;
-        if (!hasTimestamp) return false;
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized != -1) return isInitialized == 1;
+        
+        if (!hasNode()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+        if (!hasCapability()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+        if (!hasTimestamp()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+        memoizedIsInitialized = 1;
         return true;
       }
       
       public void writeTo(com.google.protobuf.CodedOutputStream output)
                           throws java.io.IOException {
         getSerializedSize();
-        if (hasNode()) {
-          output.writeString(1, getNode());
+        if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          output.writeBytes(1, getNodeBytes());
         }
-        if (hasCapability()) {
-          output.writeString(2, getCapability());
+        if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          output.writeBytes(2, getCapabilityBytes());
         }
-        if (hasTimestamp()) {
-          output.writeDouble(3, getTimestamp());
+        if (((bitField0_ & 0x00000004) == 0x00000004)) {
+          output.writeDouble(3, timestamp_);
         }
-        if (hasStringReading()) {
-          output.writeString(4, getStringReading());
+        if (((bitField0_ & 0x00000008) == 0x00000008)) {
+          output.writeBytes(4, getStringReadingBytes());
         }
-        if (hasDoubleReading()) {
-          output.writeDouble(5, getDoubleReading());
+        if (((bitField0_ & 0x00000010) == 0x00000010)) {
+          output.writeDouble(5, doubleReading_);
         }
         getUnknownFields().writeTo(output);
       }
@@ -547,29 +937,36 @@ public final class Message {
         if (size != -1) return size;
       
         size = 0;
-        if (hasNode()) {
+        if (((bitField0_ & 0x00000001) == 0x00000001)) {
           size += com.google.protobuf.CodedOutputStream
-            .computeStringSize(1, getNode());
+            .computeBytesSize(1, getNodeBytes());
         }
-        if (hasCapability()) {
+        if (((bitField0_ & 0x00000002) == 0x00000002)) {
           size += com.google.protobuf.CodedOutputStream
-            .computeStringSize(2, getCapability());
+            .computeBytesSize(2, getCapabilityBytes());
         }
-        if (hasTimestamp()) {
+        if (((bitField0_ & 0x00000004) == 0x00000004)) {
           size += com.google.protobuf.CodedOutputStream
-            .computeDoubleSize(3, getTimestamp());
+            .computeDoubleSize(3, timestamp_);
         }
-        if (hasStringReading()) {
+        if (((bitField0_ & 0x00000008) == 0x00000008)) {
           size += com.google.protobuf.CodedOutputStream
-            .computeStringSize(4, getStringReading());
+            .computeBytesSize(4, getStringReadingBytes());
         }
-        if (hasDoubleReading()) {
+        if (((bitField0_ & 0x00000010) == 0x00000010)) {
           size += com.google.protobuf.CodedOutputStream
-            .computeDoubleSize(5, getDoubleReading());
+            .computeDoubleSize(5, doubleReading_);
         }
         size += getUnknownFields().getSerializedSize();
         memoizedSerializedSize = size;
         return size;
+      }
+      
+      private static final long serialVersionUID = 0L;
+      @java.lang.Override
+      protected java.lang.Object writeReplace()
+          throws java.io.ObjectStreamException {
+        return super.writeReplace();
       }
       
       public static eu.uberdust.communication.protobuf.Message.NodeReadings.Reading parseFrom(
@@ -646,34 +1043,59 @@ public final class Message {
       }
       public Builder toBuilder() { return newBuilder(this); }
       
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
       public static final class Builder extends
-          com.google.protobuf.GeneratedMessage.Builder<Builder> {
-        private eu.uberdust.communication.protobuf.Message.NodeReadings.Reading result;
-        
-        // Construct using eu.uberdust.communication.protobuf.Message.NodeReadings.Reading.newBuilder()
-        private Builder() {}
-        
-        private static Builder create() {
-          Builder builder = new Builder();
-          builder.result = new eu.uberdust.communication.protobuf.Message.NodeReadings.Reading();
-          return builder;
+          com.google.protobuf.GeneratedMessage.Builder<Builder>
+         implements eu.uberdust.communication.protobuf.Message.NodeReadings.ReadingOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return eu.uberdust.communication.protobuf.Message.internal_static_communication_NodeReadings_Reading_descriptor;
         }
         
-        protected eu.uberdust.communication.protobuf.Message.NodeReadings.Reading internalGetResult() {
-          return result;
+        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return eu.uberdust.communication.protobuf.Message.internal_static_communication_NodeReadings_Reading_fieldAccessorTable;
+        }
+        
+        // Construct using eu.uberdust.communication.protobuf.Message.NodeReadings.Reading.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+        
+        private Builder(BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          }
+        }
+        private static Builder create() {
+          return new Builder();
         }
         
         public Builder clear() {
-          if (result == null) {
-            throw new IllegalStateException(
-              "Cannot call clear() after build().");
-          }
-          result = new eu.uberdust.communication.protobuf.Message.NodeReadings.Reading();
+          super.clear();
+          node_ = "";
+          bitField0_ = (bitField0_ & ~0x00000001);
+          capability_ = "";
+          bitField0_ = (bitField0_ & ~0x00000002);
+          timestamp_ = 0D;
+          bitField0_ = (bitField0_ & ~0x00000004);
+          stringReading_ = "";
+          bitField0_ = (bitField0_ & ~0x00000008);
+          doubleReading_ = 0D;
+          bitField0_ = (bitField0_ & ~0x00000010);
           return this;
         }
         
         public Builder clone() {
-          return create().mergeFrom(result);
+          return create().mergeFrom(buildPartial());
         }
         
         public com.google.protobuf.Descriptors.Descriptor
@@ -685,33 +1107,51 @@ public final class Message {
           return eu.uberdust.communication.protobuf.Message.NodeReadings.Reading.getDefaultInstance();
         }
         
-        public boolean isInitialized() {
-          return result.isInitialized();
-        }
         public eu.uberdust.communication.protobuf.Message.NodeReadings.Reading build() {
-          if (result != null && !isInitialized()) {
+          eu.uberdust.communication.protobuf.Message.NodeReadings.Reading result = buildPartial();
+          if (!result.isInitialized()) {
             throw newUninitializedMessageException(result);
           }
-          return buildPartial();
+          return result;
         }
         
         private eu.uberdust.communication.protobuf.Message.NodeReadings.Reading buildParsed()
             throws com.google.protobuf.InvalidProtocolBufferException {
-          if (!isInitialized()) {
+          eu.uberdust.communication.protobuf.Message.NodeReadings.Reading result = buildPartial();
+          if (!result.isInitialized()) {
             throw newUninitializedMessageException(
               result).asInvalidProtocolBufferException();
           }
-          return buildPartial();
+          return result;
         }
         
         public eu.uberdust.communication.protobuf.Message.NodeReadings.Reading buildPartial() {
-          if (result == null) {
-            throw new IllegalStateException(
-              "build() has already been called on this Builder.");
+          eu.uberdust.communication.protobuf.Message.NodeReadings.Reading result = new eu.uberdust.communication.protobuf.Message.NodeReadings.Reading(this);
+          int from_bitField0_ = bitField0_;
+          int to_bitField0_ = 0;
+          if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+            to_bitField0_ |= 0x00000001;
           }
-          eu.uberdust.communication.protobuf.Message.NodeReadings.Reading returnMe = result;
-          result = null;
-          return returnMe;
+          result.node_ = node_;
+          if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+            to_bitField0_ |= 0x00000002;
+          }
+          result.capability_ = capability_;
+          if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+            to_bitField0_ |= 0x00000004;
+          }
+          result.timestamp_ = timestamp_;
+          if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+            to_bitField0_ |= 0x00000008;
+          }
+          result.stringReading_ = stringReading_;
+          if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+            to_bitField0_ |= 0x00000010;
+          }
+          result.doubleReading_ = doubleReading_;
+          result.bitField0_ = to_bitField0_;
+          onBuilt();
+          return result;
         }
         
         public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -744,6 +1184,22 @@ public final class Message {
           return this;
         }
         
+        public final boolean isInitialized() {
+          if (!hasNode()) {
+            
+            return false;
+          }
+          if (!hasCapability()) {
+            
+            return false;
+          }
+          if (!hasTimestamp()) {
+            
+            return false;
+          }
+          return true;
+        }
+        
         public Builder mergeFrom(
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -756,136 +1212,195 @@ public final class Message {
             switch (tag) {
               case 0:
                 this.setUnknownFields(unknownFields.build());
+                onChanged();
                 return this;
               default: {
                 if (!parseUnknownField(input, unknownFields,
                                        extensionRegistry, tag)) {
                   this.setUnknownFields(unknownFields.build());
+                  onChanged();
                   return this;
                 }
                 break;
               }
               case 10: {
-                setNode(input.readString());
+                bitField0_ |= 0x00000001;
+                node_ = input.readBytes();
                 break;
               }
               case 18: {
-                setCapability(input.readString());
+                bitField0_ |= 0x00000002;
+                capability_ = input.readBytes();
                 break;
               }
               case 25: {
-                setTimestamp(input.readDouble());
+                bitField0_ |= 0x00000004;
+                timestamp_ = input.readDouble();
                 break;
               }
               case 34: {
-                setStringReading(input.readString());
+                bitField0_ |= 0x00000008;
+                stringReading_ = input.readBytes();
                 break;
               }
               case 41: {
-                setDoubleReading(input.readDouble());
+                bitField0_ |= 0x00000010;
+                doubleReading_ = input.readDouble();
                 break;
               }
             }
           }
         }
         
+        private int bitField0_;
         
         // required string node = 1;
+        private java.lang.Object node_ = "";
         public boolean hasNode() {
-          return result.hasNode();
+          return ((bitField0_ & 0x00000001) == 0x00000001);
         }
-        public java.lang.String getNode() {
-          return result.getNode();
+        public String getNode() {
+          java.lang.Object ref = node_;
+          if (!(ref instanceof String)) {
+            String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+            node_ = s;
+            return s;
+          } else {
+            return (String) ref;
+          }
         }
-        public Builder setNode(java.lang.String value) {
+        public Builder setNode(String value) {
           if (value == null) {
     throw new NullPointerException();
   }
-  result.hasNode = true;
-          result.node_ = value;
+  bitField0_ |= 0x00000001;
+          node_ = value;
+          onChanged();
           return this;
         }
         public Builder clearNode() {
-          result.hasNode = false;
-          result.node_ = getDefaultInstance().getNode();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          node_ = getDefaultInstance().getNode();
+          onChanged();
           return this;
+        }
+        void setNode(com.google.protobuf.ByteString value) {
+          bitField0_ |= 0x00000001;
+          node_ = value;
+          onChanged();
         }
         
         // required string capability = 2;
+        private java.lang.Object capability_ = "";
         public boolean hasCapability() {
-          return result.hasCapability();
+          return ((bitField0_ & 0x00000002) == 0x00000002);
         }
-        public java.lang.String getCapability() {
-          return result.getCapability();
+        public String getCapability() {
+          java.lang.Object ref = capability_;
+          if (!(ref instanceof String)) {
+            String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+            capability_ = s;
+            return s;
+          } else {
+            return (String) ref;
+          }
         }
-        public Builder setCapability(java.lang.String value) {
+        public Builder setCapability(String value) {
           if (value == null) {
     throw new NullPointerException();
   }
-  result.hasCapability = true;
-          result.capability_ = value;
+  bitField0_ |= 0x00000002;
+          capability_ = value;
+          onChanged();
           return this;
         }
         public Builder clearCapability() {
-          result.hasCapability = false;
-          result.capability_ = getDefaultInstance().getCapability();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          capability_ = getDefaultInstance().getCapability();
+          onChanged();
           return this;
+        }
+        void setCapability(com.google.protobuf.ByteString value) {
+          bitField0_ |= 0x00000002;
+          capability_ = value;
+          onChanged();
         }
         
         // required double timestamp = 3;
+        private double timestamp_ ;
         public boolean hasTimestamp() {
-          return result.hasTimestamp();
+          return ((bitField0_ & 0x00000004) == 0x00000004);
         }
         public double getTimestamp() {
-          return result.getTimestamp();
+          return timestamp_;
         }
         public Builder setTimestamp(double value) {
-          result.hasTimestamp = true;
-          result.timestamp_ = value;
+          bitField0_ |= 0x00000004;
+          timestamp_ = value;
+          onChanged();
           return this;
         }
         public Builder clearTimestamp() {
-          result.hasTimestamp = false;
-          result.timestamp_ = 0D;
+          bitField0_ = (bitField0_ & ~0x00000004);
+          timestamp_ = 0D;
+          onChanged();
           return this;
         }
         
         // optional string stringReading = 4;
+        private java.lang.Object stringReading_ = "";
         public boolean hasStringReading() {
-          return result.hasStringReading();
+          return ((bitField0_ & 0x00000008) == 0x00000008);
         }
-        public java.lang.String getStringReading() {
-          return result.getStringReading();
+        public String getStringReading() {
+          java.lang.Object ref = stringReading_;
+          if (!(ref instanceof String)) {
+            String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+            stringReading_ = s;
+            return s;
+          } else {
+            return (String) ref;
+          }
         }
-        public Builder setStringReading(java.lang.String value) {
+        public Builder setStringReading(String value) {
           if (value == null) {
     throw new NullPointerException();
   }
-  result.hasStringReading = true;
-          result.stringReading_ = value;
+  bitField0_ |= 0x00000008;
+          stringReading_ = value;
+          onChanged();
           return this;
         }
         public Builder clearStringReading() {
-          result.hasStringReading = false;
-          result.stringReading_ = getDefaultInstance().getStringReading();
+          bitField0_ = (bitField0_ & ~0x00000008);
+          stringReading_ = getDefaultInstance().getStringReading();
+          onChanged();
           return this;
+        }
+        void setStringReading(com.google.protobuf.ByteString value) {
+          bitField0_ |= 0x00000008;
+          stringReading_ = value;
+          onChanged();
         }
         
         // optional double doubleReading = 5;
+        private double doubleReading_ ;
         public boolean hasDoubleReading() {
-          return result.hasDoubleReading();
+          return ((bitField0_ & 0x00000010) == 0x00000010);
         }
         public double getDoubleReading() {
-          return result.getDoubleReading();
+          return doubleReading_;
         }
         public Builder setDoubleReading(double value) {
-          result.hasDoubleReading = true;
-          result.doubleReading_ = value;
+          bitField0_ |= 0x00000010;
+          doubleReading_ = value;
+          onChanged();
           return this;
         }
         public Builder clearDoubleReading() {
-          result.hasDoubleReading = false;
-          result.doubleReading_ = 0D;
+          bitField0_ = (bitField0_ & ~0x00000010);
+          doubleReading_ = 0D;
+          onChanged();
           return this;
         }
         
@@ -894,7 +1409,6 @@ public final class Message {
       
       static {
         defaultInstance = new Reading(true);
-        eu.uberdust.communication.protobuf.Message.internalForceInit();
         defaultInstance.initFields();
       }
       
@@ -903,30 +1417,48 @@ public final class Message {
     
     // repeated .communication.NodeReadings.Reading reading = 1;
     public static final int READING_FIELD_NUMBER = 1;
-    private java.util.List<eu.uberdust.communication.protobuf.Message.NodeReadings.Reading> reading_ =
-      java.util.Collections.emptyList();
+    private java.util.List<eu.uberdust.communication.protobuf.Message.NodeReadings.Reading> reading_;
     public java.util.List<eu.uberdust.communication.protobuf.Message.NodeReadings.Reading> getReadingList() {
       return reading_;
     }
-    public int getReadingCount() { return reading_.size(); }
+    public java.util.List<? extends eu.uberdust.communication.protobuf.Message.NodeReadings.ReadingOrBuilder> 
+        getReadingOrBuilderList() {
+      return reading_;
+    }
+    public int getReadingCount() {
+      return reading_.size();
+    }
     public eu.uberdust.communication.protobuf.Message.NodeReadings.Reading getReading(int index) {
+      return reading_.get(index);
+    }
+    public eu.uberdust.communication.protobuf.Message.NodeReadings.ReadingOrBuilder getReadingOrBuilder(
+        int index) {
       return reading_.get(index);
     }
     
     private void initFields() {
+      reading_ = java.util.Collections.emptyList();
     }
+    private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
-      for (eu.uberdust.communication.protobuf.Message.NodeReadings.Reading element : getReadingList()) {
-        if (!element.isInitialized()) return false;
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+      
+      for (int i = 0; i < getReadingCount(); i++) {
+        if (!getReading(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
       }
+      memoizedIsInitialized = 1;
       return true;
     }
     
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      for (eu.uberdust.communication.protobuf.Message.NodeReadings.Reading element : getReadingList()) {
-        output.writeMessage(1, element);
+      for (int i = 0; i < reading_.size(); i++) {
+        output.writeMessage(1, reading_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -937,13 +1469,20 @@ public final class Message {
       if (size != -1) return size;
     
       size = 0;
-      for (eu.uberdust.communication.protobuf.Message.NodeReadings.Reading element : getReadingList()) {
+      for (int i = 0; i < reading_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, element);
+          .computeMessageSize(1, reading_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
+    }
+    
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
     }
     
     public static eu.uberdust.communication.protobuf.Message.NodeReadings parseFrom(
@@ -1020,34 +1559,56 @@ public final class Message {
     }
     public Builder toBuilder() { return newBuilder(this); }
     
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> {
-      private eu.uberdust.communication.protobuf.Message.NodeReadings result;
-      
-      // Construct using eu.uberdust.communication.protobuf.Message.NodeReadings.newBuilder()
-      private Builder() {}
-      
-      private static Builder create() {
-        Builder builder = new Builder();
-        builder.result = new eu.uberdust.communication.protobuf.Message.NodeReadings();
-        return builder;
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements eu.uberdust.communication.protobuf.Message.NodeReadingsOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return eu.uberdust.communication.protobuf.Message.internal_static_communication_NodeReadings_descriptor;
       }
       
-      protected eu.uberdust.communication.protobuf.Message.NodeReadings internalGetResult() {
-        return result;
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return eu.uberdust.communication.protobuf.Message.internal_static_communication_NodeReadings_fieldAccessorTable;
+      }
+      
+      // Construct using eu.uberdust.communication.protobuf.Message.NodeReadings.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+      
+      private Builder(BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getReadingFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
       }
       
       public Builder clear() {
-        if (result == null) {
-          throw new IllegalStateException(
-            "Cannot call clear() after build().");
+        super.clear();
+        if (readingBuilder_ == null) {
+          reading_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          readingBuilder_.clear();
         }
-        result = new eu.uberdust.communication.protobuf.Message.NodeReadings();
         return this;
       }
       
       public Builder clone() {
-        return create().mergeFrom(result);
+        return create().mergeFrom(buildPartial());
       }
       
       public com.google.protobuf.Descriptors.Descriptor
@@ -1059,37 +1620,38 @@ public final class Message {
         return eu.uberdust.communication.protobuf.Message.NodeReadings.getDefaultInstance();
       }
       
-      public boolean isInitialized() {
-        return result.isInitialized();
-      }
       public eu.uberdust.communication.protobuf.Message.NodeReadings build() {
-        if (result != null && !isInitialized()) {
+        eu.uberdust.communication.protobuf.Message.NodeReadings result = buildPartial();
+        if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
-        return buildPartial();
+        return result;
       }
       
       private eu.uberdust.communication.protobuf.Message.NodeReadings buildParsed()
           throws com.google.protobuf.InvalidProtocolBufferException {
-        if (!isInitialized()) {
+        eu.uberdust.communication.protobuf.Message.NodeReadings result = buildPartial();
+        if (!result.isInitialized()) {
           throw newUninitializedMessageException(
             result).asInvalidProtocolBufferException();
         }
-        return buildPartial();
+        return result;
       }
       
       public eu.uberdust.communication.protobuf.Message.NodeReadings buildPartial() {
-        if (result == null) {
-          throw new IllegalStateException(
-            "build() has already been called on this Builder.");
+        eu.uberdust.communication.protobuf.Message.NodeReadings result = new eu.uberdust.communication.protobuf.Message.NodeReadings(this);
+        int from_bitField0_ = bitField0_;
+        if (readingBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            reading_ = java.util.Collections.unmodifiableList(reading_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.reading_ = reading_;
+        } else {
+          result.reading_ = readingBuilder_.build();
         }
-        if (result.reading_ != java.util.Collections.EMPTY_LIST) {
-          result.reading_ =
-            java.util.Collections.unmodifiableList(result.reading_);
-        }
-        eu.uberdust.communication.protobuf.Message.NodeReadings returnMe = result;
-        result = null;
-        return returnMe;
+        onBuilt();
+        return result;
       }
       
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -1103,14 +1665,44 @@ public final class Message {
       
       public Builder mergeFrom(eu.uberdust.communication.protobuf.Message.NodeReadings other) {
         if (other == eu.uberdust.communication.protobuf.Message.NodeReadings.getDefaultInstance()) return this;
-        if (!other.reading_.isEmpty()) {
-          if (result.reading_.isEmpty()) {
-            result.reading_ = new java.util.ArrayList<eu.uberdust.communication.protobuf.Message.NodeReadings.Reading>();
+        if (readingBuilder_ == null) {
+          if (!other.reading_.isEmpty()) {
+            if (reading_.isEmpty()) {
+              reading_ = other.reading_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureReadingIsMutable();
+              reading_.addAll(other.reading_);
+            }
+            onChanged();
           }
-          result.reading_.addAll(other.reading_);
+        } else {
+          if (!other.reading_.isEmpty()) {
+            if (readingBuilder_.isEmpty()) {
+              readingBuilder_.dispose();
+              readingBuilder_ = null;
+              reading_ = other.reading_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              readingBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getReadingFieldBuilder() : null;
+            } else {
+              readingBuilder_.addAllMessages(other.reading_);
+            }
+          }
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
+      }
+      
+      public final boolean isInitialized() {
+        for (int i = 0; i < getReadingCount(); i++) {
+          if (!getReading(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
       }
       
       public Builder mergeFrom(
@@ -1125,11 +1717,13 @@ public final class Message {
           switch (tag) {
             case 0:
               this.setUnknownFields(unknownFields.build());
+              onChanged();
               return this;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
                 this.setUnknownFields(unknownFields.build());
+                onChanged();
                 return this;
               }
               break;
@@ -1144,56 +1738,192 @@ public final class Message {
         }
       }
       
+      private int bitField0_;
       
       // repeated .communication.NodeReadings.Reading reading = 1;
+      private java.util.List<eu.uberdust.communication.protobuf.Message.NodeReadings.Reading> reading_ =
+        java.util.Collections.emptyList();
+      private void ensureReadingIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          reading_ = new java.util.ArrayList<eu.uberdust.communication.protobuf.Message.NodeReadings.Reading>(reading_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+      
+      private com.google.protobuf.RepeatedFieldBuilder<
+          eu.uberdust.communication.protobuf.Message.NodeReadings.Reading, eu.uberdust.communication.protobuf.Message.NodeReadings.Reading.Builder, eu.uberdust.communication.protobuf.Message.NodeReadings.ReadingOrBuilder> readingBuilder_;
+      
       public java.util.List<eu.uberdust.communication.protobuf.Message.NodeReadings.Reading> getReadingList() {
-        return java.util.Collections.unmodifiableList(result.reading_);
+        if (readingBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(reading_);
+        } else {
+          return readingBuilder_.getMessageList();
+        }
       }
       public int getReadingCount() {
-        return result.getReadingCount();
+        if (readingBuilder_ == null) {
+          return reading_.size();
+        } else {
+          return readingBuilder_.getCount();
+        }
       }
       public eu.uberdust.communication.protobuf.Message.NodeReadings.Reading getReading(int index) {
-        return result.getReading(index);
-      }
-      public Builder setReading(int index, eu.uberdust.communication.protobuf.Message.NodeReadings.Reading value) {
-        if (value == null) {
-          throw new NullPointerException();
+        if (readingBuilder_ == null) {
+          return reading_.get(index);
+        } else {
+          return readingBuilder_.getMessage(index);
         }
-        result.reading_.set(index, value);
+      }
+      public Builder setReading(
+          int index, eu.uberdust.communication.protobuf.Message.NodeReadings.Reading value) {
+        if (readingBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureReadingIsMutable();
+          reading_.set(index, value);
+          onChanged();
+        } else {
+          readingBuilder_.setMessage(index, value);
+        }
         return this;
       }
-      public Builder setReading(int index, eu.uberdust.communication.protobuf.Message.NodeReadings.Reading.Builder builderForValue) {
-        result.reading_.set(index, builderForValue.build());
+      public Builder setReading(
+          int index, eu.uberdust.communication.protobuf.Message.NodeReadings.Reading.Builder builderForValue) {
+        if (readingBuilder_ == null) {
+          ensureReadingIsMutable();
+          reading_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          readingBuilder_.setMessage(index, builderForValue.build());
+        }
         return this;
       }
       public Builder addReading(eu.uberdust.communication.protobuf.Message.NodeReadings.Reading value) {
-        if (value == null) {
-          throw new NullPointerException();
+        if (readingBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureReadingIsMutable();
+          reading_.add(value);
+          onChanged();
+        } else {
+          readingBuilder_.addMessage(value);
         }
-        if (result.reading_.isEmpty()) {
-          result.reading_ = new java.util.ArrayList<eu.uberdust.communication.protobuf.Message.NodeReadings.Reading>();
-        }
-        result.reading_.add(value);
         return this;
       }
-      public Builder addReading(eu.uberdust.communication.protobuf.Message.NodeReadings.Reading.Builder builderForValue) {
-        if (result.reading_.isEmpty()) {
-          result.reading_ = new java.util.ArrayList<eu.uberdust.communication.protobuf.Message.NodeReadings.Reading>();
+      public Builder addReading(
+          int index, eu.uberdust.communication.protobuf.Message.NodeReadings.Reading value) {
+        if (readingBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureReadingIsMutable();
+          reading_.add(index, value);
+          onChanged();
+        } else {
+          readingBuilder_.addMessage(index, value);
         }
-        result.reading_.add(builderForValue.build());
+        return this;
+      }
+      public Builder addReading(
+          eu.uberdust.communication.protobuf.Message.NodeReadings.Reading.Builder builderForValue) {
+        if (readingBuilder_ == null) {
+          ensureReadingIsMutable();
+          reading_.add(builderForValue.build());
+          onChanged();
+        } else {
+          readingBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      public Builder addReading(
+          int index, eu.uberdust.communication.protobuf.Message.NodeReadings.Reading.Builder builderForValue) {
+        if (readingBuilder_ == null) {
+          ensureReadingIsMutable();
+          reading_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          readingBuilder_.addMessage(index, builderForValue.build());
+        }
         return this;
       }
       public Builder addAllReading(
           java.lang.Iterable<? extends eu.uberdust.communication.protobuf.Message.NodeReadings.Reading> values) {
-        if (result.reading_.isEmpty()) {
-          result.reading_ = new java.util.ArrayList<eu.uberdust.communication.protobuf.Message.NodeReadings.Reading>();
+        if (readingBuilder_ == null) {
+          ensureReadingIsMutable();
+          super.addAll(values, reading_);
+          onChanged();
+        } else {
+          readingBuilder_.addAllMessages(values);
         }
-        super.addAll(values, result.reading_);
         return this;
       }
       public Builder clearReading() {
-        result.reading_ = java.util.Collections.emptyList();
+        if (readingBuilder_ == null) {
+          reading_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          readingBuilder_.clear();
+        }
         return this;
+      }
+      public Builder removeReading(int index) {
+        if (readingBuilder_ == null) {
+          ensureReadingIsMutable();
+          reading_.remove(index);
+          onChanged();
+        } else {
+          readingBuilder_.remove(index);
+        }
+        return this;
+      }
+      public eu.uberdust.communication.protobuf.Message.NodeReadings.Reading.Builder getReadingBuilder(
+          int index) {
+        return getReadingFieldBuilder().getBuilder(index);
+      }
+      public eu.uberdust.communication.protobuf.Message.NodeReadings.ReadingOrBuilder getReadingOrBuilder(
+          int index) {
+        if (readingBuilder_ == null) {
+          return reading_.get(index);  } else {
+          return readingBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      public java.util.List<? extends eu.uberdust.communication.protobuf.Message.NodeReadings.ReadingOrBuilder> 
+           getReadingOrBuilderList() {
+        if (readingBuilder_ != null) {
+          return readingBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(reading_);
+        }
+      }
+      public eu.uberdust.communication.protobuf.Message.NodeReadings.Reading.Builder addReadingBuilder() {
+        return getReadingFieldBuilder().addBuilder(
+            eu.uberdust.communication.protobuf.Message.NodeReadings.Reading.getDefaultInstance());
+      }
+      public eu.uberdust.communication.protobuf.Message.NodeReadings.Reading.Builder addReadingBuilder(
+          int index) {
+        return getReadingFieldBuilder().addBuilder(
+            index, eu.uberdust.communication.protobuf.Message.NodeReadings.Reading.getDefaultInstance());
+      }
+      public java.util.List<eu.uberdust.communication.protobuf.Message.NodeReadings.Reading.Builder> 
+           getReadingBuilderList() {
+        return getReadingFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          eu.uberdust.communication.protobuf.Message.NodeReadings.Reading, eu.uberdust.communication.protobuf.Message.NodeReadings.Reading.Builder, eu.uberdust.communication.protobuf.Message.NodeReadings.ReadingOrBuilder> 
+          getReadingFieldBuilder() {
+        if (readingBuilder_ == null) {
+          readingBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              eu.uberdust.communication.protobuf.Message.NodeReadings.Reading, eu.uberdust.communication.protobuf.Message.NodeReadings.Reading.Builder, eu.uberdust.communication.protobuf.Message.NodeReadings.ReadingOrBuilder>(
+                  reading_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          reading_ = null;
+        }
+        return readingBuilder_;
       }
       
       // @@protoc_insertion_point(builder_scope:communication.NodeReadings)
@@ -1201,18 +1931,31 @@ public final class Message {
     
     static {
       defaultInstance = new NodeReadings(true);
-      eu.uberdust.communication.protobuf.Message.internalForceInit();
       defaultInstance.initFields();
     }
     
     // @@protoc_insertion_point(class_scope:communication.NodeReadings)
   }
   
+  public interface LinkReadingsOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+    
+    // repeated .communication.LinkReadings.Reading reading = 1;
+    java.util.List<eu.uberdust.communication.protobuf.Message.LinkReadings.Reading> 
+        getReadingList();
+    eu.uberdust.communication.protobuf.Message.LinkReadings.Reading getReading(int index);
+    int getReadingCount();
+    java.util.List<? extends eu.uberdust.communication.protobuf.Message.LinkReadings.ReadingOrBuilder> 
+        getReadingOrBuilderList();
+    eu.uberdust.communication.protobuf.Message.LinkReadings.ReadingOrBuilder getReadingOrBuilder(
+        int index);
+  }
   public static final class LinkReadings extends
-      com.google.protobuf.GeneratedMessage {
+      com.google.protobuf.GeneratedMessage
+      implements LinkReadingsOrBuilder {
     // Use LinkReadings.newBuilder() to construct.
-    private LinkReadings() {
-      initFields();
+    private LinkReadings(Builder builder) {
+      super(builder);
     }
     private LinkReadings(boolean noInit) {}
     
@@ -1235,11 +1978,39 @@ public final class Message {
       return eu.uberdust.communication.protobuf.Message.internal_static_communication_LinkReadings_fieldAccessorTable;
     }
     
+    public interface ReadingOrBuilder
+        extends com.google.protobuf.MessageOrBuilder {
+      
+      // required string source = 1;
+      boolean hasSource();
+      String getSource();
+      
+      // required string target = 2;
+      boolean hasTarget();
+      String getTarget();
+      
+      // required string capability = 3;
+      boolean hasCapability();
+      String getCapability();
+      
+      // required double timestamp = 4;
+      boolean hasTimestamp();
+      double getTimestamp();
+      
+      // optional string stringReading = 5;
+      boolean hasStringReading();
+      String getStringReading();
+      
+      // optional double doubleReading = 6;
+      boolean hasDoubleReading();
+      double getDoubleReading();
+    }
     public static final class Reading extends
-        com.google.protobuf.GeneratedMessage {
+        com.google.protobuf.GeneratedMessage
+        implements ReadingOrBuilder {
       // Use Reading.newBuilder() to construct.
-      private Reading() {
-        initFields();
+      private Reading(Builder builder) {
+        super(builder);
       }
       private Reading(boolean noInit) {}
       
@@ -1262,78 +2033,208 @@ public final class Message {
         return eu.uberdust.communication.protobuf.Message.internal_static_communication_LinkReadings_Reading_fieldAccessorTable;
       }
       
+      private int bitField0_;
       // required string source = 1;
       public static final int SOURCE_FIELD_NUMBER = 1;
-      private boolean hasSource;
-      private java.lang.String source_ = "";
-      public boolean hasSource() { return hasSource; }
-      public java.lang.String getSource() { return source_; }
+      private java.lang.Object source_;
+      public boolean hasSource() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      public String getSource() {
+        java.lang.Object ref = source_;
+        if (ref instanceof String) {
+          return (String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          String s = bs.toStringUtf8();
+          if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+            source_ = s;
+          }
+          return s;
+        }
+      }
+      private com.google.protobuf.ByteString getSourceBytes() {
+        java.lang.Object ref = source_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+          source_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
       
       // required string target = 2;
       public static final int TARGET_FIELD_NUMBER = 2;
-      private boolean hasTarget;
-      private java.lang.String target_ = "";
-      public boolean hasTarget() { return hasTarget; }
-      public java.lang.String getTarget() { return target_; }
+      private java.lang.Object target_;
+      public boolean hasTarget() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      public String getTarget() {
+        java.lang.Object ref = target_;
+        if (ref instanceof String) {
+          return (String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          String s = bs.toStringUtf8();
+          if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+            target_ = s;
+          }
+          return s;
+        }
+      }
+      private com.google.protobuf.ByteString getTargetBytes() {
+        java.lang.Object ref = target_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+          target_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
       
       // required string capability = 3;
       public static final int CAPABILITY_FIELD_NUMBER = 3;
-      private boolean hasCapability;
-      private java.lang.String capability_ = "";
-      public boolean hasCapability() { return hasCapability; }
-      public java.lang.String getCapability() { return capability_; }
+      private java.lang.Object capability_;
+      public boolean hasCapability() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      public String getCapability() {
+        java.lang.Object ref = capability_;
+        if (ref instanceof String) {
+          return (String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          String s = bs.toStringUtf8();
+          if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+            capability_ = s;
+          }
+          return s;
+        }
+      }
+      private com.google.protobuf.ByteString getCapabilityBytes() {
+        java.lang.Object ref = capability_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+          capability_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
       
       // required double timestamp = 4;
       public static final int TIMESTAMP_FIELD_NUMBER = 4;
-      private boolean hasTimestamp;
-      private double timestamp_ = 0D;
-      public boolean hasTimestamp() { return hasTimestamp; }
-      public double getTimestamp() { return timestamp_; }
+      private double timestamp_;
+      public boolean hasTimestamp() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      public double getTimestamp() {
+        return timestamp_;
+      }
       
       // optional string stringReading = 5;
       public static final int STRINGREADING_FIELD_NUMBER = 5;
-      private boolean hasStringReading;
-      private java.lang.String stringReading_ = "";
-      public boolean hasStringReading() { return hasStringReading; }
-      public java.lang.String getStringReading() { return stringReading_; }
+      private java.lang.Object stringReading_;
+      public boolean hasStringReading() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      public String getStringReading() {
+        java.lang.Object ref = stringReading_;
+        if (ref instanceof String) {
+          return (String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          String s = bs.toStringUtf8();
+          if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+            stringReading_ = s;
+          }
+          return s;
+        }
+      }
+      private com.google.protobuf.ByteString getStringReadingBytes() {
+        java.lang.Object ref = stringReading_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+          stringReading_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
       
       // optional double doubleReading = 6;
       public static final int DOUBLEREADING_FIELD_NUMBER = 6;
-      private boolean hasDoubleReading;
-      private double doubleReading_ = 0D;
-      public boolean hasDoubleReading() { return hasDoubleReading; }
-      public double getDoubleReading() { return doubleReading_; }
+      private double doubleReading_;
+      public boolean hasDoubleReading() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      public double getDoubleReading() {
+        return doubleReading_;
+      }
       
       private void initFields() {
+        source_ = "";
+        target_ = "";
+        capability_ = "";
+        timestamp_ = 0D;
+        stringReading_ = "";
+        doubleReading_ = 0D;
       }
+      private byte memoizedIsInitialized = -1;
       public final boolean isInitialized() {
-        if (!hasSource) return false;
-        if (!hasTarget) return false;
-        if (!hasCapability) return false;
-        if (!hasTimestamp) return false;
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized != -1) return isInitialized == 1;
+        
+        if (!hasSource()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+        if (!hasTarget()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+        if (!hasCapability()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+        if (!hasTimestamp()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+        memoizedIsInitialized = 1;
         return true;
       }
       
       public void writeTo(com.google.protobuf.CodedOutputStream output)
                           throws java.io.IOException {
         getSerializedSize();
-        if (hasSource()) {
-          output.writeString(1, getSource());
+        if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          output.writeBytes(1, getSourceBytes());
         }
-        if (hasTarget()) {
-          output.writeString(2, getTarget());
+        if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          output.writeBytes(2, getTargetBytes());
         }
-        if (hasCapability()) {
-          output.writeString(3, getCapability());
+        if (((bitField0_ & 0x00000004) == 0x00000004)) {
+          output.writeBytes(3, getCapabilityBytes());
         }
-        if (hasTimestamp()) {
-          output.writeDouble(4, getTimestamp());
+        if (((bitField0_ & 0x00000008) == 0x00000008)) {
+          output.writeDouble(4, timestamp_);
         }
-        if (hasStringReading()) {
-          output.writeString(5, getStringReading());
+        if (((bitField0_ & 0x00000010) == 0x00000010)) {
+          output.writeBytes(5, getStringReadingBytes());
         }
-        if (hasDoubleReading()) {
-          output.writeDouble(6, getDoubleReading());
+        if (((bitField0_ & 0x00000020) == 0x00000020)) {
+          output.writeDouble(6, doubleReading_);
         }
         getUnknownFields().writeTo(output);
       }
@@ -1344,33 +2245,40 @@ public final class Message {
         if (size != -1) return size;
       
         size = 0;
-        if (hasSource()) {
+        if (((bitField0_ & 0x00000001) == 0x00000001)) {
           size += com.google.protobuf.CodedOutputStream
-            .computeStringSize(1, getSource());
+            .computeBytesSize(1, getSourceBytes());
         }
-        if (hasTarget()) {
+        if (((bitField0_ & 0x00000002) == 0x00000002)) {
           size += com.google.protobuf.CodedOutputStream
-            .computeStringSize(2, getTarget());
+            .computeBytesSize(2, getTargetBytes());
         }
-        if (hasCapability()) {
+        if (((bitField0_ & 0x00000004) == 0x00000004)) {
           size += com.google.protobuf.CodedOutputStream
-            .computeStringSize(3, getCapability());
+            .computeBytesSize(3, getCapabilityBytes());
         }
-        if (hasTimestamp()) {
+        if (((bitField0_ & 0x00000008) == 0x00000008)) {
           size += com.google.protobuf.CodedOutputStream
-            .computeDoubleSize(4, getTimestamp());
+            .computeDoubleSize(4, timestamp_);
         }
-        if (hasStringReading()) {
+        if (((bitField0_ & 0x00000010) == 0x00000010)) {
           size += com.google.protobuf.CodedOutputStream
-            .computeStringSize(5, getStringReading());
+            .computeBytesSize(5, getStringReadingBytes());
         }
-        if (hasDoubleReading()) {
+        if (((bitField0_ & 0x00000020) == 0x00000020)) {
           size += com.google.protobuf.CodedOutputStream
-            .computeDoubleSize(6, getDoubleReading());
+            .computeDoubleSize(6, doubleReading_);
         }
         size += getUnknownFields().getSerializedSize();
         memoizedSerializedSize = size;
         return size;
+      }
+      
+      private static final long serialVersionUID = 0L;
+      @java.lang.Override
+      protected java.lang.Object writeReplace()
+          throws java.io.ObjectStreamException {
+        return super.writeReplace();
       }
       
       public static eu.uberdust.communication.protobuf.Message.LinkReadings.Reading parseFrom(
@@ -1447,34 +2355,61 @@ public final class Message {
       }
       public Builder toBuilder() { return newBuilder(this); }
       
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
       public static final class Builder extends
-          com.google.protobuf.GeneratedMessage.Builder<Builder> {
-        private eu.uberdust.communication.protobuf.Message.LinkReadings.Reading result;
-        
-        // Construct using eu.uberdust.communication.protobuf.Message.LinkReadings.Reading.newBuilder()
-        private Builder() {}
-        
-        private static Builder create() {
-          Builder builder = new Builder();
-          builder.result = new eu.uberdust.communication.protobuf.Message.LinkReadings.Reading();
-          return builder;
+          com.google.protobuf.GeneratedMessage.Builder<Builder>
+         implements eu.uberdust.communication.protobuf.Message.LinkReadings.ReadingOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return eu.uberdust.communication.protobuf.Message.internal_static_communication_LinkReadings_Reading_descriptor;
         }
         
-        protected eu.uberdust.communication.protobuf.Message.LinkReadings.Reading internalGetResult() {
-          return result;
+        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return eu.uberdust.communication.protobuf.Message.internal_static_communication_LinkReadings_Reading_fieldAccessorTable;
+        }
+        
+        // Construct using eu.uberdust.communication.protobuf.Message.LinkReadings.Reading.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+        
+        private Builder(BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          }
+        }
+        private static Builder create() {
+          return new Builder();
         }
         
         public Builder clear() {
-          if (result == null) {
-            throw new IllegalStateException(
-              "Cannot call clear() after build().");
-          }
-          result = new eu.uberdust.communication.protobuf.Message.LinkReadings.Reading();
+          super.clear();
+          source_ = "";
+          bitField0_ = (bitField0_ & ~0x00000001);
+          target_ = "";
+          bitField0_ = (bitField0_ & ~0x00000002);
+          capability_ = "";
+          bitField0_ = (bitField0_ & ~0x00000004);
+          timestamp_ = 0D;
+          bitField0_ = (bitField0_ & ~0x00000008);
+          stringReading_ = "";
+          bitField0_ = (bitField0_ & ~0x00000010);
+          doubleReading_ = 0D;
+          bitField0_ = (bitField0_ & ~0x00000020);
           return this;
         }
         
         public Builder clone() {
-          return create().mergeFrom(result);
+          return create().mergeFrom(buildPartial());
         }
         
         public com.google.protobuf.Descriptors.Descriptor
@@ -1486,33 +2421,55 @@ public final class Message {
           return eu.uberdust.communication.protobuf.Message.LinkReadings.Reading.getDefaultInstance();
         }
         
-        public boolean isInitialized() {
-          return result.isInitialized();
-        }
         public eu.uberdust.communication.protobuf.Message.LinkReadings.Reading build() {
-          if (result != null && !isInitialized()) {
+          eu.uberdust.communication.protobuf.Message.LinkReadings.Reading result = buildPartial();
+          if (!result.isInitialized()) {
             throw newUninitializedMessageException(result);
           }
-          return buildPartial();
+          return result;
         }
         
         private eu.uberdust.communication.protobuf.Message.LinkReadings.Reading buildParsed()
             throws com.google.protobuf.InvalidProtocolBufferException {
-          if (!isInitialized()) {
+          eu.uberdust.communication.protobuf.Message.LinkReadings.Reading result = buildPartial();
+          if (!result.isInitialized()) {
             throw newUninitializedMessageException(
               result).asInvalidProtocolBufferException();
           }
-          return buildPartial();
+          return result;
         }
         
         public eu.uberdust.communication.protobuf.Message.LinkReadings.Reading buildPartial() {
-          if (result == null) {
-            throw new IllegalStateException(
-              "build() has already been called on this Builder.");
+          eu.uberdust.communication.protobuf.Message.LinkReadings.Reading result = new eu.uberdust.communication.protobuf.Message.LinkReadings.Reading(this);
+          int from_bitField0_ = bitField0_;
+          int to_bitField0_ = 0;
+          if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+            to_bitField0_ |= 0x00000001;
           }
-          eu.uberdust.communication.protobuf.Message.LinkReadings.Reading returnMe = result;
-          result = null;
-          return returnMe;
+          result.source_ = source_;
+          if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+            to_bitField0_ |= 0x00000002;
+          }
+          result.target_ = target_;
+          if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+            to_bitField0_ |= 0x00000004;
+          }
+          result.capability_ = capability_;
+          if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+            to_bitField0_ |= 0x00000008;
+          }
+          result.timestamp_ = timestamp_;
+          if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+            to_bitField0_ |= 0x00000010;
+          }
+          result.stringReading_ = stringReading_;
+          if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+            to_bitField0_ |= 0x00000020;
+          }
+          result.doubleReading_ = doubleReading_;
+          result.bitField0_ = to_bitField0_;
+          onBuilt();
+          return result;
         }
         
         public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -1548,6 +2505,26 @@ public final class Message {
           return this;
         }
         
+        public final boolean isInitialized() {
+          if (!hasSource()) {
+            
+            return false;
+          }
+          if (!hasTarget()) {
+            
+            return false;
+          }
+          if (!hasCapability()) {
+            
+            return false;
+          }
+          if (!hasTimestamp()) {
+            
+            return false;
+          }
+          return true;
+        }
+        
         public Builder mergeFrom(
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1560,161 +2537,236 @@ public final class Message {
             switch (tag) {
               case 0:
                 this.setUnknownFields(unknownFields.build());
+                onChanged();
                 return this;
               default: {
                 if (!parseUnknownField(input, unknownFields,
                                        extensionRegistry, tag)) {
                   this.setUnknownFields(unknownFields.build());
+                  onChanged();
                   return this;
                 }
                 break;
               }
               case 10: {
-                setSource(input.readString());
+                bitField0_ |= 0x00000001;
+                source_ = input.readBytes();
                 break;
               }
               case 18: {
-                setTarget(input.readString());
+                bitField0_ |= 0x00000002;
+                target_ = input.readBytes();
                 break;
               }
               case 26: {
-                setCapability(input.readString());
+                bitField0_ |= 0x00000004;
+                capability_ = input.readBytes();
                 break;
               }
               case 33: {
-                setTimestamp(input.readDouble());
+                bitField0_ |= 0x00000008;
+                timestamp_ = input.readDouble();
                 break;
               }
               case 42: {
-                setStringReading(input.readString());
+                bitField0_ |= 0x00000010;
+                stringReading_ = input.readBytes();
                 break;
               }
               case 49: {
-                setDoubleReading(input.readDouble());
+                bitField0_ |= 0x00000020;
+                doubleReading_ = input.readDouble();
                 break;
               }
             }
           }
         }
         
+        private int bitField0_;
         
         // required string source = 1;
+        private java.lang.Object source_ = "";
         public boolean hasSource() {
-          return result.hasSource();
+          return ((bitField0_ & 0x00000001) == 0x00000001);
         }
-        public java.lang.String getSource() {
-          return result.getSource();
+        public String getSource() {
+          java.lang.Object ref = source_;
+          if (!(ref instanceof String)) {
+            String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+            source_ = s;
+            return s;
+          } else {
+            return (String) ref;
+          }
         }
-        public Builder setSource(java.lang.String value) {
+        public Builder setSource(String value) {
           if (value == null) {
     throw new NullPointerException();
   }
-  result.hasSource = true;
-          result.source_ = value;
+  bitField0_ |= 0x00000001;
+          source_ = value;
+          onChanged();
           return this;
         }
         public Builder clearSource() {
-          result.hasSource = false;
-          result.source_ = getDefaultInstance().getSource();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          source_ = getDefaultInstance().getSource();
+          onChanged();
           return this;
+        }
+        void setSource(com.google.protobuf.ByteString value) {
+          bitField0_ |= 0x00000001;
+          source_ = value;
+          onChanged();
         }
         
         // required string target = 2;
+        private java.lang.Object target_ = "";
         public boolean hasTarget() {
-          return result.hasTarget();
+          return ((bitField0_ & 0x00000002) == 0x00000002);
         }
-        public java.lang.String getTarget() {
-          return result.getTarget();
+        public String getTarget() {
+          java.lang.Object ref = target_;
+          if (!(ref instanceof String)) {
+            String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+            target_ = s;
+            return s;
+          } else {
+            return (String) ref;
+          }
         }
-        public Builder setTarget(java.lang.String value) {
+        public Builder setTarget(String value) {
           if (value == null) {
     throw new NullPointerException();
   }
-  result.hasTarget = true;
-          result.target_ = value;
+  bitField0_ |= 0x00000002;
+          target_ = value;
+          onChanged();
           return this;
         }
         public Builder clearTarget() {
-          result.hasTarget = false;
-          result.target_ = getDefaultInstance().getTarget();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          target_ = getDefaultInstance().getTarget();
+          onChanged();
           return this;
+        }
+        void setTarget(com.google.protobuf.ByteString value) {
+          bitField0_ |= 0x00000002;
+          target_ = value;
+          onChanged();
         }
         
         // required string capability = 3;
+        private java.lang.Object capability_ = "";
         public boolean hasCapability() {
-          return result.hasCapability();
+          return ((bitField0_ & 0x00000004) == 0x00000004);
         }
-        public java.lang.String getCapability() {
-          return result.getCapability();
+        public String getCapability() {
+          java.lang.Object ref = capability_;
+          if (!(ref instanceof String)) {
+            String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+            capability_ = s;
+            return s;
+          } else {
+            return (String) ref;
+          }
         }
-        public Builder setCapability(java.lang.String value) {
+        public Builder setCapability(String value) {
           if (value == null) {
     throw new NullPointerException();
   }
-  result.hasCapability = true;
-          result.capability_ = value;
+  bitField0_ |= 0x00000004;
+          capability_ = value;
+          onChanged();
           return this;
         }
         public Builder clearCapability() {
-          result.hasCapability = false;
-          result.capability_ = getDefaultInstance().getCapability();
+          bitField0_ = (bitField0_ & ~0x00000004);
+          capability_ = getDefaultInstance().getCapability();
+          onChanged();
           return this;
+        }
+        void setCapability(com.google.protobuf.ByteString value) {
+          bitField0_ |= 0x00000004;
+          capability_ = value;
+          onChanged();
         }
         
         // required double timestamp = 4;
+        private double timestamp_ ;
         public boolean hasTimestamp() {
-          return result.hasTimestamp();
+          return ((bitField0_ & 0x00000008) == 0x00000008);
         }
         public double getTimestamp() {
-          return result.getTimestamp();
+          return timestamp_;
         }
         public Builder setTimestamp(double value) {
-          result.hasTimestamp = true;
-          result.timestamp_ = value;
+          bitField0_ |= 0x00000008;
+          timestamp_ = value;
+          onChanged();
           return this;
         }
         public Builder clearTimestamp() {
-          result.hasTimestamp = false;
-          result.timestamp_ = 0D;
+          bitField0_ = (bitField0_ & ~0x00000008);
+          timestamp_ = 0D;
+          onChanged();
           return this;
         }
         
         // optional string stringReading = 5;
+        private java.lang.Object stringReading_ = "";
         public boolean hasStringReading() {
-          return result.hasStringReading();
+          return ((bitField0_ & 0x00000010) == 0x00000010);
         }
-        public java.lang.String getStringReading() {
-          return result.getStringReading();
+        public String getStringReading() {
+          java.lang.Object ref = stringReading_;
+          if (!(ref instanceof String)) {
+            String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+            stringReading_ = s;
+            return s;
+          } else {
+            return (String) ref;
+          }
         }
-        public Builder setStringReading(java.lang.String value) {
+        public Builder setStringReading(String value) {
           if (value == null) {
     throw new NullPointerException();
   }
-  result.hasStringReading = true;
-          result.stringReading_ = value;
+  bitField0_ |= 0x00000010;
+          stringReading_ = value;
+          onChanged();
           return this;
         }
         public Builder clearStringReading() {
-          result.hasStringReading = false;
-          result.stringReading_ = getDefaultInstance().getStringReading();
+          bitField0_ = (bitField0_ & ~0x00000010);
+          stringReading_ = getDefaultInstance().getStringReading();
+          onChanged();
           return this;
+        }
+        void setStringReading(com.google.protobuf.ByteString value) {
+          bitField0_ |= 0x00000010;
+          stringReading_ = value;
+          onChanged();
         }
         
         // optional double doubleReading = 6;
+        private double doubleReading_ ;
         public boolean hasDoubleReading() {
-          return result.hasDoubleReading();
+          return ((bitField0_ & 0x00000020) == 0x00000020);
         }
         public double getDoubleReading() {
-          return result.getDoubleReading();
+          return doubleReading_;
         }
         public Builder setDoubleReading(double value) {
-          result.hasDoubleReading = true;
-          result.doubleReading_ = value;
+          bitField0_ |= 0x00000020;
+          doubleReading_ = value;
+          onChanged();
           return this;
         }
         public Builder clearDoubleReading() {
-          result.hasDoubleReading = false;
-          result.doubleReading_ = 0D;
+          bitField0_ = (bitField0_ & ~0x00000020);
+          doubleReading_ = 0D;
+          onChanged();
           return this;
         }
         
@@ -1723,7 +2775,6 @@ public final class Message {
       
       static {
         defaultInstance = new Reading(true);
-        eu.uberdust.communication.protobuf.Message.internalForceInit();
         defaultInstance.initFields();
       }
       
@@ -1732,30 +2783,48 @@ public final class Message {
     
     // repeated .communication.LinkReadings.Reading reading = 1;
     public static final int READING_FIELD_NUMBER = 1;
-    private java.util.List<eu.uberdust.communication.protobuf.Message.LinkReadings.Reading> reading_ =
-      java.util.Collections.emptyList();
+    private java.util.List<eu.uberdust.communication.protobuf.Message.LinkReadings.Reading> reading_;
     public java.util.List<eu.uberdust.communication.protobuf.Message.LinkReadings.Reading> getReadingList() {
       return reading_;
     }
-    public int getReadingCount() { return reading_.size(); }
+    public java.util.List<? extends eu.uberdust.communication.protobuf.Message.LinkReadings.ReadingOrBuilder> 
+        getReadingOrBuilderList() {
+      return reading_;
+    }
+    public int getReadingCount() {
+      return reading_.size();
+    }
     public eu.uberdust.communication.protobuf.Message.LinkReadings.Reading getReading(int index) {
+      return reading_.get(index);
+    }
+    public eu.uberdust.communication.protobuf.Message.LinkReadings.ReadingOrBuilder getReadingOrBuilder(
+        int index) {
       return reading_.get(index);
     }
     
     private void initFields() {
+      reading_ = java.util.Collections.emptyList();
     }
+    private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
-      for (eu.uberdust.communication.protobuf.Message.LinkReadings.Reading element : getReadingList()) {
-        if (!element.isInitialized()) return false;
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+      
+      for (int i = 0; i < getReadingCount(); i++) {
+        if (!getReading(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
       }
+      memoizedIsInitialized = 1;
       return true;
     }
     
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      for (eu.uberdust.communication.protobuf.Message.LinkReadings.Reading element : getReadingList()) {
-        output.writeMessage(1, element);
+      for (int i = 0; i < reading_.size(); i++) {
+        output.writeMessage(1, reading_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -1766,13 +2835,20 @@ public final class Message {
       if (size != -1) return size;
     
       size = 0;
-      for (eu.uberdust.communication.protobuf.Message.LinkReadings.Reading element : getReadingList()) {
+      for (int i = 0; i < reading_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, element);
+          .computeMessageSize(1, reading_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
+    }
+    
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
     }
     
     public static eu.uberdust.communication.protobuf.Message.LinkReadings parseFrom(
@@ -1849,34 +2925,56 @@ public final class Message {
     }
     public Builder toBuilder() { return newBuilder(this); }
     
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> {
-      private eu.uberdust.communication.protobuf.Message.LinkReadings result;
-      
-      // Construct using eu.uberdust.communication.protobuf.Message.LinkReadings.newBuilder()
-      private Builder() {}
-      
-      private static Builder create() {
-        Builder builder = new Builder();
-        builder.result = new eu.uberdust.communication.protobuf.Message.LinkReadings();
-        return builder;
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements eu.uberdust.communication.protobuf.Message.LinkReadingsOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return eu.uberdust.communication.protobuf.Message.internal_static_communication_LinkReadings_descriptor;
       }
       
-      protected eu.uberdust.communication.protobuf.Message.LinkReadings internalGetResult() {
-        return result;
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return eu.uberdust.communication.protobuf.Message.internal_static_communication_LinkReadings_fieldAccessorTable;
+      }
+      
+      // Construct using eu.uberdust.communication.protobuf.Message.LinkReadings.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+      
+      private Builder(BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getReadingFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
       }
       
       public Builder clear() {
-        if (result == null) {
-          throw new IllegalStateException(
-            "Cannot call clear() after build().");
+        super.clear();
+        if (readingBuilder_ == null) {
+          reading_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          readingBuilder_.clear();
         }
-        result = new eu.uberdust.communication.protobuf.Message.LinkReadings();
         return this;
       }
       
       public Builder clone() {
-        return create().mergeFrom(result);
+        return create().mergeFrom(buildPartial());
       }
       
       public com.google.protobuf.Descriptors.Descriptor
@@ -1888,37 +2986,38 @@ public final class Message {
         return eu.uberdust.communication.protobuf.Message.LinkReadings.getDefaultInstance();
       }
       
-      public boolean isInitialized() {
-        return result.isInitialized();
-      }
       public eu.uberdust.communication.protobuf.Message.LinkReadings build() {
-        if (result != null && !isInitialized()) {
+        eu.uberdust.communication.protobuf.Message.LinkReadings result = buildPartial();
+        if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
-        return buildPartial();
+        return result;
       }
       
       private eu.uberdust.communication.protobuf.Message.LinkReadings buildParsed()
           throws com.google.protobuf.InvalidProtocolBufferException {
-        if (!isInitialized()) {
+        eu.uberdust.communication.protobuf.Message.LinkReadings result = buildPartial();
+        if (!result.isInitialized()) {
           throw newUninitializedMessageException(
             result).asInvalidProtocolBufferException();
         }
-        return buildPartial();
+        return result;
       }
       
       public eu.uberdust.communication.protobuf.Message.LinkReadings buildPartial() {
-        if (result == null) {
-          throw new IllegalStateException(
-            "build() has already been called on this Builder.");
+        eu.uberdust.communication.protobuf.Message.LinkReadings result = new eu.uberdust.communication.protobuf.Message.LinkReadings(this);
+        int from_bitField0_ = bitField0_;
+        if (readingBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            reading_ = java.util.Collections.unmodifiableList(reading_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.reading_ = reading_;
+        } else {
+          result.reading_ = readingBuilder_.build();
         }
-        if (result.reading_ != java.util.Collections.EMPTY_LIST) {
-          result.reading_ =
-            java.util.Collections.unmodifiableList(result.reading_);
-        }
-        eu.uberdust.communication.protobuf.Message.LinkReadings returnMe = result;
-        result = null;
-        return returnMe;
+        onBuilt();
+        return result;
       }
       
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -1932,14 +3031,44 @@ public final class Message {
       
       public Builder mergeFrom(eu.uberdust.communication.protobuf.Message.LinkReadings other) {
         if (other == eu.uberdust.communication.protobuf.Message.LinkReadings.getDefaultInstance()) return this;
-        if (!other.reading_.isEmpty()) {
-          if (result.reading_.isEmpty()) {
-            result.reading_ = new java.util.ArrayList<eu.uberdust.communication.protobuf.Message.LinkReadings.Reading>();
+        if (readingBuilder_ == null) {
+          if (!other.reading_.isEmpty()) {
+            if (reading_.isEmpty()) {
+              reading_ = other.reading_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureReadingIsMutable();
+              reading_.addAll(other.reading_);
+            }
+            onChanged();
           }
-          result.reading_.addAll(other.reading_);
+        } else {
+          if (!other.reading_.isEmpty()) {
+            if (readingBuilder_.isEmpty()) {
+              readingBuilder_.dispose();
+              readingBuilder_ = null;
+              reading_ = other.reading_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              readingBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getReadingFieldBuilder() : null;
+            } else {
+              readingBuilder_.addAllMessages(other.reading_);
+            }
+          }
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
+      }
+      
+      public final boolean isInitialized() {
+        for (int i = 0; i < getReadingCount(); i++) {
+          if (!getReading(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
       }
       
       public Builder mergeFrom(
@@ -1954,11 +3083,13 @@ public final class Message {
           switch (tag) {
             case 0:
               this.setUnknownFields(unknownFields.build());
+              onChanged();
               return this;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
                 this.setUnknownFields(unknownFields.build());
+                onChanged();
                 return this;
               }
               break;
@@ -1973,56 +3104,192 @@ public final class Message {
         }
       }
       
+      private int bitField0_;
       
       // repeated .communication.LinkReadings.Reading reading = 1;
+      private java.util.List<eu.uberdust.communication.protobuf.Message.LinkReadings.Reading> reading_ =
+        java.util.Collections.emptyList();
+      private void ensureReadingIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          reading_ = new java.util.ArrayList<eu.uberdust.communication.protobuf.Message.LinkReadings.Reading>(reading_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+      
+      private com.google.protobuf.RepeatedFieldBuilder<
+          eu.uberdust.communication.protobuf.Message.LinkReadings.Reading, eu.uberdust.communication.protobuf.Message.LinkReadings.Reading.Builder, eu.uberdust.communication.protobuf.Message.LinkReadings.ReadingOrBuilder> readingBuilder_;
+      
       public java.util.List<eu.uberdust.communication.protobuf.Message.LinkReadings.Reading> getReadingList() {
-        return java.util.Collections.unmodifiableList(result.reading_);
+        if (readingBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(reading_);
+        } else {
+          return readingBuilder_.getMessageList();
+        }
       }
       public int getReadingCount() {
-        return result.getReadingCount();
+        if (readingBuilder_ == null) {
+          return reading_.size();
+        } else {
+          return readingBuilder_.getCount();
+        }
       }
       public eu.uberdust.communication.protobuf.Message.LinkReadings.Reading getReading(int index) {
-        return result.getReading(index);
-      }
-      public Builder setReading(int index, eu.uberdust.communication.protobuf.Message.LinkReadings.Reading value) {
-        if (value == null) {
-          throw new NullPointerException();
+        if (readingBuilder_ == null) {
+          return reading_.get(index);
+        } else {
+          return readingBuilder_.getMessage(index);
         }
-        result.reading_.set(index, value);
+      }
+      public Builder setReading(
+          int index, eu.uberdust.communication.protobuf.Message.LinkReadings.Reading value) {
+        if (readingBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureReadingIsMutable();
+          reading_.set(index, value);
+          onChanged();
+        } else {
+          readingBuilder_.setMessage(index, value);
+        }
         return this;
       }
-      public Builder setReading(int index, eu.uberdust.communication.protobuf.Message.LinkReadings.Reading.Builder builderForValue) {
-        result.reading_.set(index, builderForValue.build());
+      public Builder setReading(
+          int index, eu.uberdust.communication.protobuf.Message.LinkReadings.Reading.Builder builderForValue) {
+        if (readingBuilder_ == null) {
+          ensureReadingIsMutable();
+          reading_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          readingBuilder_.setMessage(index, builderForValue.build());
+        }
         return this;
       }
       public Builder addReading(eu.uberdust.communication.protobuf.Message.LinkReadings.Reading value) {
-        if (value == null) {
-          throw new NullPointerException();
+        if (readingBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureReadingIsMutable();
+          reading_.add(value);
+          onChanged();
+        } else {
+          readingBuilder_.addMessage(value);
         }
-        if (result.reading_.isEmpty()) {
-          result.reading_ = new java.util.ArrayList<eu.uberdust.communication.protobuf.Message.LinkReadings.Reading>();
-        }
-        result.reading_.add(value);
         return this;
       }
-      public Builder addReading(eu.uberdust.communication.protobuf.Message.LinkReadings.Reading.Builder builderForValue) {
-        if (result.reading_.isEmpty()) {
-          result.reading_ = new java.util.ArrayList<eu.uberdust.communication.protobuf.Message.LinkReadings.Reading>();
+      public Builder addReading(
+          int index, eu.uberdust.communication.protobuf.Message.LinkReadings.Reading value) {
+        if (readingBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureReadingIsMutable();
+          reading_.add(index, value);
+          onChanged();
+        } else {
+          readingBuilder_.addMessage(index, value);
         }
-        result.reading_.add(builderForValue.build());
+        return this;
+      }
+      public Builder addReading(
+          eu.uberdust.communication.protobuf.Message.LinkReadings.Reading.Builder builderForValue) {
+        if (readingBuilder_ == null) {
+          ensureReadingIsMutable();
+          reading_.add(builderForValue.build());
+          onChanged();
+        } else {
+          readingBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      public Builder addReading(
+          int index, eu.uberdust.communication.protobuf.Message.LinkReadings.Reading.Builder builderForValue) {
+        if (readingBuilder_ == null) {
+          ensureReadingIsMutable();
+          reading_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          readingBuilder_.addMessage(index, builderForValue.build());
+        }
         return this;
       }
       public Builder addAllReading(
           java.lang.Iterable<? extends eu.uberdust.communication.protobuf.Message.LinkReadings.Reading> values) {
-        if (result.reading_.isEmpty()) {
-          result.reading_ = new java.util.ArrayList<eu.uberdust.communication.protobuf.Message.LinkReadings.Reading>();
+        if (readingBuilder_ == null) {
+          ensureReadingIsMutable();
+          super.addAll(values, reading_);
+          onChanged();
+        } else {
+          readingBuilder_.addAllMessages(values);
         }
-        super.addAll(values, result.reading_);
         return this;
       }
       public Builder clearReading() {
-        result.reading_ = java.util.Collections.emptyList();
+        if (readingBuilder_ == null) {
+          reading_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          readingBuilder_.clear();
+        }
         return this;
+      }
+      public Builder removeReading(int index) {
+        if (readingBuilder_ == null) {
+          ensureReadingIsMutable();
+          reading_.remove(index);
+          onChanged();
+        } else {
+          readingBuilder_.remove(index);
+        }
+        return this;
+      }
+      public eu.uberdust.communication.protobuf.Message.LinkReadings.Reading.Builder getReadingBuilder(
+          int index) {
+        return getReadingFieldBuilder().getBuilder(index);
+      }
+      public eu.uberdust.communication.protobuf.Message.LinkReadings.ReadingOrBuilder getReadingOrBuilder(
+          int index) {
+        if (readingBuilder_ == null) {
+          return reading_.get(index);  } else {
+          return readingBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      public java.util.List<? extends eu.uberdust.communication.protobuf.Message.LinkReadings.ReadingOrBuilder> 
+           getReadingOrBuilderList() {
+        if (readingBuilder_ != null) {
+          return readingBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(reading_);
+        }
+      }
+      public eu.uberdust.communication.protobuf.Message.LinkReadings.Reading.Builder addReadingBuilder() {
+        return getReadingFieldBuilder().addBuilder(
+            eu.uberdust.communication.protobuf.Message.LinkReadings.Reading.getDefaultInstance());
+      }
+      public eu.uberdust.communication.protobuf.Message.LinkReadings.Reading.Builder addReadingBuilder(
+          int index) {
+        return getReadingFieldBuilder().addBuilder(
+            index, eu.uberdust.communication.protobuf.Message.LinkReadings.Reading.getDefaultInstance());
+      }
+      public java.util.List<eu.uberdust.communication.protobuf.Message.LinkReadings.Reading.Builder> 
+           getReadingBuilderList() {
+        return getReadingFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          eu.uberdust.communication.protobuf.Message.LinkReadings.Reading, eu.uberdust.communication.protobuf.Message.LinkReadings.Reading.Builder, eu.uberdust.communication.protobuf.Message.LinkReadings.ReadingOrBuilder> 
+          getReadingFieldBuilder() {
+        if (readingBuilder_ == null) {
+          readingBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              eu.uberdust.communication.protobuf.Message.LinkReadings.Reading, eu.uberdust.communication.protobuf.Message.LinkReadings.Reading.Builder, eu.uberdust.communication.protobuf.Message.LinkReadings.ReadingOrBuilder>(
+                  reading_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          reading_ = null;
+        }
+        return readingBuilder_;
       }
       
       // @@protoc_insertion_point(builder_scope:communication.LinkReadings)
@@ -2030,11 +3297,902 @@ public final class Message {
     
     static {
       defaultInstance = new LinkReadings(true);
-      eu.uberdust.communication.protobuf.Message.internalForceInit();
       defaultInstance.initFields();
     }
     
     // @@protoc_insertion_point(class_scope:communication.LinkReadings)
+  }
+  
+  public interface EnvelopeOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+    
+    // required .communication.Envelope.Type type = 1 [default = CONTROL];
+    boolean hasType();
+    eu.uberdust.communication.protobuf.Message.Envelope.Type getType();
+    
+    // optional .communication.Control control = 2;
+    boolean hasControl();
+    eu.uberdust.communication.protobuf.Message.Control getControl();
+    eu.uberdust.communication.protobuf.Message.ControlOrBuilder getControlOrBuilder();
+    
+    // optional .communication.NodeReadings nodeReadings = 3;
+    boolean hasNodeReadings();
+    eu.uberdust.communication.protobuf.Message.NodeReadings getNodeReadings();
+    eu.uberdust.communication.protobuf.Message.NodeReadingsOrBuilder getNodeReadingsOrBuilder();
+    
+    // optional .communication.LinkReadings linkReadings = 4;
+    boolean hasLinkReadings();
+    eu.uberdust.communication.protobuf.Message.LinkReadings getLinkReadings();
+    eu.uberdust.communication.protobuf.Message.LinkReadingsOrBuilder getLinkReadingsOrBuilder();
+  }
+  public static final class Envelope extends
+      com.google.protobuf.GeneratedMessage
+      implements EnvelopeOrBuilder {
+    // Use Envelope.newBuilder() to construct.
+    private Envelope(Builder builder) {
+      super(builder);
+    }
+    private Envelope(boolean noInit) {}
+    
+    private static final Envelope defaultInstance;
+    public static Envelope getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public Envelope getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return eu.uberdust.communication.protobuf.Message.internal_static_communication_Envelope_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return eu.uberdust.communication.protobuf.Message.internal_static_communication_Envelope_fieldAccessorTable;
+    }
+    
+    public enum Type
+        implements com.google.protobuf.ProtocolMessageEnum {
+      CONTROL(0, 0),
+      NODE_READINGS(1, 1),
+      LINK_READINGS(2, 2),
+      ;
+      
+      public static final int CONTROL_VALUE = 0;
+      public static final int NODE_READINGS_VALUE = 1;
+      public static final int LINK_READINGS_VALUE = 2;
+      
+      
+      public final int getNumber() { return value; }
+      
+      public static Type valueOf(int value) {
+        switch (value) {
+          case 0: return CONTROL;
+          case 1: return NODE_READINGS;
+          case 2: return LINK_READINGS;
+          default: return null;
+        }
+      }
+      
+      public static com.google.protobuf.Internal.EnumLiteMap<Type>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static com.google.protobuf.Internal.EnumLiteMap<Type>
+          internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<Type>() {
+              public Type findValueByNumber(int number) {
+                return Type.valueOf(number);
+              }
+            };
+      
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        return getDescriptor().getValues().get(index);
+      }
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return eu.uberdust.communication.protobuf.Message.Envelope.getDescriptor().getEnumTypes().get(0);
+      }
+      
+      private static final Type[] VALUES = {
+        CONTROL, NODE_READINGS, LINK_READINGS, 
+      };
+      
+      public static Type valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        return VALUES[desc.getIndex()];
+      }
+      
+      private final int index;
+      private final int value;
+      
+      private Type(int index, int value) {
+        this.index = index;
+        this.value = value;
+      }
+      
+      // @@protoc_insertion_point(enum_scope:communication.Envelope.Type)
+    }
+    
+    private int bitField0_;
+    // required .communication.Envelope.Type type = 1 [default = CONTROL];
+    public static final int TYPE_FIELD_NUMBER = 1;
+    private eu.uberdust.communication.protobuf.Message.Envelope.Type type_;
+    public boolean hasType() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    public eu.uberdust.communication.protobuf.Message.Envelope.Type getType() {
+      return type_;
+    }
+    
+    // optional .communication.Control control = 2;
+    public static final int CONTROL_FIELD_NUMBER = 2;
+    private eu.uberdust.communication.protobuf.Message.Control control_;
+    public boolean hasControl() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    public eu.uberdust.communication.protobuf.Message.Control getControl() {
+      return control_;
+    }
+    public eu.uberdust.communication.protobuf.Message.ControlOrBuilder getControlOrBuilder() {
+      return control_;
+    }
+    
+    // optional .communication.NodeReadings nodeReadings = 3;
+    public static final int NODEREADINGS_FIELD_NUMBER = 3;
+    private eu.uberdust.communication.protobuf.Message.NodeReadings nodeReadings_;
+    public boolean hasNodeReadings() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    public eu.uberdust.communication.protobuf.Message.NodeReadings getNodeReadings() {
+      return nodeReadings_;
+    }
+    public eu.uberdust.communication.protobuf.Message.NodeReadingsOrBuilder getNodeReadingsOrBuilder() {
+      return nodeReadings_;
+    }
+    
+    // optional .communication.LinkReadings linkReadings = 4;
+    public static final int LINKREADINGS_FIELD_NUMBER = 4;
+    private eu.uberdust.communication.protobuf.Message.LinkReadings linkReadings_;
+    public boolean hasLinkReadings() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    public eu.uberdust.communication.protobuf.Message.LinkReadings getLinkReadings() {
+      return linkReadings_;
+    }
+    public eu.uberdust.communication.protobuf.Message.LinkReadingsOrBuilder getLinkReadingsOrBuilder() {
+      return linkReadings_;
+    }
+    
+    private void initFields() {
+      type_ = eu.uberdust.communication.protobuf.Message.Envelope.Type.CONTROL;
+      control_ = eu.uberdust.communication.protobuf.Message.Control.getDefaultInstance();
+      nodeReadings_ = eu.uberdust.communication.protobuf.Message.NodeReadings.getDefaultInstance();
+      linkReadings_ = eu.uberdust.communication.protobuf.Message.LinkReadings.getDefaultInstance();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+      
+      if (!hasType()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (hasControl()) {
+        if (!getControl().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasNodeReadings()) {
+        if (!getNodeReadings().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasLinkReadings()) {
+        if (!getLinkReadings().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeEnum(1, type_.getNumber());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeMessage(2, control_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeMessage(3, nodeReadings_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeMessage(4, linkReadings_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(1, type_.getNumber());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, control_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, nodeReadings_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, linkReadings_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+    
+    public static eu.uberdust.communication.protobuf.Message.Envelope parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static eu.uberdust.communication.protobuf.Message.Envelope parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static eu.uberdust.communication.protobuf.Message.Envelope parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static eu.uberdust.communication.protobuf.Message.Envelope parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static eu.uberdust.communication.protobuf.Message.Envelope parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static eu.uberdust.communication.protobuf.Message.Envelope parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static eu.uberdust.communication.protobuf.Message.Envelope parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static eu.uberdust.communication.protobuf.Message.Envelope parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static eu.uberdust.communication.protobuf.Message.Envelope parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static eu.uberdust.communication.protobuf.Message.Envelope parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(eu.uberdust.communication.protobuf.Message.Envelope prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements eu.uberdust.communication.protobuf.Message.EnvelopeOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return eu.uberdust.communication.protobuf.Message.internal_static_communication_Envelope_descriptor;
+      }
+      
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return eu.uberdust.communication.protobuf.Message.internal_static_communication_Envelope_fieldAccessorTable;
+      }
+      
+      // Construct using eu.uberdust.communication.protobuf.Message.Envelope.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+      
+      private Builder(BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getControlFieldBuilder();
+          getNodeReadingsFieldBuilder();
+          getLinkReadingsFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+      
+      public Builder clear() {
+        super.clear();
+        type_ = eu.uberdust.communication.protobuf.Message.Envelope.Type.CONTROL;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        if (controlBuilder_ == null) {
+          control_ = eu.uberdust.communication.protobuf.Message.Control.getDefaultInstance();
+        } else {
+          controlBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        if (nodeReadingsBuilder_ == null) {
+          nodeReadings_ = eu.uberdust.communication.protobuf.Message.NodeReadings.getDefaultInstance();
+        } else {
+          nodeReadingsBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000004);
+        if (linkReadingsBuilder_ == null) {
+          linkReadings_ = eu.uberdust.communication.protobuf.Message.LinkReadings.getDefaultInstance();
+        } else {
+          linkReadingsBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return eu.uberdust.communication.protobuf.Message.Envelope.getDescriptor();
+      }
+      
+      public eu.uberdust.communication.protobuf.Message.Envelope getDefaultInstanceForType() {
+        return eu.uberdust.communication.protobuf.Message.Envelope.getDefaultInstance();
+      }
+      
+      public eu.uberdust.communication.protobuf.Message.Envelope build() {
+        eu.uberdust.communication.protobuf.Message.Envelope result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+      
+      private eu.uberdust.communication.protobuf.Message.Envelope buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        eu.uberdust.communication.protobuf.Message.Envelope result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
+      public eu.uberdust.communication.protobuf.Message.Envelope buildPartial() {
+        eu.uberdust.communication.protobuf.Message.Envelope result = new eu.uberdust.communication.protobuf.Message.Envelope(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.type_ = type_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        if (controlBuilder_ == null) {
+          result.control_ = control_;
+        } else {
+          result.control_ = controlBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        if (nodeReadingsBuilder_ == null) {
+          result.nodeReadings_ = nodeReadings_;
+        } else {
+          result.nodeReadings_ = nodeReadingsBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        if (linkReadingsBuilder_ == null) {
+          result.linkReadings_ = linkReadings_;
+        } else {
+          result.linkReadings_ = linkReadingsBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof eu.uberdust.communication.protobuf.Message.Envelope) {
+          return mergeFrom((eu.uberdust.communication.protobuf.Message.Envelope)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(eu.uberdust.communication.protobuf.Message.Envelope other) {
+        if (other == eu.uberdust.communication.protobuf.Message.Envelope.getDefaultInstance()) return this;
+        if (other.hasType()) {
+          setType(other.getType());
+        }
+        if (other.hasControl()) {
+          mergeControl(other.getControl());
+        }
+        if (other.hasNodeReadings()) {
+          mergeNodeReadings(other.getNodeReadings());
+        }
+        if (other.hasLinkReadings()) {
+          mergeLinkReadings(other.getLinkReadings());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public final boolean isInitialized() {
+        if (!hasType()) {
+          
+          return false;
+        }
+        if (hasControl()) {
+          if (!getControl().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasNodeReadings()) {
+          if (!getNodeReadings().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasLinkReadings()) {
+          if (!getLinkReadings().isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 8: {
+              int rawValue = input.readEnum();
+              eu.uberdust.communication.protobuf.Message.Envelope.Type value = eu.uberdust.communication.protobuf.Message.Envelope.Type.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(1, rawValue);
+              } else {
+                bitField0_ |= 0x00000001;
+                type_ = value;
+              }
+              break;
+            }
+            case 18: {
+              eu.uberdust.communication.protobuf.Message.Control.Builder subBuilder = eu.uberdust.communication.protobuf.Message.Control.newBuilder();
+              if (hasControl()) {
+                subBuilder.mergeFrom(getControl());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setControl(subBuilder.buildPartial());
+              break;
+            }
+            case 26: {
+              eu.uberdust.communication.protobuf.Message.NodeReadings.Builder subBuilder = eu.uberdust.communication.protobuf.Message.NodeReadings.newBuilder();
+              if (hasNodeReadings()) {
+                subBuilder.mergeFrom(getNodeReadings());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setNodeReadings(subBuilder.buildPartial());
+              break;
+            }
+            case 34: {
+              eu.uberdust.communication.protobuf.Message.LinkReadings.Builder subBuilder = eu.uberdust.communication.protobuf.Message.LinkReadings.newBuilder();
+              if (hasLinkReadings()) {
+                subBuilder.mergeFrom(getLinkReadings());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setLinkReadings(subBuilder.buildPartial());
+              break;
+            }
+          }
+        }
+      }
+      
+      private int bitField0_;
+      
+      // required .communication.Envelope.Type type = 1 [default = CONTROL];
+      private eu.uberdust.communication.protobuf.Message.Envelope.Type type_ = eu.uberdust.communication.protobuf.Message.Envelope.Type.CONTROL;
+      public boolean hasType() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      public eu.uberdust.communication.protobuf.Message.Envelope.Type getType() {
+        return type_;
+      }
+      public Builder setType(eu.uberdust.communication.protobuf.Message.Envelope.Type value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000001;
+        type_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearType() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        type_ = eu.uberdust.communication.protobuf.Message.Envelope.Type.CONTROL;
+        onChanged();
+        return this;
+      }
+      
+      // optional .communication.Control control = 2;
+      private eu.uberdust.communication.protobuf.Message.Control control_ = eu.uberdust.communication.protobuf.Message.Control.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          eu.uberdust.communication.protobuf.Message.Control, eu.uberdust.communication.protobuf.Message.Control.Builder, eu.uberdust.communication.protobuf.Message.ControlOrBuilder> controlBuilder_;
+      public boolean hasControl() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      public eu.uberdust.communication.protobuf.Message.Control getControl() {
+        if (controlBuilder_ == null) {
+          return control_;
+        } else {
+          return controlBuilder_.getMessage();
+        }
+      }
+      public Builder setControl(eu.uberdust.communication.protobuf.Message.Control value) {
+        if (controlBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          control_ = value;
+          onChanged();
+        } else {
+          controlBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      public Builder setControl(
+          eu.uberdust.communication.protobuf.Message.Control.Builder builderForValue) {
+        if (controlBuilder_ == null) {
+          control_ = builderForValue.build();
+          onChanged();
+        } else {
+          controlBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      public Builder mergeControl(eu.uberdust.communication.protobuf.Message.Control value) {
+        if (controlBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002) &&
+              control_ != eu.uberdust.communication.protobuf.Message.Control.getDefaultInstance()) {
+            control_ =
+              eu.uberdust.communication.protobuf.Message.Control.newBuilder(control_).mergeFrom(value).buildPartial();
+          } else {
+            control_ = value;
+          }
+          onChanged();
+        } else {
+          controlBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      public Builder clearControl() {
+        if (controlBuilder_ == null) {
+          control_ = eu.uberdust.communication.protobuf.Message.Control.getDefaultInstance();
+          onChanged();
+        } else {
+          controlBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+      public eu.uberdust.communication.protobuf.Message.Control.Builder getControlBuilder() {
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return getControlFieldBuilder().getBuilder();
+      }
+      public eu.uberdust.communication.protobuf.Message.ControlOrBuilder getControlOrBuilder() {
+        if (controlBuilder_ != null) {
+          return controlBuilder_.getMessageOrBuilder();
+        } else {
+          return control_;
+        }
+      }
+      private com.google.protobuf.SingleFieldBuilder<
+          eu.uberdust.communication.protobuf.Message.Control, eu.uberdust.communication.protobuf.Message.Control.Builder, eu.uberdust.communication.protobuf.Message.ControlOrBuilder> 
+          getControlFieldBuilder() {
+        if (controlBuilder_ == null) {
+          controlBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              eu.uberdust.communication.protobuf.Message.Control, eu.uberdust.communication.protobuf.Message.Control.Builder, eu.uberdust.communication.protobuf.Message.ControlOrBuilder>(
+                  control_,
+                  getParentForChildren(),
+                  isClean());
+          control_ = null;
+        }
+        return controlBuilder_;
+      }
+      
+      // optional .communication.NodeReadings nodeReadings = 3;
+      private eu.uberdust.communication.protobuf.Message.NodeReadings nodeReadings_ = eu.uberdust.communication.protobuf.Message.NodeReadings.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          eu.uberdust.communication.protobuf.Message.NodeReadings, eu.uberdust.communication.protobuf.Message.NodeReadings.Builder, eu.uberdust.communication.protobuf.Message.NodeReadingsOrBuilder> nodeReadingsBuilder_;
+      public boolean hasNodeReadings() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      public eu.uberdust.communication.protobuf.Message.NodeReadings getNodeReadings() {
+        if (nodeReadingsBuilder_ == null) {
+          return nodeReadings_;
+        } else {
+          return nodeReadingsBuilder_.getMessage();
+        }
+      }
+      public Builder setNodeReadings(eu.uberdust.communication.protobuf.Message.NodeReadings value) {
+        if (nodeReadingsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          nodeReadings_ = value;
+          onChanged();
+        } else {
+          nodeReadingsBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      public Builder setNodeReadings(
+          eu.uberdust.communication.protobuf.Message.NodeReadings.Builder builderForValue) {
+        if (nodeReadingsBuilder_ == null) {
+          nodeReadings_ = builderForValue.build();
+          onChanged();
+        } else {
+          nodeReadingsBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      public Builder mergeNodeReadings(eu.uberdust.communication.protobuf.Message.NodeReadings value) {
+        if (nodeReadingsBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004) &&
+              nodeReadings_ != eu.uberdust.communication.protobuf.Message.NodeReadings.getDefaultInstance()) {
+            nodeReadings_ =
+              eu.uberdust.communication.protobuf.Message.NodeReadings.newBuilder(nodeReadings_).mergeFrom(value).buildPartial();
+          } else {
+            nodeReadings_ = value;
+          }
+          onChanged();
+        } else {
+          nodeReadingsBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      public Builder clearNodeReadings() {
+        if (nodeReadingsBuilder_ == null) {
+          nodeReadings_ = eu.uberdust.communication.protobuf.Message.NodeReadings.getDefaultInstance();
+          onChanged();
+        } else {
+          nodeReadingsBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+      public eu.uberdust.communication.protobuf.Message.NodeReadings.Builder getNodeReadingsBuilder() {
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return getNodeReadingsFieldBuilder().getBuilder();
+      }
+      public eu.uberdust.communication.protobuf.Message.NodeReadingsOrBuilder getNodeReadingsOrBuilder() {
+        if (nodeReadingsBuilder_ != null) {
+          return nodeReadingsBuilder_.getMessageOrBuilder();
+        } else {
+          return nodeReadings_;
+        }
+      }
+      private com.google.protobuf.SingleFieldBuilder<
+          eu.uberdust.communication.protobuf.Message.NodeReadings, eu.uberdust.communication.protobuf.Message.NodeReadings.Builder, eu.uberdust.communication.protobuf.Message.NodeReadingsOrBuilder> 
+          getNodeReadingsFieldBuilder() {
+        if (nodeReadingsBuilder_ == null) {
+          nodeReadingsBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              eu.uberdust.communication.protobuf.Message.NodeReadings, eu.uberdust.communication.protobuf.Message.NodeReadings.Builder, eu.uberdust.communication.protobuf.Message.NodeReadingsOrBuilder>(
+                  nodeReadings_,
+                  getParentForChildren(),
+                  isClean());
+          nodeReadings_ = null;
+        }
+        return nodeReadingsBuilder_;
+      }
+      
+      // optional .communication.LinkReadings linkReadings = 4;
+      private eu.uberdust.communication.protobuf.Message.LinkReadings linkReadings_ = eu.uberdust.communication.protobuf.Message.LinkReadings.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          eu.uberdust.communication.protobuf.Message.LinkReadings, eu.uberdust.communication.protobuf.Message.LinkReadings.Builder, eu.uberdust.communication.protobuf.Message.LinkReadingsOrBuilder> linkReadingsBuilder_;
+      public boolean hasLinkReadings() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      public eu.uberdust.communication.protobuf.Message.LinkReadings getLinkReadings() {
+        if (linkReadingsBuilder_ == null) {
+          return linkReadings_;
+        } else {
+          return linkReadingsBuilder_.getMessage();
+        }
+      }
+      public Builder setLinkReadings(eu.uberdust.communication.protobuf.Message.LinkReadings value) {
+        if (linkReadingsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          linkReadings_ = value;
+          onChanged();
+        } else {
+          linkReadingsBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      public Builder setLinkReadings(
+          eu.uberdust.communication.protobuf.Message.LinkReadings.Builder builderForValue) {
+        if (linkReadingsBuilder_ == null) {
+          linkReadings_ = builderForValue.build();
+          onChanged();
+        } else {
+          linkReadingsBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      public Builder mergeLinkReadings(eu.uberdust.communication.protobuf.Message.LinkReadings value) {
+        if (linkReadingsBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) == 0x00000008) &&
+              linkReadings_ != eu.uberdust.communication.protobuf.Message.LinkReadings.getDefaultInstance()) {
+            linkReadings_ =
+              eu.uberdust.communication.protobuf.Message.LinkReadings.newBuilder(linkReadings_).mergeFrom(value).buildPartial();
+          } else {
+            linkReadings_ = value;
+          }
+          onChanged();
+        } else {
+          linkReadingsBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      public Builder clearLinkReadings() {
+        if (linkReadingsBuilder_ == null) {
+          linkReadings_ = eu.uberdust.communication.protobuf.Message.LinkReadings.getDefaultInstance();
+          onChanged();
+        } else {
+          linkReadingsBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+      public eu.uberdust.communication.protobuf.Message.LinkReadings.Builder getLinkReadingsBuilder() {
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return getLinkReadingsFieldBuilder().getBuilder();
+      }
+      public eu.uberdust.communication.protobuf.Message.LinkReadingsOrBuilder getLinkReadingsOrBuilder() {
+        if (linkReadingsBuilder_ != null) {
+          return linkReadingsBuilder_.getMessageOrBuilder();
+        } else {
+          return linkReadings_;
+        }
+      }
+      private com.google.protobuf.SingleFieldBuilder<
+          eu.uberdust.communication.protobuf.Message.LinkReadings, eu.uberdust.communication.protobuf.Message.LinkReadings.Builder, eu.uberdust.communication.protobuf.Message.LinkReadingsOrBuilder> 
+          getLinkReadingsFieldBuilder() {
+        if (linkReadingsBuilder_ == null) {
+          linkReadingsBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              eu.uberdust.communication.protobuf.Message.LinkReadings, eu.uberdust.communication.protobuf.Message.LinkReadings.Builder, eu.uberdust.communication.protobuf.Message.LinkReadingsOrBuilder>(
+                  linkReadings_,
+                  getParentForChildren(),
+                  isClean());
+          linkReadings_ = null;
+        }
+        return linkReadingsBuilder_;
+      }
+      
+      // @@protoc_insertion_point(builder_scope:communication.Envelope)
+    }
+    
+    static {
+      defaultInstance = new Envelope(true);
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:communication.Envelope)
   }
   
   private static com.google.protobuf.Descriptors.Descriptor
@@ -2062,6 +4220,11 @@ public final class Message {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_communication_LinkReadings_Reading_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_communication_Envelope_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_communication_Envelope_fieldAccessorTable;
   
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -2083,8 +4246,15 @@ public final class Message {
       "gs.Reading\032~\n\007Reading\022\016\n\006source\030\001 \002(\t\022\016\n",
       "\006target\030\002 \002(\t\022\022\n\ncapability\030\003 \002(\t\022\021\n\ttim" +
       "estamp\030\004 \002(\001\022\025\n\rstringReading\030\005 \001(\t\022\025\n\rd" +
-      "oubleReading\030\006 \001(\001B-\n\"eu.uberdust.commun" +
-      "ication.protobufB\007Message"
+      "oubleReading\030\006 \001(\001\"\211\002\n\010Envelope\0223\n\004type\030" +
+      "\001 \002(\0162\034.communication.Envelope.Type:\007CON" +
+      "TROL\022\'\n\007control\030\002 \001(\0132\026.communication.Co" +
+      "ntrol\0221\n\014nodeReadings\030\003 \001(\0132\033.communicat" +
+      "ion.NodeReadings\0221\n\014linkReadings\030\004 \001(\0132\033" +
+      ".communication.LinkReadings\"9\n\004Type\022\013\n\007C" +
+      "ONTROL\020\000\022\021\n\rNODE_READINGS\020\001\022\021\n\rLINK_READ" +
+      "INGS\020\002B-\n\"eu.uberdust.communication.prot",
+      "obufB\007Message"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -2131,6 +4301,14 @@ public final class Message {
               new java.lang.String[] { "Source", "Target", "Capability", "Timestamp", "StringReading", "DoubleReading", },
               eu.uberdust.communication.protobuf.Message.LinkReadings.Reading.class,
               eu.uberdust.communication.protobuf.Message.LinkReadings.Reading.Builder.class);
+          internal_static_communication_Envelope_descriptor =
+            getDescriptor().getMessageTypes().get(3);
+          internal_static_communication_Envelope_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_communication_Envelope_descriptor,
+              new java.lang.String[] { "Type", "Control", "NodeReadings", "LinkReadings", },
+              eu.uberdust.communication.protobuf.Message.Envelope.class,
+              eu.uberdust.communication.protobuf.Message.Envelope.Builder.class);
           return null;
         }
       };
@@ -2139,8 +4317,6 @@ public final class Message {
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
   }
-  
-  public static void internalForceInit() {}
   
   // @@protoc_insertion_point(outer_class_scope)
 }

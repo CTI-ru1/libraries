@@ -38,3 +38,18 @@ message LinkReadings{
 
     repeated Reading reading = 1;
 }
+
+message Envelope{
+
+   enum Type{
+       CONTROL = 0;
+       NODE_READINGS = 1;
+       LINK_READINGS = 2;
+     }
+
+  required Type type = 1 [default = CONTROL];
+  optional Control control = 2;
+  optional NodeReadings nodeReadings = 3;
+  optional LinkReadings linkReadings = 4;
+
+}

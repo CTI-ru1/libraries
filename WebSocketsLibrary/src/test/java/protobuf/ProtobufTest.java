@@ -79,6 +79,12 @@ public class ProtobufTest {
                 .setStringReading("222")
                 .build());
 
+
+        final Message.Envelope envelope = Message.Envelope.newBuilder()
+                .setType(Message.Envelope.Type.CONTROL)
+                .setControl(controlMessage)
+                .build();
+
     }
 
 }
