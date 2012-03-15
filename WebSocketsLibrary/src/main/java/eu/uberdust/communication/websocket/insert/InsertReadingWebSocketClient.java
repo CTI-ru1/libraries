@@ -1,9 +1,8 @@
 package eu.uberdust.communication.websocket.insert;
 
+import eu.uberdust.communication.protobuf.Message;
 import eu.uberdust.communication.rest.UberdustRestClient;
 import eu.uberdust.communication.websocket.task.InsertPingTask;
-import eu.uberdust.reading.LinkReading;
-import eu.uberdust.reading.NodeReading;
 import org.apache.log4j.Logger;
 import org.eclipse.jetty.websocket.WebSocket;
 import org.eclipse.jetty.websocket.WebSocketClient;
@@ -149,39 +148,39 @@ public final class InsertReadingWebSocketClient extends Observable {
     /**
      * Send Node Reading.
      *
-     * @param nodeReading a NodeReading instance.
+     * @param nodeReadings a @Message.NodeReadings instance.
      * @throws java.io.IOException an IOException exception.
      */
-    public void sendNodeReading(final NodeReading nodeReading) throws IOException {
-        sendMessage(nodeReading.toDelimitedString());
+    public void sendNodeReading(final Message.NodeReadings nodeReadings) throws IOException {
+        connection.sendMessage(nodeReadings.toByteArray(), 0, nodeReadings.toByteArray().length);
+
     }
 
     /**
      * Send Link Reading.
      *
-     * @param linkReading a NodeReading instance.
+     * @param linkReadings a NodeReading instance.
      * @throws java.io.IOException an IOException exception.
      */
-    public void sendLinkReading(final LinkReading linkReading) throws IOException {
-        sendMessage(linkReading.toDelimitedString());
+    public void sendLinkReading(final Message.LinkReadings linkReadings) throws IOException {
+        connection.sendMessage(linkReadings.toByteArray(), 0, linkReadings.toByteArray().length);
     }
 
-    /**
-     * Send message over the WebSocket as binary data.
-     *
-     * @param message a string message.
-     * @throws java.io.IOException an IOException.
-     */
-    private void sendMessage(final String message) throws IOException {
-
-        // if connection is not opened do nothing
-        if (!connection.isOpen()) {
-            return;
-        }
-
-        byte[] bytes = message.getBytes();
-        connection.sendMessage(bytes, 0, bytes.length);
-    }
+//    /**
+//     * Send message over the WebSocket as binary data.
+//     *
+//     * @param message a string message.
+//     * @throws java.io.IOException an IOException.
+//     */
+//    private void sendMessage(final String message) throws IOException {
+//        // if connection is not opened do nothing
+//        if (!connection.isOpen()) {
+//            return;
+//        }
+//
+//        byte[] bytes = message.getBytes();
+//        connection.sendMessage(bytes, 0, bytes.length);
+//    }
 
     /**
      * Start pinging task.

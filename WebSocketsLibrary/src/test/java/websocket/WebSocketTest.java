@@ -1,7 +1,7 @@
 package websocket;
 
+import eu.uberdust.communication.protobuf.Message;
 import eu.uberdust.communication.websocket.insert.InsertReadingWebSocketClient;
-import eu.uberdust.reading.NodeReading;
 
 import java.io.IOException;
 import java.util.Date;
@@ -17,21 +17,27 @@ public class WebSocketTest {
 
     public static void main(String[] args) {
         // sample node reading
-        NodeReading nodeReading1 = new NodeReading();
-        nodeReading1.setTestbedId("1");
-        nodeReading1.setNodeId("urn:ctinetwork:carrot_delete_me");
-        nodeReading1.setCapabilityName("urn:ctinetwork:node:capability:lockScreen");
-        nodeReading1.setTimestamp(Long.toString(new Date().getTime()));
-        nodeReading1.setReading("1.0");
+
+        Message.NodeReadings.Reading reading1 = Message.NodeReadings.Reading.newBuilder()
+                .setNode("urn:ctinetwork:carrot_delete_moi")
+                .setCapability("urn:ctinetwork:node:capability:lockScreen")
+                .setTimestamp(new Date().getTime())
+                .setDoubleReading(1)
+                .build();
 
 
-        NodeReading nodeReading2 = new NodeReading();
-        nodeReading2.setTestbedId("1");
-        nodeReading2.setNodeId("urn:ctinetwork:carrot_delete_moi");
-        nodeReading2.setCapabilityName("urn:ctinetwork:node:capability:lockScreen");
-        nodeReading2.setTimestamp(Long.toString(new Date().getTime()));
-        nodeReading2.setReading("1.0");
+        Message.NodeReadings.Reading reading2 = Message.NodeReadings.Reading.newBuilder()
+                .setNode("urn:ctinetwork:carrot_delete_me")
+                .setCapability("urn:ctinetwork:node:capability:lockScreen")
+                .setTimestamp(new Date().getTime())
+                .setDoubleReading(1)
+                .build();
 
+
+        Message.NodeReadings readings = Message.NodeReadings.newBuilder()
+                .addReading(reading1)
+                .addReading(reading2)
+                .build();
 
         /**
          * WebSocket Call
@@ -47,13 +53,9 @@ public class WebSocketTest {
             int counter = 0;
             while (true) {
                 System.out.println(counter);
-                if (counter % 2 == 0) {
-                    nodeReading1.setTestbedId(String.valueOf(counter % 4));
-                    InsertReadingWebSocketClient.getInstance().sendNodeReading(nodeReading1);
-                } else {
-                    nodeReading2.setTestbedId(String.valueOf(counter % 4));
-                    InsertReadingWebSocketClient.getInstance().sendNodeReading(nodeReading2);
-                }
+
+                InsertReadingWebSocketClient.getInstance().sendNodeReading(readings);
+
                 Thread.sleep(5);
                 counter++;
             }
