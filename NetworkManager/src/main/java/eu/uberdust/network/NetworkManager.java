@@ -1,9 +1,8 @@
 package eu.uberdust.network;
 
+import eu.uberdust.communication.protobuf.Message;
 import eu.uberdust.communication.websocket.command.WSCommandReceiverClient;
 import eu.uberdust.communication.websocket.insert.InsertReadingWebSocketClient;
-import eu.uberdust.reading.LinkReading;
-import eu.uberdust.reading.NodeReading;
 import org.apache.log4j.PropertyConfigurator;
 
 import java.io.IOException;
@@ -33,6 +32,7 @@ public class NetworkManager extends Observable implements Observer {
 
         try {
             WSCommandReceiverClient.getInstance().connect("ws://" + server + "/testbedcontroller.ws");
+            WSCommandReceiverClient.getInstance().addObserver(this);
             LOGGER.info("connected");
         } catch (Exception e) {
             LOGGER.fatal(e);
@@ -52,12 +52,12 @@ public class NetworkManager extends Observable implements Observer {
 
     }
 
-    public void sendNodeReading(final NodeReading nodeReading) throws IOException {
-        InsertReadingWebSocketClient.getInstance().sendNodeReading(nodeReading);
+    public void sendNodeReading(final Message.NodeReadings nodeReadings) throws IOException {
+        InsertReadingWebSocketClient.getInstance().sendNodeReading(nodeReadings);
     }
 
-    public void sendLinkReading(final LinkReading linkReading) throws IOException {
-        InsertReadingWebSocketClient.getInstance().sendLinkReading(linkReading);
+    public void sendLinkReading(final Message.LinkReadings linkReadings) throws IOException {
+        InsertReadingWebSocketClient.getInstance().sendLinkReading(linkReadings);
     }
 
     public synchronized static NetworkManager getInstance() {
@@ -75,7 +75,9 @@ public class NetworkManager extends Observable implements Observer {
 
     @Override
     public void update(final Observable observable, final Object o) {
+        LOGGER.info("calling notifyObservers");
         this.setChanged();
         this.notifyObservers(o);
+        this.setChanged();
     }
 }
