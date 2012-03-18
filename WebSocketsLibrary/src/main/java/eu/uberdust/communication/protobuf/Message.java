@@ -725,9 +725,9 @@ public final class Message {
       boolean hasCapability();
       String getCapability();
       
-      // required double timestamp = 3;
+      // required int64 timestamp = 3;
       boolean hasTimestamp();
-      double getTimestamp();
+      long getTimestamp();
       
       // optional string stringReading = 4;
       boolean hasStringReading();
@@ -830,13 +830,13 @@ public final class Message {
         }
       }
       
-      // required double timestamp = 3;
+      // required int64 timestamp = 3;
       public static final int TIMESTAMP_FIELD_NUMBER = 3;
-      private double timestamp_;
+      private long timestamp_;
       public boolean hasTimestamp() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
-      public double getTimestamp() {
+      public long getTimestamp() {
         return timestamp_;
       }
       
@@ -885,7 +885,7 @@ public final class Message {
       private void initFields() {
         node_ = "";
         capability_ = "";
-        timestamp_ = 0D;
+        timestamp_ = 0L;
         stringReading_ = "";
         doubleReading_ = 0D;
       }
@@ -920,7 +920,7 @@ public final class Message {
           output.writeBytes(2, getCapabilityBytes());
         }
         if (((bitField0_ & 0x00000004) == 0x00000004)) {
-          output.writeDouble(3, timestamp_);
+          output.writeInt64(3, timestamp_);
         }
         if (((bitField0_ & 0x00000008) == 0x00000008)) {
           output.writeBytes(4, getStringReadingBytes());
@@ -947,7 +947,7 @@ public final class Message {
         }
         if (((bitField0_ & 0x00000004) == 0x00000004)) {
           size += com.google.protobuf.CodedOutputStream
-            .computeDoubleSize(3, timestamp_);
+            .computeInt64Size(3, timestamp_);
         }
         if (((bitField0_ & 0x00000008) == 0x00000008)) {
           size += com.google.protobuf.CodedOutputStream
@@ -1085,7 +1085,7 @@ public final class Message {
           bitField0_ = (bitField0_ & ~0x00000001);
           capability_ = "";
           bitField0_ = (bitField0_ & ~0x00000002);
-          timestamp_ = 0D;
+          timestamp_ = 0L;
           bitField0_ = (bitField0_ & ~0x00000004);
           stringReading_ = "";
           bitField0_ = (bitField0_ & ~0x00000008);
@@ -1233,9 +1233,9 @@ public final class Message {
                 capability_ = input.readBytes();
                 break;
               }
-              case 25: {
+              case 24: {
                 bitField0_ |= 0x00000004;
-                timestamp_ = input.readDouble();
+                timestamp_ = input.readInt64();
                 break;
               }
               case 34: {
@@ -1326,15 +1326,15 @@ public final class Message {
           onChanged();
         }
         
-        // required double timestamp = 3;
-        private double timestamp_ ;
+        // required int64 timestamp = 3;
+        private long timestamp_ ;
         public boolean hasTimestamp() {
           return ((bitField0_ & 0x00000004) == 0x00000004);
         }
-        public double getTimestamp() {
+        public long getTimestamp() {
           return timestamp_;
         }
-        public Builder setTimestamp(double value) {
+        public Builder setTimestamp(long value) {
           bitField0_ |= 0x00000004;
           timestamp_ = value;
           onChanged();
@@ -1342,7 +1342,7 @@ public final class Message {
         }
         public Builder clearTimestamp() {
           bitField0_ = (bitField0_ & ~0x00000004);
-          timestamp_ = 0D;
+          timestamp_ = 0L;
           onChanged();
           return this;
         }
@@ -1993,9 +1993,9 @@ public final class Message {
       boolean hasCapability();
       String getCapability();
       
-      // required double timestamp = 4;
+      // required int64 timestamp = 4;
       boolean hasTimestamp();
-      double getTimestamp();
+      long getTimestamp();
       
       // optional string stringReading = 5;
       boolean hasStringReading();
@@ -2130,13 +2130,13 @@ public final class Message {
         }
       }
       
-      // required double timestamp = 4;
+      // required int64 timestamp = 4;
       public static final int TIMESTAMP_FIELD_NUMBER = 4;
-      private double timestamp_;
+      private long timestamp_;
       public boolean hasTimestamp() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
-      public double getTimestamp() {
+      public long getTimestamp() {
         return timestamp_;
       }
       
@@ -2186,7 +2186,7 @@ public final class Message {
         source_ = "";
         target_ = "";
         capability_ = "";
-        timestamp_ = 0D;
+        timestamp_ = 0L;
         stringReading_ = "";
         doubleReading_ = 0D;
       }
@@ -2228,7 +2228,7 @@ public final class Message {
           output.writeBytes(3, getCapabilityBytes());
         }
         if (((bitField0_ & 0x00000008) == 0x00000008)) {
-          output.writeDouble(4, timestamp_);
+          output.writeInt64(4, timestamp_);
         }
         if (((bitField0_ & 0x00000010) == 0x00000010)) {
           output.writeBytes(5, getStringReadingBytes());
@@ -2259,7 +2259,7 @@ public final class Message {
         }
         if (((bitField0_ & 0x00000008) == 0x00000008)) {
           size += com.google.protobuf.CodedOutputStream
-            .computeDoubleSize(4, timestamp_);
+            .computeInt64Size(4, timestamp_);
         }
         if (((bitField0_ & 0x00000010) == 0x00000010)) {
           size += com.google.protobuf.CodedOutputStream
@@ -2399,7 +2399,7 @@ public final class Message {
           bitField0_ = (bitField0_ & ~0x00000002);
           capability_ = "";
           bitField0_ = (bitField0_ & ~0x00000004);
-          timestamp_ = 0D;
+          timestamp_ = 0L;
           bitField0_ = (bitField0_ & ~0x00000008);
           stringReading_ = "";
           bitField0_ = (bitField0_ & ~0x00000010);
@@ -2563,9 +2563,9 @@ public final class Message {
                 capability_ = input.readBytes();
                 break;
               }
-              case 33: {
+              case 32: {
                 bitField0_ |= 0x00000008;
-                timestamp_ = input.readDouble();
+                timestamp_ = input.readInt64();
                 break;
               }
               case 42: {
@@ -2692,15 +2692,15 @@ public final class Message {
           onChanged();
         }
         
-        // required double timestamp = 4;
-        private double timestamp_ ;
+        // required int64 timestamp = 4;
+        private long timestamp_ ;
         public boolean hasTimestamp() {
           return ((bitField0_ & 0x00000008) == 0x00000008);
         }
-        public double getTimestamp() {
+        public long getTimestamp() {
           return timestamp_;
         }
-        public Builder setTimestamp(double value) {
+        public Builder setTimestamp(long value) {
           bitField0_ |= 0x00000008;
           timestamp_ = value;
           onChanged();
@@ -2708,7 +2708,7 @@ public final class Message {
         }
         public Builder clearTimestamp() {
           bitField0_ = (bitField0_ & ~0x00000008);
-          timestamp_ = 0D;
+          timestamp_ = 0L;
           onChanged();
           return this;
         }
@@ -4240,12 +4240,12 @@ public final class Message {
       "\001\n\014NodeReadings\0224\n\007reading\030\001 \003(\0132#.commu" +
       "nication.NodeReadings.Reading\032l\n\007Reading" +
       "\022\014\n\004node\030\001 \002(\t\022\022\n\ncapability\030\002 \002(\t\022\021\n\tti" +
-      "mestamp\030\003 \002(\001\022\025\n\rstringReading\030\004 \001(\t\022\025\n\r" +
+      "mestamp\030\003 \002(\003\022\025\n\rstringReading\030\004 \001(\t\022\025\n\r" +
       "doubleReading\030\005 \001(\001\"\304\001\n\014LinkReadings\0224\n\007" +
       "reading\030\001 \003(\0132#.communication.LinkReadin" +
       "gs.Reading\032~\n\007Reading\022\016\n\006source\030\001 \002(\t\022\016\n",
       "\006target\030\002 \002(\t\022\022\n\ncapability\030\003 \002(\t\022\021\n\ttim" +
-      "estamp\030\004 \002(\001\022\025\n\rstringReading\030\005 \001(\t\022\025\n\rd" +
+      "estamp\030\004 \002(\003\022\025\n\rstringReading\030\005 \001(\t\022\025\n\rd" +
       "oubleReading\030\006 \001(\001\"\211\002\n\010Envelope\0223\n\004type\030" +
       "\001 \002(\0162\034.communication.Envelope.Type:\007CON" +
       "TROL\022\'\n\007control\030\002 \001(\0132\026.communication.Co" +

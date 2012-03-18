@@ -16,7 +16,7 @@ message NodeReadings {
 
         required string node = 1;
         required string capability = 2;
-        required double timestamp = 3;
+        required int64 timestamp = 3;
         optional string stringReading = 4;
         optional double doubleReading = 5;
     }
@@ -31,7 +31,7 @@ message LinkReadings{
         required string source = 1;
         required string target = 2;
         required string capability = 3;
-        required double timestamp = 4;
+        required int64 timestamp = 4;
         optional string stringReading = 5;
         optional double doubleReading = 6;
     }

@@ -2,9 +2,11 @@ package websocket;
 
 import eu.uberdust.communication.protobuf.Message;
 import eu.uberdust.communication.websocket.insert.InsertReadingWebSocketClient;
+import eu.uberdust.communication.websocket.readings.WSReadingsClient;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.logging.Logger;
 
 /**
  * Created by IntelliJ IDEA.
@@ -18,24 +20,25 @@ public class WebSocketTest {
     public static void main(String[] args) {
         // sample node reading
 
-        Message.NodeReadings.Reading reading1 = Message.NodeReadings.Reading.newBuilder()
+    /*    Message.NodeReadings.Reading reading1 = Message.NodeReadings.Reading.newBuilder()
                 .setNode("urn:ctinetwork:carrot_delete_moi")
                 .setCapability("urn:ctinetwork:node:capability:lockScreen")
                 .setTimestamp(new Date().getTime())
                 .setDoubleReading(1)
-                .build();
+                .build();*/
 
 
         Message.NodeReadings.Reading reading2 = Message.NodeReadings.Reading.newBuilder()
-                .setNode("urn:ctinetwork:carrot_delete_me")
-                .setCapability("urn:ctinetwork:node:capability:lockScreen")
+                .setNode("urn:test:0x1")
+                .setCapability("temp2")
                 .setTimestamp(new Date().getTime())
-                .setDoubleReading(1)
+                .setDoubleReading(100)
                 .build();
 
 
         Message.NodeReadings readings = Message.NodeReadings.newBuilder()
-                .addReading(reading1)
+            //    .addReading(reading1)
+                .addReading(reading2)
                 .addReading(reading2)
                 .build();
 
@@ -43,13 +46,25 @@ public class WebSocketTest {
          * WebSocket Call
          */
 
-        final String webSocketUrl = "ws://localhost:8080/uberdust/insertreading.ws";
+        final String webSocketUrl = "ws://127.0.0.1:8080/uberdust/insertreading.ws";
 
         // insert node reading using WebSockets
 
-        try {
-            InsertReadingWebSocketClient.getInstance().connect(webSocketUrl);
 
+        WSReadingsClient.getInstance().setServerUrl(webSocketUrl);
+        try {
+            System.out.println("before");
+            WSReadingsClient.getInstance().sendNodeReading(readings);
+            System.out.println("after");
+
+            System.out.println("before");
+            WSReadingsClient.getInstance().sendNodeReading(readings);
+            System.out.println("after");
+        } catch (IOException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+
+/*
             int counter = 0;
             while (true) {
                 System.out.println(counter);
@@ -57,13 +72,8 @@ public class WebSocketTest {
                 InsertReadingWebSocketClient.getInstance().sendNodeReading(readings);
 
                 Thread.sleep(5);
-                counter++;
-            }
-        } catch (IOException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        } catch (InterruptedException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }
+                counter++;*/
+
 
     }
 }

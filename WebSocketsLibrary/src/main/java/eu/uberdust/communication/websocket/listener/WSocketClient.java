@@ -1,5 +1,6 @@
 package eu.uberdust.communication.websocket.listener;
 
+import eu.uberdust.communication.protobuf.Message;
 import eu.uberdust.communication.rest.UberdustRestClient;
 import eu.uberdust.communication.websocket.task.ListenerPingTask;
 import org.apache.log4j.Logger;
