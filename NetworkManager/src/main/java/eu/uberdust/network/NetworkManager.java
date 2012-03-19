@@ -1,7 +1,7 @@
 package eu.uberdust.network;
 
 import eu.uberdust.communication.protobuf.Message;
-import eu.uberdust.communication.websocket.command.WSCommandReceiverClient;
+import eu.uberdust.communication.websocket.command.WSCommandClient;
 import eu.uberdust.communication.websocket.readings.WSReadingsClient;
 import org.apache.log4j.PropertyConfigurator;
 
@@ -28,11 +28,11 @@ public class NetworkManager extends Observable implements Observer {
     public void start(final String server, final int testbedId) {
         PropertyConfigurator.configure(Thread.currentThread().getContextClassLoader().getResource("log4j.properties"));
 
-        WSCommandReceiverClient.getInstance().setTestbedId(testbedId);
+        WSCommandClient.getInstance().setTestbedId(testbedId);
 
         try {
-            WSCommandReceiverClient.getInstance().connect("ws://" + server + "/testbedcontroller.ws");
-            WSCommandReceiverClient.getInstance().addObserver(this);
+            WSCommandClient.getInstance().connect("ws://" + server + "/testbedcontroller.ws");
+            WSCommandClient.getInstance().addObserver(this);
             LOGGER.info("connected");
         } catch (Exception e) {
             LOGGER.fatal(e);

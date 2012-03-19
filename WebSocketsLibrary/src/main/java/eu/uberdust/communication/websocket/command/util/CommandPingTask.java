@@ -1,6 +1,6 @@
 package eu.uberdust.communication.websocket.command.util;
 
-import eu.uberdust.communication.websocket.command.WSCommandReceiverClient;
+import eu.uberdust.communication.websocket.command.WSCommandClient;
 
 import java.util.TimerTask;
 
@@ -24,6 +24,6 @@ public class CommandPingTask extends TimerTask {
 
     @Override
     public final void run() {
-        WSCommandReceiverClient.getInstance().ping();
+        WSCommandClient.getInstance().ping();
     }
 }

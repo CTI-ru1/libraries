@@ -1,9 +1,9 @@
 package eu.uberdust.communication.websocket.command;
 
+import com.google.protobuf.InvalidProtocolBufferException;
+import eu.uberdust.communication.protobuf.Message;
 import eu.uberdust.communication.rest.UberdustRestClient;
 import eu.uberdust.communication.websocket.command.util.CommandPingTask;
-import eu.uberdust.reading.LinkReading;
-import eu.uberdust.reading.NodeReading;
 import org.apache.log4j.Logger;
 import org.eclipse.jetty.websocket.WebSocket;
 import org.eclipse.jetty.websocket.WebSocketClient;
@@ -17,17 +17,17 @@ import java.util.Timer;
 /**
  * Insert New Reading Web Socket Client.
  */
-public final class WSCommandReceiverClient extends Observable {
+public final class WSCommandClient extends Observable {
 
     /**
      * static instance(ourInstance) initialized as null.
      */
-    private static WSCommandReceiverClient ourInstance = null;
+    private static WSCommandClient ourInstance = null;
 
     /**
      * Logger.
      */
-    private static final Logger LOGGER = Logger.getLogger(WSCommandReceiverClient.class);
+    private static final Logger LOGGER = Logger.getLogger(WSCommandClient.class);
 
     /**
      * The testbed id to connect to.
@@ -38,10 +38,12 @@ public final class WSCommandReceiverClient extends Observable {
      * Web Socket Protocol.
      */
     private static final String PROTOCOL = "TESTBEDCONTROLLER@";
+
     /**
      * Websocket url prefix.
      */
     private static final String WS_PREFIX = "ws://";
+
     /**
      * Http url prefix.
      */
@@ -66,8 +68,11 @@ public final class WSCommandReceiverClient extends Observable {
      * WebSocketClientFactory.
      */
     private WebSocketClientFactory factory;
-    private String webSocketUrl;
 
+    /**
+     * Web Socket's URL.
+     */
+    private String webSocketUrl;
 
     /**
      * WSocketClient is loaded on the first execution of WSocketClient.getInstance()
@@ -75,10 +80,10 @@ public final class WSCommandReceiverClient extends Observable {
      *
      * @return ourInstance
      */
-    public static WSCommandReceiverClient getInstance() {
-        synchronized (WSCommandReceiverClient.class) {
+    public static WSCommandClient getInstance() {
+        synchronized (WSCommandClient.class) {
             if (ourInstance == null) {
-                ourInstance = new WSCommandReceiverClient();
+                ourInstance = new WSCommandClient();
             }
         }
         return ourInstance;
@@ -87,7 +92,7 @@ public final class WSCommandReceiverClient extends Observable {
     /**
      * Private constructor suppresses generation of a (public) default constructor.
      */
-    private WSCommandReceiverClient() {
+    private WSCommandClient() {
         factory = new WebSocketClientFactory();
         factory.setBufferSize(4096);
         try {
@@ -100,13 +105,19 @@ public final class WSCommandReceiverClient extends Observable {
         }
     }
 
+    /**
+     * Set the testbed Id.
+     *
+     * @param testbedId the id.
+     */
     public void setTestbedId(int testbedId) {
-        WSCommandReceiverClient.testbedId = testbedId;
+        WSCommandClient.testbedId = testbedId;
     }
 
     /**
      * Connects to the WebSocket.
-     * @throws Exception
+     *
+     * @throws Exception the Exception
      */
     public void connect() throws Exception {
         if (webSocketUrl != null) {
@@ -156,43 +167,6 @@ public final class WSCommandReceiverClient extends Observable {
     }
 
     /**
-     * Send Node Reading.
-     *
-     * @param nodeReading a NodeReading instance.
-     * @throws java.io.IOException an IOException exception.
-     */
-    public void sendNodeReading(final NodeReading nodeReading) throws IOException {
-        sendMessage(nodeReading.toDelimitedString());
-    }
-
-    /**
-     * Send Link Reading.
-     *
-     * @param linkReading a NodeReading instance.
-     * @throws java.io.IOException an IOException exception.
-     */
-    public void sendLinkReading(final LinkReading linkReading) throws IOException {
-        sendMessage(linkReading.toDelimitedString());
-    }
-
-    /**
-     * Send message over the WebSocket as binary data.
-     *
-     * @param message a string message.
-     * @throws java.io.IOException an IOException.
-     */
-    private void sendMessage(final String message) throws IOException {
-
-        // if connection is not opened do nothing
-        if (!connection.isOpen()) {
-            return;
-        }
-
-        byte[] bytes = message.getBytes();
-        connection.sendMessage(bytes, 0, bytes.length);
-    }
-
-    /**
      * Start pinging task.
      */
     private void startPingingTask() {
@@ -211,7 +185,6 @@ public final class WSCommandReceiverClient extends Observable {
      * Send PING message as string data to keep connection alive.
      */
     public void ping() {
-
         // if connection is not opened do nothing
         if (!connection.isOpen()) {
             return;
@@ -242,17 +215,34 @@ public final class WSCommandReceiverClient extends Observable {
     /**
      * Checks the Rest Interface to see if connection is available.
      */
-    public void restPing() {
+    protected void restPing() {
         UberdustRestClient.getInstance().callRestfulWebService(webSocketUrl.replace(WS_PREFIX, HTTP_PREFIX));
     }
 
-    protected void update(final String data) {
-        this.setChanged();
-        this.notifyObservers(data);
+    /**
+     * If this object has changed, as indicated by the
+     * <code>hasChanged</code> method, then notify all of its observers
+     * and then call the <code>clearChanged</code> method to indicate
+     * that this object has no longer changed.
+     * <p/>
+     * Each observer has its <code>update</code> method called with two
+     * arguments: this observable object and the <code>arg</code> argument.
+     *
+     * @param data a protocol buffer byte array.
+     * @see java.util.Observable#clearChanged()
+     * @see java.util.Observable#hasChanged()
+     * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
+     */
+    protected void notifyObservers(final byte[] data) {
+        try {
+            final Message.Envelope envelope = Message.Envelope.parseFrom(data);
+            if (envelope.getType().equals(Message.Envelope.Type.CONTROL)) {
+                this.setChanged();
+                this.notifyObservers(envelope.getControl());
+            }
+        } catch (final InvalidProtocolBufferException e) {
+            LOGGER.error("Invalid Protocol Buffer Message", e);
+        }
     }
 
-    protected void update(final byte[] data, final int offset, final int length) {
-        this.setChanged();
-        this.notifyObservers(data);
-    }
 }
