@@ -1,8 +1,8 @@
 package eu.uberdust.communication.websocket.readings;
 
+import com.google.protobuf.InvalidProtocolBufferException;
 import eu.uberdust.communication.protobuf.Message;
 import eu.uberdust.communication.rest.UberdustRestClient;
-import eu.uberdust.communication.websocket.listener.WebSocketIMPL;
 import eu.uberdust.communication.websocket.readings.util.PingTask;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -51,6 +51,11 @@ public class WSReadingsClient extends Observable {
     private static final String INSERT_PROTOCOL = "INSERTREADING";
 
     /**
+     * Listener Protocol delimiter.
+     */
+    private static final String PROTOCOL_DELIMITER = "@";
+
+    /**
      * Static WebSocket URI.
      */
     private URI WS_URI;
@@ -65,6 +70,9 @@ public class WSReadingsClient extends Observable {
      */
     private HashMap<String, WebSocket.Connection> protocols;
 
+    /**
+     * The WebSocket implementation.
+     */
     private final WebSocketIMPL webSocketIMPL = new WebSocketIMPL();
 
     /**
@@ -98,7 +106,7 @@ public class WSReadingsClient extends Observable {
     }
 
     /**
-     * Initialize Ping Task to keep alive websocket connections.
+     * Initialize Ping Task to keep alive web socket connections.
      */
     private void startPingTask() {
         final Timer timer = new Timer();
@@ -106,13 +114,21 @@ public class WSReadingsClient extends Observable {
     }
 
 
+    /**
+     * Set Web Socket Server url.
+     *
+     * @param serverUrl the servers url.
+     */
     public void setServerUrl(final String serverUrl) {
         webSocketUrl = serverUrl;
         createWebSocketFactory();
 
     }
 
-    private void createWebSocketFactory() {
+    /**
+     * Initiates the Web Socket Factory.
+     */
+    protected void createWebSocketFactory() {
         try {
             WS_URI = new URI(webSocketUrl);
             factory = new WebSocketClientFactory();
@@ -123,6 +139,11 @@ public class WSReadingsClient extends Observable {
         }
     }
 
+    /**
+     * Creates a new Web Socket Connection using the specified protocol.
+     *
+     * @param protocol the protocol.
+     */
     private void createNewConnection(final String protocol) {
         WebSocket.Connection connection = null;
         try {
@@ -149,6 +170,9 @@ public class WSReadingsClient extends Observable {
         }
     }
 
+    /**
+     * Ping function to keep alive active connections.
+     */
     public void ping() {
         for (WebSocket.Connection connection : protocols.values()) {
             if (connection.isOpen()) {
@@ -161,6 +185,9 @@ public class WSReadingsClient extends Observable {
         }
     }
 
+    /**
+     * This function is called to destroy web socket factory and to close open connections.
+     */
     public void disconnect() {
 
         if (factory.isRunning()) {
@@ -174,18 +201,44 @@ public class WSReadingsClient extends Observable {
         try {
             factory.stop();
         } catch (final Exception e) {
-            LOGGER.error("Unable to stop WebSockset Factory ", e);
+            LOGGER.error("Unable to stop WebSocket Factory ", e);
         }
     }
 
-
+    /**
+     * Pings Rest interface.
+     */
     protected void restPing() {
         UberdustRestClient.getInstance().callRestfulWebService(webSocketUrl.replace(WS_PREFIX, HTTP_PREFIX));
     }
 
-    protected void update(String data) {
-        this.setChanged();
-        this.notifyObservers(data);
+    /**
+     * If this object has changed, as indicated by the
+     * <code>hasChanged</code> method, then notify all of its observers
+     * and then call the <code>clearChanged</code> method to indicate
+     * that this object has no longer changed.
+     * <p/>
+     * Each observer has its <code>update</code> method called with two
+     * arguments: this observable object and the <code>arg</code> argument.
+     *
+     * @param data a protocol buffer byte array.
+     * @see java.util.Observable#clearChanged()
+     * @see java.util.Observable#hasChanged()
+     * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
+     */
+    protected void notifyObservers(final byte[] data) {
+        try {
+            final Message.Envelope envelope = Message.Envelope.parseFrom(data);
+            if (envelope.getType().equals(Message.Envelope.Type.LINK_READINGS)) {
+                this.setChanged();
+                this.notifyObservers(envelope.getLinkReadings());
+            } else if (envelope.getType().equals(Message.Envelope.Type.NODE_READINGS)) {
+                this.setChanged();
+                this.notifyObservers(envelope.getNodeReadings());
+            }
+        } catch (final InvalidProtocolBufferException e) {
+            LOGGER.error("Invalid Protocol Buffer Message", e);
+        }
     }
 
 
@@ -221,7 +274,7 @@ public class WSReadingsClient extends Observable {
      * @param envelope a @Message.Envelope instance
      * @throws java.io.IOException an IOException exception.
      */
-    private void sendEnvelope(final Message.Envelope envelope) throws IOException{
+    private void sendEnvelope(final Message.Envelope envelope) throws IOException {
         if (!protocols.containsKey(INSERT_PROTOCOL)) {
             createNewConnection(INSERT_PROTOCOL);
         }
@@ -230,6 +283,24 @@ public class WSReadingsClient extends Observable {
 
         protocols.get(INSERT_PROTOCOL).sendMessage(byteArray, 0, byteArray.length);
 
+    }
+
+    /**
+     * Subscribes a client for notification of the specific node and capability,
+     *
+     * @param nodeId       the node id.
+     * @param capabilityId the capability id.
+     */
+    public void subscribe(final String nodeId, final String capabilityId) {
+
+        final String protocol = new StringBuilder()
+                .append(nodeId)
+                .append(PROTOCOL_DELIMITER)
+                .append(capabilityId).toString();
+
+        if(!protocols.containsKey(protocol)){
+            createNewConnection(protocol);
+        }
     }
 }
 

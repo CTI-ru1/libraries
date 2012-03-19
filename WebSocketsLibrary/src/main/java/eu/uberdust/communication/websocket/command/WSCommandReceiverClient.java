@@ -1,7 +1,7 @@
 package eu.uberdust.communication.websocket.command;
 
 import eu.uberdust.communication.rest.UberdustRestClient;
-import eu.uberdust.communication.websocket.task.CommandPingTask;
+import eu.uberdust.communication.websocket.command.util.CommandPingTask;
 import eu.uberdust.reading.LinkReading;
 import eu.uberdust.reading.NodeReading;
 import org.apache.log4j.Logger;
@@ -100,12 +100,13 @@ public final class WSCommandReceiverClient extends Observable {
         }
     }
 
-    public static void setTestbedId(int testbedId) {
+    public void setTestbedId(int testbedId) {
         WSCommandReceiverClient.testbedId = testbedId;
     }
 
     /**
      * Connects to the WebSocket.
+     * @throws Exception
      */
     public void connect() throws Exception {
         if (webSocketUrl != null) {

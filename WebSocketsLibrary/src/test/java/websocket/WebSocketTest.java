@@ -1,12 +1,12 @@
 package websocket;
 
 import eu.uberdust.communication.protobuf.Message;
-import eu.uberdust.communication.websocket.insert.InsertReadingWebSocketClient;
+
 import eu.uberdust.communication.websocket.readings.WSReadingsClient;
 
 import java.io.IOException;
 import java.util.Date;
-import java.util.logging.Logger;
+
 
 /**
  * Created by IntelliJ IDEA.
@@ -32,13 +32,12 @@ public class WebSocketTest {
                 .setNode("urn:test:0x1")
                 .setCapability("temp2")
                 .setTimestamp(new Date().getTime())
-                .setDoubleReading(100)
+                .setDoubleReading(98)
                 .build();
 
 
         Message.NodeReadings readings = Message.NodeReadings.newBuilder()
             //    .addReading(reading1)
-                .addReading(reading2)
                 .addReading(reading2)
                 .build();
 
@@ -46,8 +45,8 @@ public class WebSocketTest {
          * WebSocket Call
          */
 
-        final String webSocketUrl = "ws://127.0.0.1:8080/uberdust/insertreading.ws";
-
+        final String webSocketUrl = "ws://carrot.cti.gr:8080/uberdust/insertreading.ws";
+        //final String webSocketUrl = "ws://localhost:8080/uberdust/insertreading.ws";
         // insert node reading using WebSockets
 
 

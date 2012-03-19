@@ -2,7 +2,7 @@ package eu.uberdust.network;
 
 import eu.uberdust.communication.protobuf.Message;
 import eu.uberdust.communication.websocket.command.WSCommandReceiverClient;
-import eu.uberdust.communication.websocket.insert.InsertReadingWebSocketClient;
+import eu.uberdust.communication.websocket.readings.WSReadingsClient;
 import org.apache.log4j.PropertyConfigurator;
 
 import java.io.IOException;
@@ -42,7 +42,7 @@ public class NetworkManager extends Observable implements Observer {
 
 
         try {
-            InsertReadingWebSocketClient.getInstance().connect("ws://" + server + "/insertreading.ws");
+            WSReadingsClient.getInstance().setServerUrl("ws://" + server + "/insertreading.ws");
             LOGGER.info("connected");
 
         } catch (Exception e) {
@@ -53,11 +53,11 @@ public class NetworkManager extends Observable implements Observer {
     }
 
     public void sendNodeReading(final Message.NodeReadings nodeReadings) throws IOException {
-        InsertReadingWebSocketClient.getInstance().sendNodeReading(nodeReadings);
+        WSReadingsClient.getInstance().sendNodeReading(nodeReadings);
     }
 
     public void sendLinkReading(final Message.LinkReadings linkReadings) throws IOException {
-        InsertReadingWebSocketClient.getInstance().sendLinkReading(linkReadings);
+        WSReadingsClient.getInstance().sendLinkReading(linkReadings);
     }
 
     public synchronized static NetworkManager getInstance() {

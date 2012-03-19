@@ -1,4 +1,4 @@
-package eu.uberdust.communication.websocket.task;
+package eu.uberdust.communication.websocket.command.util;
 
 import eu.uberdust.communication.websocket.command.WSCommandReceiverClient;
 

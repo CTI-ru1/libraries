@@ -1,7 +1,6 @@
 package websocket;
 
 import eu.uberdust.communication.rest.UberdustRestClient;
-import eu.uberdust.communication.websocket.insert.InsertReadingWebSocketClient;
 import eu.uberdust.reading.LinkReading;
 import eu.uberdust.reading.NodeReading;
 import org.apache.log4j.Logger;
@@ -95,12 +94,12 @@ public final class InsertReadingMainApp {
 
         // insert node reading using WebSockets
         LOGGER.info("Calling WebSocket at (" + webSocketUrl + ") connecting");
-        InsertReadingWebSocketClient.getInstance().connect(webSocketUrl);
+      //  InsertReadingWebSocketClient.getInstance().connect(webSocketUrl);
         LOGGER.info("Calling sendNodeReading(nodeReading1) (" + nodeReading1.toDelimitedString() + ")");
 //        InsertReadingWebSocketClient.getInstance().sendNodeReading(nodeReading1);
         LOGGER.info("Calling sendNodeReading(nodeReading2) (" + nodeReading2.toDelimitedString() + ")");
 //        InsertReadingWebSocketClient.getInstance().sendNodeReading(nodeReading2);
-        InsertReadingWebSocketClient.getInstance().disconnect();
+        //InsertReadingWebSocketClient.getInstance().disconnect();
         LOGGER.info("Disconnect");
 
         /**
@@ -129,10 +128,10 @@ public final class InsertReadingMainApp {
 
         // insert node reading using WebSockets
         LOGGER.info("Calling WebSocket at (" + webSocketUrl + ") connecting");
-        InsertReadingWebSocketClient.getInstance().connect(webSocketUrl);
+        //InsertReadingWebSocketClient.getInstance().connect(webSocketUrl);
         LOGGER.info("Calling sendNodeReading(linkReading1)");
 //        InsertReadingWebSocketClient.getInstance().sendLinkReading(linkReading1);
-        InsertReadingWebSocketClient.getInstance().disconnect();
+        //InsertReadingWebSocketClient.getInstance().disconnect();
         LOGGER.info("Disconnect");
     }
 }
