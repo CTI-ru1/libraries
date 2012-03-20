@@ -1,5 +1,7 @@
 package eu.uberdust.network;
 
+import eu.uberdust.communication.protobuf.Message;
+
 import java.util.Observable;
 import java.util.Observer;
 
@@ -15,5 +17,15 @@ public class ExampleNetworkCommandListener implements Observer {
     @Override
     public void update(Observable observable, Object o) {
         LOGGER.info("Got a command :" + o.toString());
+        if (o instanceof Message.Control) {
+
+            final Message.Control command = (Message.Control) o;
+
+            if (command.hasPayload()) {
+                LOGGER.info("sending to " + command.getDestination());
+                LOGGER.info("sending bytes " + command.getPayload());
+
+            }
+        }
     }
 }

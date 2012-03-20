@@ -42,7 +42,7 @@ public class NetworkManager extends Observable implements Observer {
 
 
         try {
-            WSReadingsClient.getInstance().setServerUrl("ws://" + server + "/insertreading.ws");
+            WSReadingsClient.getInstance().setServerUrl("ws://" + server + "/readings.ws");
             LOGGER.info("connected");
 
         } catch (Exception e) {

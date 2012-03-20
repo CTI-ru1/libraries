@@ -3,6 +3,7 @@ package eu.uberdust.communication.websocket.command;
 import com.google.protobuf.InvalidProtocolBufferException;
 import eu.uberdust.communication.protobuf.Message;
 import eu.uberdust.communication.rest.UberdustRestClient;
+import eu.uberdust.communication.websocket.WSIdentifiers;
 import eu.uberdust.communication.websocket.command.util.CommandPingTask;
 import org.apache.log4j.Logger;
 import org.eclipse.jetty.websocket.WebSocket;
@@ -33,21 +34,6 @@ public final class WSCommandClient extends Observable {
      * The testbed id to connect to.
      */
     private static int testbedId = 1;
-
-    /**
-     * Web Socket Protocol.
-     */
-    private static final String PROTOCOL = "TESTBEDCONTROLLER@";
-
-    /**
-     * Websocket url prefix.
-     */
-    private static final String WS_PREFIX = "ws://";
-
-    /**
-     * Http url prefix.
-     */
-    private static final String HTTP_PREFIX = "http://";
 
     /**
      * Timer.
@@ -99,7 +85,7 @@ public final class WSCommandClient extends Observable {
             factory.start();
             client = factory.newWebSocketClient();
             client.setMaxIdleTime(-1);
-            client.setProtocol(PROTOCOL + testbedId);
+            client.setProtocol(WSIdentifiers.COMMAND_PROTOCOL + WSIdentifiers.DELIMITER + testbedId);
         } catch (Exception e) {
             LOGGER.error(e);
         }
@@ -138,7 +124,7 @@ public final class WSCommandClient extends Observable {
             factory.start();
             client = factory.newWebSocketClient();
             client.setMaxIdleTime(-1);
-            client.setProtocol(PROTOCOL + testbedId);
+            client.setProtocol(WSIdentifiers.COMMAND_PROTOCOL + WSIdentifiers.DELIMITER + testbedId);
 
 
             LOGGER.info("Connecting to " + webSocketUrl);
@@ -216,7 +202,8 @@ public final class WSCommandClient extends Observable {
      * Checks the Rest Interface to see if connection is available.
      */
     protected void restPing() {
-        UberdustRestClient.getInstance().callRestfulWebService(webSocketUrl.replace(WS_PREFIX, HTTP_PREFIX));
+        UberdustRestClient.getInstance().callRestfulWebService(webSocketUrl.replace(WSIdentifiers.WS_PREFIX,
+                WSIdentifiers.HTTP_PREFIX));
     }
 
     /**

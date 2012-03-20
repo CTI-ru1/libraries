@@ -3,6 +3,7 @@ package eu.uberdust.communication.websocket.readings;
 import com.google.protobuf.InvalidProtocolBufferException;
 import eu.uberdust.communication.protobuf.Message;
 import eu.uberdust.communication.rest.UberdustRestClient;
+import eu.uberdust.communication.websocket.WSIdentifiers;
 import eu.uberdust.communication.websocket.readings.util.PingTask;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -34,26 +35,6 @@ public class WSReadingsClient extends Observable {
      * static instance(ourInstance) initialized as null.
      */
     private static WSReadingsClient ourInstance = null;
-
-    /**
-     * Websocket url prefix.
-     */
-    private static final String WS_PREFIX = "ws://";
-
-    /**
-     * Http url prefix.
-     */
-    private static final String HTTP_PREFIX = "http://";
-
-    /**
-     * Insert protocol.
-     */
-    private static final String INSERT_PROTOCOL = "INSERTREADING";
-
-    /**
-     * Listener Protocol delimiter.
-     */
-    private static final String PROTOCOL_DELIMITER = "@";
 
     /**
      * Static WebSocket URI.
@@ -209,7 +190,8 @@ public class WSReadingsClient extends Observable {
      * Pings Rest interface.
      */
     protected void restPing() {
-        UberdustRestClient.getInstance().callRestfulWebService(webSocketUrl.replace(WS_PREFIX, HTTP_PREFIX));
+        UberdustRestClient.getInstance().callRestfulWebService(webSocketUrl.replace(WSIdentifiers.WS_PREFIX,
+                WSIdentifiers.HTTP_PREFIX));
     }
 
     /**
@@ -275,13 +257,13 @@ public class WSReadingsClient extends Observable {
      * @throws java.io.IOException an IOException exception.
      */
     private void sendEnvelope(final Message.Envelope envelope) throws IOException {
-        if (!protocols.containsKey(INSERT_PROTOCOL)) {
-            createNewConnection(INSERT_PROTOCOL);
+        if (!protocols.containsKey(WSIdentifiers.INSERT_PROTOCOL)) {
+            createNewConnection(WSIdentifiers.INSERT_PROTOCOL);
         }
 
         final byte[] byteArray = envelope.toByteArray();
 
-        protocols.get(INSERT_PROTOCOL).sendMessage(byteArray, 0, byteArray.length);
+        protocols.get(WSIdentifiers.INSERT_PROTOCOL).sendMessage(byteArray, 0, byteArray.length);
 
     }
 
@@ -294,11 +276,14 @@ public class WSReadingsClient extends Observable {
     public void subscribe(final String nodeId, final String capabilityId) {
 
         final String protocol = new StringBuilder()
+                .append(WSIdentifiers.SUBSCRIBE_PROTOCOL_PREFIX)
+                .append(WSIdentifiers.DELIMITER)
                 .append(nodeId)
-                .append(PROTOCOL_DELIMITER)
-                .append(capabilityId).toString();
+                .append(WSIdentifiers.DELIMITER)
+                .append(capabilityId)
+                .toString();
 
-        if(!protocols.containsKey(protocol)){
+        if (!protocols.containsKey(protocol)) {
             createNewConnection(protocol);
         }
     }
