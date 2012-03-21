@@ -29,7 +29,9 @@ public class WebSocketIMPL implements WebSocket.OnBinaryMessage {
     @Override
     public void onMessage(byte[] data, int offset, int length) {
         LOGGER.info("onMessage");
-        WSReadingsClient.getInstance().notifyObservers(data);
+        final byte[] message = new byte[length];
+        System.arraycopy(data, offset, message, 0, length);
+        WSReadingsClient.getInstance().notifyObservers(message);
     }
 
     /**

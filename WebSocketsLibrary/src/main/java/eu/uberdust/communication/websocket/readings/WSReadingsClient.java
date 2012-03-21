@@ -130,8 +130,9 @@ public class WSReadingsClient extends Observable {
         try {
             final WebSocketClient client = factory.newWebSocketClient();
             client.setMaxIdleTime(-1);
+            client.setMaxBinaryMessageSize(1024);
             client.setProtocol(protocol);
-            connection = client.open(WS_URI, webSocketIMPL).get();
+            connection = client.open(WS_URI, new WebSocketIMPL()).get();
             LOGGER.info("New Web Socket Connection. Protocol: " + client.getProtocol());
         } catch (final Exception e) {
             LOGGER.error("Unable to Create new WebSocket connection", e);
@@ -209,8 +210,9 @@ public class WSReadingsClient extends Observable {
      * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
      */
     protected void notifyObservers(final byte[] data) {
+        System.out.println(data.length);
         try {
-            final Message.Envelope envelope = Message.Envelope.parseFrom(data);
+            final Message.Envelope envelope = Message.Envelope.newBuilder().mergeFrom(data).build();
             if (envelope.getType().equals(Message.Envelope.Type.LINK_READINGS)) {
                 this.setChanged();
                 this.notifyObservers(envelope.getLinkReadings());

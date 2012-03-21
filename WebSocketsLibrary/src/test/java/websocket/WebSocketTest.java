@@ -6,6 +6,8 @@ import eu.uberdust.communication.websocket.readings.WSReadingsClient;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.Observable;
+import java.util.Observer;
 
 
 /**
@@ -44,13 +46,27 @@ public class WebSocketTest {
         /**
          * WebSocket Call
          */
+        //final String webSocketUrl = "ws://carrot.cti.gr:8080/uberdust/readings.ws";
+        final String webSocketUrl = "ws://localhost:8080/uberdust/readings.ws";
+        WSReadingsClient.getInstance().setServerUrl(webSocketUrl);
 
-        final String webSocketUrl = "ws://carrot.cti.gr:8080/uberdust/insertreading.ws";
-        //final String webSocketUrl = "ws://localhost:8080/uberdust/insertreading.ws";
+
         // insert node reading using WebSockets
 
+        WSReadingsClient.getInstance().subscribe("urn:test:0x1", "temp2");
+        WSReadingsClient.getInstance().addObserver(new Observer() {
+            @Override
+            public void update(Observable o, Object arg) {
+                System.out.println((Message.NodeReadings)arg);
+            }
+        });
+           try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
 
-        WSReadingsClient.getInstance().setServerUrl(webSocketUrl);
+
         try {
             System.out.println("before");
             WSReadingsClient.getInstance().sendNodeReading(readings);
