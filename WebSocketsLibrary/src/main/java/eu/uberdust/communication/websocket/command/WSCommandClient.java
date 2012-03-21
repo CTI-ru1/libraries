@@ -124,6 +124,7 @@ public final class WSCommandClient extends Observable {
             factory.start();
             client = factory.newWebSocketClient();
             client.setMaxIdleTime(-1);
+            client.setMaxBinaryMessageSize(1024);
             client.setProtocol(WSIdentifiers.COMMAND_PROTOCOL + WSIdentifiers.DELIMITER + testbedId);
 
 
@@ -224,6 +225,7 @@ public final class WSCommandClient extends Observable {
         try {
             final Message.Envelope envelope = Message.Envelope.parseFrom(data);
             if (envelope.getType().equals(Message.Envelope.Type.CONTROL)) {
+                LOGGER.info(envelope);
                 this.setChanged();
                 this.notifyObservers(envelope.getControl());
             }

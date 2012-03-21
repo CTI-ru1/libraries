@@ -7,7 +7,7 @@ public class NetworkManagerTest {
 
     public static void main(String[] args) {
 
-        NetworkManager.getInstance().start("uberdust.cti.gr:80", 1);
+        NetworkManager.getInstance().start("localhost:8080/uberdust", 1);
 
     }
 }

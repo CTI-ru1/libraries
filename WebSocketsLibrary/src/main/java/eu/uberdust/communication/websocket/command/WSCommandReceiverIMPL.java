@@ -26,10 +26,12 @@ public final class WSCommandReceiverIMPL implements WebSocket.OnBinaryMessage, W
      */
     @Override
     public void onMessage(final byte[] data, final int offset, final int length) {
-        LOGGER.info("Binary message arrived : data (" + Arrays.toString(data) + ")");
+        final byte[] message = new byte[length];
+        System.arraycopy(data,offset,message,0,length);
+        LOGGER.info("Binary message arrived : data (" + Arrays.toString(message) + ")");
         LOGGER.info("Binary message arrived : data.offset (" + offset + ")");
         LOGGER.info("Binary message arrived : data.length (" + length + ")");
-        WSCommandClient.getInstance().notifyObservers(data);
+        WSCommandClient.getInstance().notifyObservers(message);
     }
 
     /**
