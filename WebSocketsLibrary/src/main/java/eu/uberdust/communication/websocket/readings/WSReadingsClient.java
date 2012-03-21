@@ -132,7 +132,7 @@ public class WSReadingsClient extends Observable {
             client.setMaxIdleTime(-1);
             client.setMaxBinaryMessageSize(1024);
             client.setProtocol(protocol);
-            connection = client.open(WS_URI, new WebSocketIMPL()).get();
+            connection = client.open(WS_URI, webSocketIMPL).get();
             LOGGER.info("New Web Socket Connection. Protocol: " + client.getProtocol());
         } catch (final Exception e) {
             LOGGER.error("Unable to Create new WebSocket connection", e);
