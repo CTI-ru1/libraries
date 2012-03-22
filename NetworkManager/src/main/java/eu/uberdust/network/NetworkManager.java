@@ -69,8 +69,9 @@ public class NetworkManager extends Observable implements Observer {
 
 
     public static void main(final String[] args) {
-        NetworkManager.getInstance().start("192.168.1.10:8081", 2);
-        NetworkManager.getInstance().addObserver(new ExampleNetworkCommandListener());
+        NetworkManager.getInstance().start("carrot.cti.gr:8080/uberdust", 2);
+        Thread nm = new Thread(new RandomNetworkValueGenerator());
+        nm.start();
     }
 
     @Override
