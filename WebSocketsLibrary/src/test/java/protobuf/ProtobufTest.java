@@ -15,7 +15,7 @@ public class ProtobufTest {
 
 
     public static void main(String[] args) {
-
+/*
         //Usage Example of a Protobuf Control Message
         Message.Control controlMessage = Message.Control.newBuilder()
                 .setDestination("destination")
@@ -85,6 +85,6 @@ public class ProtobufTest {
                 .setControl(controlMessage)
                 .build();
 
-    }
+ */   }
 
 }
