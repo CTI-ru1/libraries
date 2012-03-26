@@ -3,11 +3,12 @@ package eu.uberdust.network;
 import eu.uberdust.communication.protobuf.Message;
 import eu.uberdust.communication.websocket.command.WSCommandClient;
 import eu.uberdust.communication.websocket.readings.WSReadingsClient;
+import eu.uberdust.devicedriver.CeilingLightDriver;
+import eu.uberdust.devicedriver.PayloadDriver;
 import org.apache.log4j.PropertyConfigurator;
 
 import java.io.IOException;
 import java.util.Observable;
-import java.util.Observer;
 
 /**
  * Created by IntelliJ IDEA.
@@ -15,7 +16,7 @@ import java.util.Observer;
  * Date: 3/6/12
  * Time: 10:14 AM
  */
-public class NetworkManager extends Observable implements Observer {
+public class NetworkManager extends Observable {
 
 
     private static final org.apache.log4j.Logger LOGGER = org.apache.log4j.Logger.getLogger(NetworkManager.class);
@@ -32,7 +33,8 @@ public class NetworkManager extends Observable implements Observer {
 
         try {
             WSCommandClient.getInstance().connect("ws://" + server + "/testbedcontroller.ws");
-            WSCommandClient.getInstance().addObserver(this);
+            WSCommandClient.getInstance().addObserver(new CeilingLightDriver());
+            WSCommandClient.getInstance().addObserver(new PayloadDriver());
             LOGGER.info("connected");
         } catch (Exception e) {
             LOGGER.fatal(e);
@@ -69,16 +71,19 @@ public class NetworkManager extends Observable implements Observer {
 
 
     public static void main(final String[] args) {
-        NetworkManager.getInstance().start("carrot.cti.gr:8080/uberdust", 2);
-        Thread nm = new Thread(new RandomNetworkValueGenerator());
-        nm.start();
+        NetworkManager.getInstance().addObserver(new ExampleNetworkCommandListener());
+        NetworkManager.getInstance().start("192.168.1.10:8081", 3);
+//        NetworkManager.getInstance().start("192.168.1.10:8081", 2);
+//        Thread nm = new Thread(new ExampleNetworkCommandListener());
+//        nm.start();
     }
 
-    @Override
-    public void update(final Observable observable, final Object o) {
+
+    public void update(final Object o) {
         LOGGER.info("calling notifyObservers");
         this.setChanged();
         this.notifyObservers(o);
         this.setChanged();
     }
 }
+
