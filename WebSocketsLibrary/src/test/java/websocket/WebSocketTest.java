@@ -20,14 +20,17 @@ import java.util.Observer;
 public class WebSocketTest {
 
     public static void main(String[] args) {
+/*
         // sample node reading
 
-    /*    Message.NodeReadings.Reading reading1 = Message.NodeReadings.Reading.newBuilder()
+    */
+/*    Message.NodeReadings.Reading reading1 = Message.NodeReadings.Reading.newBuilder()
                 .setNode("urn:ctinetwork:carrot_delete_moi")
                 .setCapability("urn:ctinetwork:node:capability:lockScreen")
                 .setTimestamp(new Date().getTime())
                 .setDoubleReading(1)
-                .build();*/
+                .build();*//*
+
 
 
         Message.NodeReadings.Reading reading2 = Message.NodeReadings.Reading.newBuilder()
@@ -43,9 +46,11 @@ public class WebSocketTest {
                 .addReading(reading2)
                 .build();
 
-        /**
+        */
+/**
          * WebSocket Call
-         */
+         *//*
+
         //final String webSocketUrl = "ws://carrot.cti.gr:8080/uberdust/readings.ws";
         final String webSocketUrl = "ws://localhost:8080/uberdust/readings.ws";
         WSReadingsClient.getInstance().setServerUrl(webSocketUrl);
@@ -79,6 +84,7 @@ public class WebSocketTest {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
 
+*/
 /*
             int counter = 0;
             while (true) {
@@ -87,8 +93,10 @@ public class WebSocketTest {
                 InsertReadingWebSocketClient.getInstance().sendNodeReading(readings);
 
                 Thread.sleep(5);
-                counter++;*/
+                counter++;*//*
 
+
+*/
 
     }
 }
