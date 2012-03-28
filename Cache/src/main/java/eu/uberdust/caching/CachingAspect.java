@@ -85,7 +85,8 @@ public class CachingAspect {
             return thisJoinPoint.proceed();
         } else {
             final String roles = thisCachename.cacheName();
-            LOGGER.info("Cache Name:" + roles);
+            CacheManager.getInstance().getCache(roles).removeAll();
+            LOGGER.info("Evicting cache: " + roles);
 
             return thisJoinPoint.proceed();
         }

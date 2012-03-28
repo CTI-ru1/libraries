@@ -16,7 +16,7 @@ public class CeilingLightDriver extends DeviceDriver {
     private static final org.apache.log4j.Logger LOGGER = org.apache.log4j.Logger.getLogger(CeilingLightDriver.class);
 
     static final String OBSERVED = "light";
-    static final String COMMAND_PREFIX = "7f,69,6e,1,";
+    static final String COMMAND_PREFIX = "7f,69,70,1,";
 
     @Override
     public void update(final Observable observable, final Object o) {

@@ -289,5 +289,7 @@ public class WSReadingsClient extends Observable {
             createNewConnection(protocol);
         }
     }
+
+
 }
 
