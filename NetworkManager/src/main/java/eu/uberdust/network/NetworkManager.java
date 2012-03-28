@@ -71,8 +71,8 @@ public class NetworkManager extends Observable {
 
 
     public static void main(final String[] args) {
-        NetworkManager.getInstance().addObserver(new ExampleNetworkCommandListener());
-        NetworkManager.getInstance().start("192.168.1.10:8081", 3);
+        NetworkManager.getInstance().addObserver(new GrowlNetworkCommandListener());
+        NetworkManager.getInstance().start("carrot.cti.gr:8080/uberdust/", 2);
 //        NetworkManager.getInstance().start("192.168.1.10:8081", 2);
 //        Thread nm = new Thread(new ExampleNetworkCommandListener());
 //        nm.start();
