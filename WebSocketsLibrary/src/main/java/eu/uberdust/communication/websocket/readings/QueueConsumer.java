@@ -30,7 +30,7 @@ public class QueueConsumer extends Thread {
     /**
      * Default Constructor,
      *
-     * @param thisQueue the Queue
+     * @param thisQueue the Queue.
      */
     public QueueConsumer(final LinkedBlockingQueue<Message.Envelope> thisQueue) {
         super();
