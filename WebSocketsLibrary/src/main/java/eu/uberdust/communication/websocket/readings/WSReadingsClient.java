@@ -13,9 +13,8 @@ import org.eclipse.jetty.websocket.WebSocketClientFactory;
 
 import java.io.IOException;
 import java.net.URI;
-import java.util.HashMap;
-import java.util.Observable;
-import java.util.Timer;
+import java.util.*;
+import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * Created by IntelliJ IDEA.
@@ -49,7 +48,12 @@ public class WSReadingsClient extends Observable {
     /**
      * The HashMap which contains all the connections.
      */
-    private HashMap<String, WebSocket.Connection> protocols;
+    private HashMap<String, WebSocket.Connection> connections;
+
+    /**
+     * All registered protocols.
+     */
+    private final List<String> registeredProtocols;
 
     /**
      * The WebSocket implementation.
@@ -60,6 +64,11 @@ public class WSReadingsClient extends Observable {
      * Server's Web Socket URL.
      */
     private String webSocketUrl;
+
+    /**
+     * The Blocking queue.
+     */
+    private final LinkedBlockingQueue<Message.Envelope> queue;
 
     /**
      * WSocketClient is loaded on the first execution of WSocketClient.getInstance()
@@ -81,7 +90,10 @@ public class WSReadingsClient extends Observable {
      */
     private WSReadingsClient() {
         PropertyConfigurator.configure(this.getClass().getClassLoader().getResource("log4j.properties"));
-        protocols = new HashMap<String, WebSocket.Connection>();
+        connections = new HashMap<String, WebSocket.Connection>();
+        registeredProtocols = new ArrayList<String>();
+        queue = new LinkedBlockingQueue<Message.Envelope>();
+        (new QueueConsumer(queue)).start();
         startPingTask();
         LOGGER.info("WSocketClient initialized");
     }
@@ -118,6 +130,9 @@ public class WSReadingsClient extends Observable {
         } catch (final Exception e) {
             LOGGER.error("Unable to create WebSocket Factory ", e);
         }
+        for (final String registeredProtocol : registeredProtocols) {
+            createNewConnection(registeredProtocol);
+        }
     }
 
     /**
@@ -128,6 +143,9 @@ public class WSReadingsClient extends Observable {
     private void createNewConnection(final String protocol) {
         WebSocket.Connection connection = null;
         try {
+            if (factory.isStopping() || factory.isStopped()) {
+                throw new RuntimeException("Factory is destroyed");
+            }
             final WebSocketClient client = factory.newWebSocketClient();
             client.setMaxIdleTime(-1);
             client.setMaxBinaryMessageSize(1024);
@@ -135,7 +153,7 @@ public class WSReadingsClient extends Observable {
             connection = client.open(WS_URI, webSocketIMPL).get();
             LOGGER.info("New Web Socket Connection. Protocol: " + client.getProtocol());
         } catch (final Exception e) {
-            LOGGER.error("Unable to Create new WebSocket connection", e);
+            LOGGER.error("Unable to Create new WebSocket connection");
             if (e.getMessage().contains("ProtocolException")) {
                 LOGGER.fatal("Wrong Protocol Definition: " + protocol);
                 throw new RuntimeException("Wrong Protocol Definition: " + protocol);
@@ -148,7 +166,10 @@ public class WSReadingsClient extends Observable {
             createNewConnection(protocol);
         }
         if (connection != null) {
-            protocols.put(protocol, connection);
+            connections.put(protocol, connection);
+
+            //Add protocol to registered protocols List.
+            registeredProtocols.add(protocol);
         }
     }
 
@@ -156,7 +177,7 @@ public class WSReadingsClient extends Observable {
      * Ping function to keep alive active connections.
      */
     public void ping() {
-        for (WebSocket.Connection connection : protocols.values()) {
+        for (WebSocket.Connection connection : connections.values()) {
             if (connection.isOpen()) {
                 try {
                     connection.sendMessage("ping");
@@ -176,9 +197,12 @@ public class WSReadingsClient extends Observable {
             factory.destroy();
         }
 
-        for (WebSocket.Connection connection : protocols.values()) {
+        for (WebSocket.Connection connection : connections.values()) {
             connection.disconnect();
         }
+
+        //Clear all connections.
+        connections.clear();
 
         try {
             factory.stop();
@@ -225,7 +249,6 @@ public class WSReadingsClient extends Observable {
         }
     }
 
-
     /**
      * Send Node Reading.
      *
@@ -236,7 +259,7 @@ public class WSReadingsClient extends Observable {
         final Message.Envelope envelope = Message.Envelope.newBuilder()
                 .setType(Message.Envelope.Type.NODE_READINGS)
                 .setNodeReadings(nodeReadings).build();
-        sendEnvelope(envelope);
+        queue.offer(envelope);
     }
 
     /**
@@ -249,7 +272,7 @@ public class WSReadingsClient extends Observable {
         final Message.Envelope envelope = Message.Envelope.newBuilder()
                 .setType(Message.Envelope.Type.LINK_READINGS)
                 .setLinkReadings(linkReadings).build();
-        sendEnvelope(envelope);
+        queue.offer(envelope);
     }
 
     /**
@@ -258,14 +281,14 @@ public class WSReadingsClient extends Observable {
      * @param envelope a @Message.Envelope instance
      * @throws java.io.IOException an IOException exception.
      */
-    private void sendEnvelope(final Message.Envelope envelope) throws IOException {
-        if (!protocols.containsKey(WSIdentifiers.INSERT_PROTOCOL)) {
+    protected void sendEnvelope(final Message.Envelope envelope) throws IOException {
+        if (!connections.containsKey(WSIdentifiers.INSERT_PROTOCOL)) {
             createNewConnection(WSIdentifiers.INSERT_PROTOCOL);
         }
 
         final byte[] byteArray = envelope.toByteArray();
 
-        protocols.get(WSIdentifiers.INSERT_PROTOCOL).sendMessage(byteArray, 0, byteArray.length);
+        connections.get(WSIdentifiers.INSERT_PROTOCOL).sendMessage(byteArray, 0, byteArray.length);
 
     }
 
@@ -285,7 +308,7 @@ public class WSReadingsClient extends Observable {
                 .append(capabilityId)
                 .toString();
 
-        if (!protocols.containsKey(protocol)) {
+        if (!connections.containsKey(protocol)) {
             createNewConnection(protocol);
         }
     }

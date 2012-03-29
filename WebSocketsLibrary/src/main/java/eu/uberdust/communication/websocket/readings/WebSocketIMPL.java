@@ -4,14 +4,9 @@ import org.apache.log4j.Logger;
 import org.eclipse.jetty.websocket.WebSocket;
 
 /**
- * Created by IntelliJ IDEA.
- * User: akribopo
- * Date: 3/19/12
- * Time: 1:17 AM
- * To change this template use File | Settings | File Templates.
+ * Web Socket Implementation.
  */
 public class WebSocketIMPL implements WebSocket.OnBinaryMessage {
-
 
     /**
      * Static Logger.
