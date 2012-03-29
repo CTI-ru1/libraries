@@ -22,11 +22,13 @@ public class GrowlNetworkCommandListener implements Observer {
 
             final DeviceCommand command = (DeviceCommand) o;
             try {
-                Runtime.getRuntime().exec(new StringBuilder()
-                        .append("gntp-send ")
-                        .append(command.getDestination())
-                        .append(" ")
-                        .append(command.getPayload()).toString());
+                if (command.getDestination().contains("virtual")) {
+                    Runtime.getRuntime().exec(new StringBuilder()
+                            .append("gntp-send ")
+                            .append(command.getDestination())
+                            .append(" ")
+                            .append(command.getPayload()).toString());
+                }
             } catch (IOException e) {
                 LOGGER.error(e);
             }

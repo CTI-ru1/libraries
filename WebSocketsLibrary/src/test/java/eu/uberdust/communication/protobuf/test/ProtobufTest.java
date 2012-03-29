@@ -1,8 +1,4 @@
-package protobuf;
-
-import eu.uberdust.communication.protobuf.Message;
-
-import java.util.ArrayList;
+package eu.uberdust.communication.protobuf.test;
 
 /**
  * Created by IntelliJ IDEA.
