@@ -46,12 +46,12 @@ public class CachingAspect {
             final Cache cache = singletonManager.getCache(thisJoinPointName);
 
             if (cache.getKeysWithExpiryCheck().contains(thisJoinPoint.getArgs()[0].hashCode())) {
-                LOGGER.info(" object was on: " + cache.getName());
+                LOGGER.info(" HIT: " + cache.getName());
                 return cache.get(thisJoinPoint.getArgs()[0].hashCode()).getValue();
             } else {
                 final Element element = new Element(thisJoinPoint.getArgs()[0].hashCode(), thisJoinPoint.proceed());
                 cache.put(element);
-                LOGGER.info(" new object on: " + cache.getName());
+                LOGGER.info("MISS: " + cache.getName());
                 return element.getValue();
             }
         } else {
@@ -61,13 +61,13 @@ public class CachingAspect {
 
             if (cache.getKeysWithExpiryCheck().contains((thisJoinPointName + thisJoinPoint.getArgs()[0]).hashCode())) {
 
-                LOGGER.info(" object was on: " + cache.getName());
+                LOGGER.info("HIT: " + cache.getName());
 
                 return cache.get((thisJoinPointName + thisJoinPoint.getArgs()[0]).hashCode()).getValue();
             } else {
                 final Element element = new Element((thisJoinPointName + thisJoinPoint.getArgs()[0]).hashCode(),
                         thisJoinPoint.proceed());
-                LOGGER.info(" new object on: " + cache.getName());
+                LOGGER.info("MISS: " + cache.getName());
                 cache.put(element);
                 return element.getValue();
             }
@@ -85,8 +85,8 @@ public class CachingAspect {
             return thisJoinPoint.proceed();
         } else {
             final String roles = thisCachename.cacheName();
-            CacheManager.getInstance().getCache(roles).removeAll();
-            LOGGER.info("Evicting cache: " + roles);
+//            CacheManager.getInstance().getCache(roles).removeAll();
+//            LOGGER.info("Evicting cache: " + roles);
 
             return thisJoinPoint.proceed();
         }
