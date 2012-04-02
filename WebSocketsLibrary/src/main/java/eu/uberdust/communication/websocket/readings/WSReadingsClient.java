@@ -234,7 +234,7 @@ public class WSReadingsClient extends Observable {
      * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
      */
     protected void notifyObservers(final byte[] data) {
-        System.out.println(data.length);
+//        System.out.println(data.length);
         try {
             final Message.Envelope envelope = Message.Envelope.newBuilder().mergeFrom(data).build();
             if (envelope.getType().equals(Message.Envelope.Type.LINK_READINGS)) {

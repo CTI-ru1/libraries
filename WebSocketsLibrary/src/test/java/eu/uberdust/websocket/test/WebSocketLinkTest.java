@@ -14,23 +14,25 @@ import java.util.Date;
  * Time: 1:06 AM
  * To change this template use File | Settings | File Templates.
  */
-public class WebSocketTest {
+public class WebSocketLinkTest {
 
     public static void main(String[] args) {
 
         // sample node reading
-        final String node = "urn:testbed2:n3";
-        final String capability = "testcapn3";
+        final String node1 = "urn:testbed2:l1";
+        final String node2 = "urn:testbed2:l2";
+        final String capability = "testcapl2";
 
-        Message.NodeReadings.Reading reading1 = Message.NodeReadings.Reading.newBuilder()
-                .setNode(node)
+        Message.LinkReadings.Reading reading1 = Message.LinkReadings.Reading.newBuilder()
+                .setSource(node1)
+                .setTarget(node2)
                 .setCapability(capability)
                 .setTimestamp(new Date().getTime())
                 .setDoubleReading(1)
                 .build();
 
 
-        Message.NodeReadings readings = Message.NodeReadings.newBuilder()
+        Message.LinkReadings readings = Message.LinkReadings.newBuilder()
                 .addReading(reading1)
                 .build();
 
@@ -63,12 +65,11 @@ public class WebSocketTest {
 
         System.out.println("before");
         try {
-            WSReadingsClient.getInstance().sendNodeReading(readings);
+            WSReadingsClient.getInstance().sendLinkReading(readings);
         } catch (IOException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
         System.out.println("after");
-
 
     }
 

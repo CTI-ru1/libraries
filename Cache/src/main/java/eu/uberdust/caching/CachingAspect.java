@@ -84,9 +84,12 @@ public class CachingAspect {
         if (thisJoinPoint.getKind().equals(ProceedingJoinPoint.METHOD_CALL)) {
             return thisJoinPoint.proceed();
         } else {
-            final String roles = thisCachename.cacheName();
-//            CacheManager.getInstance().getCache(roles).removeAll();
-//            LOGGER.info("Evicting cache: " + roles);
+
+            final String[] cacheNames = thisCachename.cacheName().split(",");
+            for (final String cache : cacheNames) {
+                CacheManager.getInstance().getCache(cache).removeAll();
+                LOGGER.info("Evicting cache: " + cache);
+            }
 
             return thisJoinPoint.proceed();
         }
