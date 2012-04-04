@@ -39,17 +39,17 @@ public class CachingAspect {
         final String thisJoinPointName = getJoinPointName(thisJoinPoint);
         final String thisJoinPointArgs = getJointPointArgs(thisJoinPoint);
         final String objName = thisJoinPointName + "-" + thisJoinPointArgs;
-        LOGGER.info("Injecting method: " + objName);
+        LOGGER.info("Caching: " + objName);
 
 
         if (singletonManager.cacheExists(thisJoinPointName)) {
             final Cache cache = singletonManager.getCache(thisJoinPointName);
 
-            if (cache.getKeysWithExpiryCheck().contains(thisJoinPoint.getArgs()[0].hashCode())) {
+            if (cache.getKeysWithExpiryCheck().contains(thisJoinPointArgs.hashCode())) {
                 LOGGER.info(" HIT: " + cache.getName());
-                return cache.get(thisJoinPoint.getArgs()[0].hashCode()).getValue();
+                return cache.get(thisJoinPointArgs.hashCode()).getValue();
             } else {
-                final Element element = new Element(thisJoinPoint.getArgs()[0].hashCode(), thisJoinPoint.proceed());
+                final Element element = new Element(thisJoinPointArgs.hashCode(), thisJoinPoint.proceed());
                 cache.put(element);
                 LOGGER.info("MISS: " + cache.getName());
                 return element.getValue();
@@ -59,13 +59,13 @@ public class CachingAspect {
 
             final Cache cache = singletonManager.getCache("defaultCache");
 
-            if (cache.getKeysWithExpiryCheck().contains((thisJoinPointName + thisJoinPoint.getArgs()[0]).hashCode())) {
+            if (cache.getKeysWithExpiryCheck().contains((objName).hashCode())) {
 
                 LOGGER.info("HIT: " + cache.getName());
 
-                return cache.get((thisJoinPointName + thisJoinPoint.getArgs()[0]).hashCode()).getValue();
+                return cache.get((objName).hashCode()).getValue();
             } else {
-                final Element element = new Element((thisJoinPointName + thisJoinPoint.getArgs()[0]).hashCode(),
+                final Element element = new Element((objName).hashCode(),
                         thisJoinPoint.proceed());
                 LOGGER.info("MISS: " + cache.getName());
                 cache.put(element);
@@ -114,6 +114,8 @@ public class CachingAspect {
         for (final Object arg : joinPoint.getArgs()) {
             buf.append(arg.getClass().getSimpleName()).append("-").append(arg.hashCode());
         }
-        return buf.toString().replaceAll("\\+$", "");
+        String var = buf.toString().replaceAll("\\$", "");
+        LOGGER.info(var);
+        return var;
     }
 }
