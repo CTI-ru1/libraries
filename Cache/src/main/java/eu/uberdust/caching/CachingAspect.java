@@ -87,8 +87,10 @@ public class CachingAspect {
 
             final String[] cacheNames = thisCachename.cacheName().split(",");
             for (final String cache : cacheNames) {
-                CacheManager.getInstance().getCache(cache).removeAll();
-                LOGGER.info("Evicting cache: " + cache);
+                if (CacheManager.getInstance().cacheExists(cache)) {
+                    CacheManager.getInstance().getCache(cache).removeAll();
+                    LOGGER.info("Evicting cache: " + cache);
+                }
             }
 
             return thisJoinPoint.proceed();
