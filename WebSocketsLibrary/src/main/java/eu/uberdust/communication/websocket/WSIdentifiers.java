@@ -42,7 +42,7 @@ public interface WSIdentifiers {
     /**
      * Subscribe protocol suffix for TEXT response.
      */
-    public static final String SUBSCRIBE_PROTOCOL_TEST_SUFFIX = "SUB";
+    public static final String SUBSCRIBE_PROTOCOL_TEXT_SUFFIX = "SUB";
 
     /**
      * Listener Protocol delimiter.
