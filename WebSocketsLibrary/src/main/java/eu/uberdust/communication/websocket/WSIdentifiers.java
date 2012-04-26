@@ -35,6 +35,16 @@ public interface WSIdentifiers {
     public static final String SUBSCRIBE_PROTOCOL_PREFIX = "SUB";
 
     /**
+     * Subscribe protocol suffix for JSON response.
+     */
+    public static final String SUBSCRIBE_PROTOCOL_JSON_SUFFIX = "SUB";
+
+    /**
+     * Subscribe protocol suffix for TEXT response.
+     */
+    public static final String SUBSCRIBE_PROTOCOL_TEST_SUFFIX = "SUB";
+
+    /**
      * Listener Protocol delimiter.
      */
     public static final String DELIMITER = "@";
