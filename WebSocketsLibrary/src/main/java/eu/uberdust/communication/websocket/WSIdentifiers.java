@@ -37,12 +37,12 @@ public interface WSIdentifiers {
     /**
      * Subscribe protocol suffix for JSON response.
      */
-    public static final String SUBSCRIBE_PROTOCOL_JSON_SUFFIX = "SUB";
+    public static final String SUBSCRIBE_PROTOCOL_JSON_SUFFIX = "JSON";
 
     /**
      * Subscribe protocol suffix for TEXT response.
      */
-    public static final String SUBSCRIBE_PROTOCOL_TEXT_SUFFIX = "SUB";
+    public static final String SUBSCRIBE_PROTOCOL_TEXT_SUFFIX = "TEXT";
 
     /**
      * Listener Protocol delimiter.
