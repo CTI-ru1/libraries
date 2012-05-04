@@ -173,14 +173,13 @@ public final class WSCommandClient extends Observable {
      */
     public void ping() {
         // if connection is not opened do nothing
-        if (!connection.isOpen()) {
-            return;
-        }
+        if ((connection != null) && (connection.isOpen())) {
+            try {
 
-        try {
-            connection.sendMessage("PING");
-        } catch (final IOException e) {
-            LOGGER.error(e);
+                connection.sendMessage("PING");
+            } catch (final IOException e) {
+                LOGGER.error("Ping exception " + connection.getProtocol(), e);
+            }
         }
     }
 
@@ -188,15 +187,17 @@ public final class WSCommandClient extends Observable {
      * Disconnect method.
      */
     public void disconnect() {
+        if (factory.isRunning()) {
+            factory.destroy();
+        }
+        connection.disconnect();
         try {
-            connection.disconnect();
-            if (factory.isRunning()) {
-                factory.destroy();
-            }
             factory.stop();
         } catch (final Exception e) {
             LOGGER.error(e);
         }
+        connection = null;
+        stopPingingTask();
     }
 
     /**
@@ -212,7 +213,6 @@ public final class WSCommandClient extends Observable {
      * <code>hasChanged</code> method, then notify all of its observers
      * and then call the <code>clearChanged</code> method to indicate
      * that this object has no longer changed.
-     * <p/>
      * Each observer has its <code>update</code> method called with two
      * arguments: this observable object and the <code>arg</code> argument.
      *
