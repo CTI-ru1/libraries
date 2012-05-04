@@ -6,7 +6,7 @@ import org.eclipse.jetty.websocket.WebSocket;
 /**
  * Web Socket Implementation.
  */
-public class WebSocketIMPL implements WebSocket.OnBinaryMessage {
+public class WebSocketIMPL implements WebSocket.OnBinaryMessage, WebSocket.OnTextMessage {
 
     /**
      * Static Logger.
@@ -27,6 +27,12 @@ public class WebSocketIMPL implements WebSocket.OnBinaryMessage {
         final byte[] message = new byte[length];
         System.arraycopy(data, offset, message, 0, length);
         WSReadingsClient.getInstance().notifyObservers(message);
+    }
+
+    @Override
+    public void onMessage(final String data) {
+        LOGGER.info("onStringMessage " + data);
+        //ignore
     }
 
     /**
@@ -52,4 +58,6 @@ public class WebSocketIMPL implements WebSocket.OnBinaryMessage {
         WSReadingsClient.getInstance().restPing();
         WSReadingsClient.getInstance().createWebSocketFactory();
     }
+
+
 }
