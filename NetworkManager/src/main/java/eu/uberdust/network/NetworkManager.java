@@ -4,6 +4,7 @@ import eu.uberdust.communication.protobuf.Message;
 import eu.uberdust.communication.websocket.command.WSCommandClient;
 import eu.uberdust.communication.websocket.readings.WSReadingsClient;
 import eu.uberdust.devicedriver.CeilingLightDriver;
+import eu.uberdust.devicedriver.LampLightDriver;
 import eu.uberdust.devicedriver.PayloadDriver;
 import org.apache.log4j.PropertyConfigurator;
 
@@ -35,6 +36,7 @@ public class NetworkManager extends Observable {
             WSCommandClient.getInstance().connect("ws://" + server + "/testbedcontroller.ws");
             WSCommandClient.getInstance().addObserver(new CeilingLightDriver());
             WSCommandClient.getInstance().addObserver(new PayloadDriver());
+            WSCommandClient.getInstance().addObserver(new LampLightDriver());
             LOGGER.info("connected");
         } catch (Exception e) {
             LOGGER.fatal(e);
