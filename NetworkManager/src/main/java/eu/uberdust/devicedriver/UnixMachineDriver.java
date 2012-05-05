@@ -38,7 +38,7 @@ public class UnixMachineDriver extends DeviceDriver {
                     final int state = (int) Double.parseDouble(command.getLastValue());
                     final StringBuilder bytes = new StringBuilder(COMMAND_PREFIX);
                     bytes.append(zone).append(",").append(state);
-                    final DeviceCommand devCommand = new DeviceCommand(command.getDestination(), bytes.toString());
+                    final DeviceCommand devCommand = new DeviceCommand(command.getDestination(), command.getCapability(), bytes.toString());
                     NetworkManager.getInstance().update(devCommand);
                 }
 

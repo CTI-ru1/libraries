@@ -23,7 +23,7 @@ public class PayloadDriver extends DeviceDriver {
             final Message.Control command = (Message.Control) o;
 
             if (command.hasPayload()) {
-                final DeviceCommand result = new DeviceCommand(command.getDestination(), command.getPayload());
+                final DeviceCommand result = new DeviceCommand(command.getDestination(), command.getCapability(), command.getPayload());
                 NetworkManager.getInstance().update(result);
             }
         }

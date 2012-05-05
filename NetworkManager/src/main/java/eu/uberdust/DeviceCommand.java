@@ -9,12 +9,18 @@ package eu.uberdust;
 public class DeviceCommand {
     private final String destination;
 
-    private final String command;
+    private final String payload;
+    private final String capability;
 
-    public DeviceCommand(String destination, String command) {
+    public DeviceCommand(final String destination, final String capability, final String payload) {
         this.destination = destination;
-        this.command = command;
+        this.capability = capability;
+        this.payload = payload;
 
+    }
+
+    public String getCapability() {
+        return capability;
     }
 
     public String getDestination() {
@@ -22,6 +28,6 @@ public class DeviceCommand {
     }
 
     public String getPayload() {
-        return command;
+        return payload;
     }
 }
