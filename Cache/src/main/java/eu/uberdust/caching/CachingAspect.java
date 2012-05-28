@@ -9,6 +9,8 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import javax.servlet.http.HttpServletRequest;
+
 
 
 @Aspect
@@ -30,6 +32,16 @@ public class CachingAspect {
     @SuppressWarnings("unused")
     private void cache() {
     }
+
+
+    /**
+     * This pointcut matches all methods with a <code>@Cachable</code> annotation.
+     */
+    @Pointcut("execution(@Loggable * *.*(..))")
+    @SuppressWarnings("unused")
+    private void log() {
+    }
+
 
     /**
      * Returns objects from the cache if necessary.
@@ -95,6 +107,25 @@ public class CachingAspect {
 
             return thisJoinPoint.proceed();
         }
+    }
+
+
+    /**
+     * Logs the request to uberdust.
+     */
+    @Around("log()")
+    public Object aroundLog(final ProceedingJoinPoint thisJoinPoint) throws Throwable {
+        if (thisJoinPoint.getArgs().length > 0) {
+            if (thisJoinPoint.getArgs()[0] instanceof HttpServletRequest) {
+                final HttpServletRequest myRequest = (HttpServletRequest) thisJoinPoint.getArgs()[0];
+                final String requestUrl = myRequest.getRequestURL().toString();
+
+                LOGGER.info(requestUrl.substring(requestUrl.indexOf("rest")));
+                LOGGER.info(myRequest.getRemoteAddr());
+
+            }
+        }
+        return thisJoinPoint.proceed();
     }
 
 

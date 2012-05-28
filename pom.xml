@@ -73,6 +73,7 @@
                     <targetJdk>1.6</targetJdk>
                     <excludes>
                         <exclude>**/test/**</exclude>
+                        <exclude>**/Message.java</exclude>
                     </excludes>
                     <rulesets>
                         <ruleset>rulesets/basic.xml</ruleset>
@@ -112,11 +113,6 @@
     </reporting>
 
     <dependencies>
-        <dependency>
-            <groupId>hudson.plugins.sloccount</groupId>
-            <artifactId>sloccount</artifactId>
-            <version>1.4</version>
-        </dependency>
         <dependency>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-pmd-plugin</artifactId>
