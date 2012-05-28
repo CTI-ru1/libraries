@@ -28,7 +28,7 @@ public class LightDriver extends DeviceDriver {
             if (!command.hasPayload()) {
 
 
-                if (command.getCapability().startsWith(OBSERVED)) {
+                if (command.getCapability().substring(command.getCapability().lastIndexOf(':')).startsWith(OBSERVED)) {
                     LOGGER.info("sending to " + command.getDestination());
                     LOGGER.info("capability " + command.getCapability());
                     LOGGER.info("last value " + command.getLastValue());
