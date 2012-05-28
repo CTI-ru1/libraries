@@ -12,10 +12,10 @@ import java.util.Observable;
  * Date: 3/25/12
  * Time: 5:37 PM
  */
-public class CeilingLightDriver extends DeviceDriver {
-    private static final org.apache.log4j.Logger LOGGER = org.apache.log4j.Logger.getLogger(CeilingLightDriver.class);
+public class LightDriver extends DeviceDriver {
+    private static final org.apache.log4j.Logger LOGGER = org.apache.log4j.Logger.getLogger(LightDriver.class);
 
-    static final String OBSERVED = "ceilinglight";
+    static final String OBSERVED = "light";
     static final String COMMAND_PREFIX = "7f,69,70,1,";
 
     @Override

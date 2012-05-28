@@ -15,7 +15,7 @@ import java.util.Observable;
 public class LampLightDriver extends DeviceDriver {
     private static final org.apache.log4j.Logger LOGGER = org.apache.log4j.Logger.getLogger(LampLightDriver.class);
 
-    static final String OBSERVED = "lamp";
+    static final String OBSERVED = "desklamp";
     static final String COMMAND_PREFIX = "7f,69,70,1,";
 
     @Override
