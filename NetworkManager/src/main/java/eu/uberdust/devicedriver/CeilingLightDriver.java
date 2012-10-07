@@ -20,7 +20,6 @@ public class CeilingLightDriver extends DeviceDriver {
 
     @Override
     public void update(final Observable observable, final Object o) {
-
         if (o instanceof Message.Control) {
 
             final Message.Control command = (Message.Control) o;
@@ -28,7 +27,7 @@ public class CeilingLightDriver extends DeviceDriver {
             if (!command.hasPayload()) {
 
 
-                if (command.getCapability().startsWith(OBSERVED)) {
+                if (command.getCapability().contains(OBSERVED)) {
                     LOGGER.info("sending to " + command.getDestination());
                     LOGGER.info("capability " + command.getCapability());
                     LOGGER.info("last value " + command.getLastValue());

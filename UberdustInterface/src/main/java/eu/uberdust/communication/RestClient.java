@@ -85,7 +85,7 @@ public final class RestClient {
                 System.out.println("OK");
                 LOGGER.info("OK");
             }
-            LOGGER.info(inputLine.toString());
+            LOGGER.debug(inputLine.toString());
             return inputLine.toString();
         } catch (final SocketException e) {
             LOGGER.error(e, e);

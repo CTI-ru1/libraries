@@ -35,10 +35,11 @@ public class GetLinksTest
      * Rigourous Test :-)
      */
     public void testApp() {
+        UberdustClient.getInstance().setUberdustURL("http://uberdust.cti.gr");
 
         JSONObject capabilities = null;
         try {
-            capabilities = UberdustClient.getInstance().getNodes(1);
+            capabilities = UberdustClient.getInstance().getLinks(1);
             LOGGER.info(capabilities);
             assertTrue(true);
         } catch (JSONException e) {

@@ -6,6 +6,9 @@ import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.params.HttpMethodParams;
+import org.apache.log4j.PropertyConfigurator;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.Random;
@@ -18,6 +21,15 @@ public final class UberdustClient {
      */
     private static final org.apache.log4j.Logger LOGGER = org.apache.log4j.Logger.getLogger(UberdustClient.class);
 
+    public static String getUberdustURL() {
+        return uberdustURL;
+    }
+
+    public static void setUberdustURL(String uberdustURL) {
+        UberdustClient.uberdustURL = uberdustURL;
+    }
+
+    private static String uberdustURL;
 
     /**
      * static instance(ourInstance) initialized as null.
@@ -45,6 +57,7 @@ public final class UberdustClient {
      */
     private UberdustClient() {
         rand = new Random();
+        PropertyConfigurator.configure(Thread.currentThread().getContextClassLoader().getResource("log4j.properties"));
     }
 
 
@@ -102,10 +115,34 @@ public final class UberdustClient {
     }
 
 
-    public String getNodeCapabilities(final String node) {
+    public JSONObject getNodeCapabilities(final String node) throws JSONException {
 
-        String capabilities = RestClient.getInstance().callRestfulWebService("uberdust.cti.gr/rest/testbed/1/node/" + node + "/capabilities");
+        JSONObject capabilities = new JSONObject(RestClient.getInstance().callRestfulWebService(uberdustURL + "/rest/testbed/1/node/" + node + "/capabilities/json"));
         return capabilities;
     }
 
+    public JSONObject getNodes(int testbedID) throws JSONException {
+        JSONObject nodes = new JSONObject(RestClient.getInstance().callRestfulWebService(uberdustURL + "/rest/testbed/" + testbedID + "/node/json"));
+        return nodes;
+    }
+
+    public JSONObject getLinks(int testbedID) throws JSONException {
+        JSONObject nodes = new JSONObject(RestClient.getInstance().callRestfulWebService(uberdustURL + "/rest/testbed/" + testbedID + "/link/json"));
+        return nodes;
+    }
+
+    public JSONObject getCapabilities(int testbedID) throws JSONException {
+        JSONObject nodes = new JSONObject(RestClient.getInstance().callRestfulWebService(uberdustURL + "/rest/testbed/" + testbedID + "/capability/json"));
+        return nodes;
+    }
+
+    public JSONObject getNodeReading(int testbedID, String node, String capability, int count) throws JSONException {
+        JSONObject nodes = new JSONObject(RestClient.getInstance().callRestfulWebService(uberdustURL + "/rest/testbed/" + testbedID + "/node/" + node + "/capability/" + capability + "/json/limit/" + count));
+        return nodes;
+    }
+
+    public JSONObject getLastNodeReading(int testbedID, String node, String capability) throws JSONException {
+        JSONObject nodes = new JSONObject(RestClient.getInstance().callRestfulWebService(uberdustURL + "/rest/testbed/" + testbedID + "/node/" + node + "/capability/" + capability + "/latestreading/json"));
+        return nodes;
+    }
 }

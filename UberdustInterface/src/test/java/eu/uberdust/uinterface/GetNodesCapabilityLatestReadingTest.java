@@ -39,7 +39,7 @@ public class GetNodesCapabilityLatestReadingTest
 
         JSONObject capabilities = null;
         try {
-            capabilities = UberdustClient.getInstance().getNodes(1);
+            capabilities = UberdustClient.getInstance().getLastNodeReading(1, "urn:wisebed:ctitestbed:0x9979", "urn:wisebed:node:capability:pir");
             LOGGER.info(capabilities);
             assertTrue(true);
         } catch (JSONException e) {

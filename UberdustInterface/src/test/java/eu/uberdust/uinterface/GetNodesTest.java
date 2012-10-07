@@ -35,11 +35,12 @@ public class GetNodesTest
      * Rigourous Test :-)
      */
     public void testApp() {
+        UberdustClient.getInstance().setUberdustURL("http://uberdust.cti.gr");
 
         JSONObject capabilities = null;
         try {
-            capabilities = UberdustClient.getInstance().getNodeCapabilities("urn:wisebed:ctitestbed:0x9979");
-            LOGGER.debug(capabilities);
+            capabilities = UberdustClient.getInstance().getNodes(1);
+            LOGGER.info(capabilities);
             assertTrue(true);
         } catch (JSONException e) {
             assertTrue(false);

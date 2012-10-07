@@ -35,6 +35,7 @@ public class GetNodeCapabilitiesTest
      * Rigourous Test :-)
      */
     public void testApp() {
+        UberdustClient.getInstance().setUberdustURL("http://uberdust.cti.gr");
 
         JSONObject capabilities = null;
         try {

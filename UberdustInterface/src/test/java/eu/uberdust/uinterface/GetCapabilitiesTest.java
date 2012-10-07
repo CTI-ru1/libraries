@@ -13,14 +13,14 @@ import org.json.JSONObject;
  */
 public class GetCapabilitiesTest
         extends TestCase {
-    private static final Logger LOGGER = Logger.getLogger(GetCapabilitiessTest.class);
+    private static final Logger LOGGER = Logger.getLogger(GetCapabilitiesTest.class);
 
     /**
      * Create the test case
      *
      * @param testName name of the test case
      */
-    public GetCapabilitiessTest(String testName) {
+    public GetCapabilitiesTest(String testName) {
         super(testName);
     }
 
@@ -28,7 +28,7 @@ public class GetCapabilitiesTest
      * @return the suite of tests being tested
      */
     public static Test suite() {
-        return new TestSuite(GetCapabilitiessTest.class);
+        return new TestSuite(GetCapabilitiesTest.class);
     }
 
     /**
@@ -39,7 +39,7 @@ public class GetCapabilitiesTest
 
         JSONObject capabilities = null;
         try {
-            capabilities = UberdustClient.getInstance().getLinks(1);
+            capabilities = UberdustClient.getInstance().getCapabilities(1);
             LOGGER.info(capabilities);
             assertTrue(true);
         } catch (JSONException e) {

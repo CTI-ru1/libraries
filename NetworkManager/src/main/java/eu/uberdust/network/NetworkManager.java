@@ -7,6 +7,7 @@ import eu.uberdust.devicedriver.CeilingLightDriver;
 import eu.uberdust.devicedriver.LampLightDriver;
 import eu.uberdust.devicedriver.LightDriver;
 import eu.uberdust.devicedriver.PayloadDriver;
+import eu.uberdust.devicedriver.ToyotomiDriver;
 import org.apache.log4j.PropertyConfigurator;
 
 import java.io.IOException;
@@ -39,6 +40,7 @@ public class NetworkManager extends Observable {
             WSCommandClient.getInstance().addObserver(new LightDriver());
             WSCommandClient.getInstance().addObserver(new PayloadDriver());
             WSCommandClient.getInstance().addObserver(new LampLightDriver());
+            WSCommandClient.getInstance().addObserver(new ToyotomiDriver());
             LOGGER.info("connected");
         } catch (Exception e) {
             LOGGER.fatal(e);
