@@ -1,5 +1,11 @@
 package eu.uberdust.communication;
 
+import ch.ethz.inf.vs.californium.coap.CodeRegistry;
+import ch.ethz.inf.vs.californium.coap.Message;
+import ch.ethz.inf.vs.californium.coap.Option;
+import ch.ethz.inf.vs.californium.coap.OptionNumberRegistry;
+import ch.ethz.inf.vs.californium.coap.Request;
+import ch.ethz.inf.vs.californium.coap.Response;
 import org.apache.commons.httpclient.DefaultHttpMethodRetryHandler;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpException;
@@ -11,6 +17,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.Random;
 
 
@@ -58,6 +68,32 @@ public final class UberdustClient {
     private UberdustClient() {
         rand = new Random();
         PropertyConfigurator.configure(Thread.currentThread().getContextClassLoader().getResource("log4j.properties"));
+    }
+
+
+    public Response sendCoapPost(final String uri, final String path, final String payload) throws IOException, UnknownHostException {
+        DatagramSocket clientSocket = new DatagramSocket();
+        InetAddress IPAddress = InetAddress.getByName("uberdust.cti.gr");
+        byte[] sendData = new byte[1024];
+        byte[] receiveData = new byte[1024];
+        Request request = new Request(CodeRegistry.METHOD_POST, false);
+        request.setURI(path);
+        request.setMID((new Random()).nextInt() % 1024);
+        Option urihost = new Option(OptionNumberRegistry.URI_HOST);
+        urihost.setStringValue(uri);
+        request.addOption(urihost);
+        request.setPayload(payload);
+        request.prettyPrint();
+
+        sendData = request.toByteArray();
+        DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, 5683);
+        clientSocket.send(sendPacket);
+        DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
+        clientSocket.receive(receivePacket);
+
+        Response response = (Response) Message.fromByteArray(receivePacket.getData());
+        clientSocket.close();
+        return response;
     }
 
 

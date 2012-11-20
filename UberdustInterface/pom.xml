@@ -49,6 +49,13 @@
             <artifactId>json</artifactId>
             <version>20090211</version>
         </dependency>
+        <dependency>
+            <groupId>Californioum</groupId>
+            <artifactId>Californioum</artifactId>
+            <version>1</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/ExampleClient.jar</systemPath>
+        </dependency>
     </dependencies>
 
     <build>
