@@ -15,6 +15,7 @@
     </properties>
 
     <modules>
+        <module>PropertyReader</module>
         <module>UberdustInterface</module>
         <module>WebSocketsLibrary</module>
         <module>Cache</module>

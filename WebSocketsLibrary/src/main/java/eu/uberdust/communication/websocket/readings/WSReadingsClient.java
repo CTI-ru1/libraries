@@ -153,7 +153,7 @@ public class WSReadingsClient extends Observable {
             connection = client.open(WS_URI, webSocketIMPL).get();
             LOGGER.info("New Web Socket Connection. Protocol: " + client.getProtocol());
         } catch (final Exception e) {
-            LOGGER.error("Unable to Create new WebSocket connection");
+            LOGGER.error("Unable to Create new WebSocket connection",e);
             if (e.getMessage().contains("ProtocolException")) {
                 LOGGER.fatal("Wrong Protocol Definition: " + protocol);
                 throw new RuntimeException("Wrong Protocol Definition: " + protocol);
