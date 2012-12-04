@@ -74,7 +74,7 @@ public final class UberdustClient {
             public void run() {
                 try {
                     DatagramSocket clientSocket = new DatagramSocket();
-                    InetAddress IPAddress = InetAddress.getByName("uberdust.cti.gr");
+                    InetAddress IPAddress = InetAddress.getByName(uberdustURL.replaceAll("http://", ""));
                     byte[] sendData;
                     Request request = new Request(CodeRegistry.METHOD_POST, false);
                     request.setURI(path);
