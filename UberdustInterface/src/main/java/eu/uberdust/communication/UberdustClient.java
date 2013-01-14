@@ -74,7 +74,7 @@ public final class UberdustClient {
             public void run() {
                 try {
                     DatagramSocket clientSocket = new DatagramSocket();
-                    InetAddress IPAddress = InetAddress.getByName(uberdustURL.replaceAll("http://", ""));
+                    InetAddress IPAddress = InetAddress.getByName(getUberdustHostname(uberdustURL));
                     byte[] sendData;
                     Request request = new Request(CodeRegistry.METHOD_POST, false);
                     request.setURI(path);
@@ -96,6 +96,10 @@ public final class UberdustClient {
         });
         d.start();
 
+    }
+
+    public static String getUberdustHostname(String uberdustURL) {
+        return uberdustURL.substring(0,uberdustURL.lastIndexOf(":")).replaceAll("http://", "");
     }
 
 
