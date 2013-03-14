@@ -83,7 +83,7 @@ public final class UberdustClient {
                     urihost.setStringValue(uri);
                     request.addOption(urihost);
                     request.setPayload(payload);
-                    request.prettyPrint();
+                    LOGGER.debug("SentCoap@" + uri + ":" + path + "{" + payload + "}");
 
                     sendData = request.toByteArray();
                     DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, 5683);
@@ -99,7 +99,7 @@ public final class UberdustClient {
     }
 
     public static String getUberdustHostname(String uberdustURL) {
-        return uberdustURL.substring(0,uberdustURL.lastIndexOf(":")).replaceAll("http://", "");
+        return uberdustURL.substring(0, uberdustURL.lastIndexOf(":")).replaceAll("http://", "");
     }
 
 
