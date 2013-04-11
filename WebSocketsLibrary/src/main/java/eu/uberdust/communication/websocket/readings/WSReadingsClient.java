@@ -53,7 +53,7 @@ public class WSReadingsClient extends Observable {
     /**
      * All registered protocols.
      */
-    private final List<String> registeredProtocols;
+    private final Set<String> registeredProtocols;
 
     /**
      * The WebSocket implementation.
@@ -91,7 +91,7 @@ public class WSReadingsClient extends Observable {
     private WSReadingsClient() {
         PropertyConfigurator.configure(this.getClass().getClassLoader().getResource("log4j.properties"));
         connections = new HashMap<String, WebSocket.Connection>();
-        registeredProtocols = new ArrayList<String>();
+        registeredProtocols = new HashSet<String>();
         queue = new LinkedBlockingQueue<Message.Envelope>();
         (new QueueConsumer(queue)).start();
         startPingTask();
@@ -130,8 +130,18 @@ public class WSReadingsClient extends Observable {
         } catch (final Exception e) {
             LOGGER.error("Unable to create WebSocket Factory ", e);
         }
+
+        LOGGER.info("reconnecting " + registeredProtocols.size() + " protocols");
         for (final String registeredProtocol : registeredProtocols) {
+            synchronized (WSReadingsClient.class){
+            LOGGER.info("reconnecting " + registeredProtocol);
             createNewConnection(registeredProtocol);
+//            try {
+//                Thread.sleep(5000);
+//            } catch (InterruptedException e) {
+//                LOGGER.error(e, e);
+//            }
+            }
         }
     }
 
@@ -153,7 +163,7 @@ public class WSReadingsClient extends Observable {
             connection = client.open(WS_URI, webSocketIMPL).get();
             LOGGER.info("New Web Socket Connection. Protocol: " + client.getProtocol());
         } catch (final Exception e) {
-            LOGGER.error("Unable to Create new WebSocket connection",e);
+            LOGGER.error("Unable to Create new WebSocket connection", e);
             if (e.getMessage().contains("ProtocolException")) {
                 LOGGER.fatal("Wrong Protocol Definition: " + protocol);
                 throw new RuntimeException("Wrong Protocol Definition: " + protocol);
@@ -169,7 +179,9 @@ public class WSReadingsClient extends Observable {
             connections.put(protocol, connection);
 
             //Add protocol to registered protocols List.
-            registeredProtocols.add(protocol);
+            if (!registeredProtocols.contains(protocol)) {
+                registeredProtocols.add(protocol);
+            }
         }
     }
 
@@ -198,7 +210,8 @@ public class WSReadingsClient extends Observable {
         }
 
         for (WebSocket.Connection connection : connections.values()) {
-            connection.disconnect();
+                LOGGER.info("disconnecting " + connection.getProtocol());
+                connection.disconnect();
         }
 
         //Clear all connections.
@@ -207,7 +220,7 @@ public class WSReadingsClient extends Observable {
         try {
             factory.stop();
         } catch (final Exception e) {
-            LOGGER.error("Unable to stop WebSocket Factory ", e);
+            LOGGER.error("Unable to stop WebSocket Factory", e);
         }
     }
 
