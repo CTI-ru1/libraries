@@ -152,8 +152,25 @@ public final class UberdustClient {
         return "";
     }
 
+
     public static void main(String[] args) {
         UberdustClient.getInstance();
+        UberdustClient.setUberdustURL("http://192.168.1.10:8081");
+        try {
+            System.out.println(UberdustClient.getInstance().getUrnPrefix(1));
+            System.out.println(UberdustClient.getInstance().getUrnCapabilityPrefix(1));
+        } catch (JSONException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+    }
+
+    public String getUrnPrefix(int testbedID) throws JSONException {
+        JSONObject testbed= new JSONObject(RestClient.getInstance().callRestfulWebService(uberdustURL + "/rest/testbed/"+testbedID+"/json"));
+        return testbed.get("urnPrefix").toString();
+    }
+    public String getUrnCapabilityPrefix(int testbedID) throws JSONException {
+        JSONObject testbed= new JSONObject(RestClient.getInstance().callRestfulWebService(uberdustURL + "/rest/testbed/"+testbedID+"/json"));
+        return testbed.get("urnCapabilityPrefix").toString();
     }
 
 
