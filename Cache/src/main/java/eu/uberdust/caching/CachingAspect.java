@@ -9,8 +9,8 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
-import javax.servlet.http.HttpServletRequest;
 
+import javax.servlet.http.HttpServletRequest;
 
 
 @Aspect
@@ -119,10 +119,7 @@ public class CachingAspect {
             if (thisJoinPoint.getArgs()[0] instanceof HttpServletRequest) {
                 final HttpServletRequest myRequest = (HttpServletRequest) thisJoinPoint.getArgs()[0];
                 final String requestUrl = myRequest.getRequestURL().toString();
-
-                LOGGER.info(requestUrl.substring(requestUrl.indexOf("rest")));
-                LOGGER.info(myRequest.getRemoteAddr());
-
+                LOGGER.info(myRequest.getMethod() + "," + requestUrl.substring(requestUrl.indexOf("rest")) + "," + myRequest.getRemoteAddr());
             }
         }
         return thisJoinPoint.proceed();
