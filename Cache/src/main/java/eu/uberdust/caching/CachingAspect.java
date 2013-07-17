@@ -97,14 +97,20 @@ public class CachingAspect {
             return thisJoinPoint.proceed();
         } else {
 
-            final String[] cacheNames = thisCachename.cacheName().split(",");
-            for (final String cache : cacheNames) {
-                if (CacheManager.getInstance().cacheExists(cache)) {
-                    CacheManager.getInstance().getCache(cache).removeAll();
+            if ("".equals(thisCachename.cacheName())) {
+                for (String cache : CacheManager.getInstance().getCacheNames()) {
                     LOGGER.info("Evicting cache: " + cache);
+                    CacheManager.getInstance().getCache(cache).removeAll();
+                }
+            } else {
+                final String[] cacheNames = thisCachename.cacheName().split(",");
+                for (final String cache : cacheNames) {
+                    if (CacheManager.getInstance().cacheExists(cache)) {
+                        CacheManager.getInstance().getCache(cache).removeAll();
+                        LOGGER.info("Evicting cache: " + cache);
+                    }
                 }
             }
-
             return thisJoinPoint.proceed();
         }
     }
