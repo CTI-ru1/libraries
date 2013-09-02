@@ -64,7 +64,7 @@ public class CachingAspect {
                 final Element element = new Element(thisJoinPointArgs.hashCode(), thisJoinPoint.proceed());
                 cache.put(element);
                 LOGGER.info("MISS: " + cache.getName());
-                return element.getValue();
+                return element.getObjectValue();
             }
         } else {
             singletonManager.addCacheIfAbsent("defaultCache");
@@ -81,7 +81,7 @@ public class CachingAspect {
                         thisJoinPoint.proceed());
                 LOGGER.info("MISS: " + cache.getName());
                 cache.put(element);
-                return element.getValue();
+                return element.getObjectValue();
             }
         }
     }
