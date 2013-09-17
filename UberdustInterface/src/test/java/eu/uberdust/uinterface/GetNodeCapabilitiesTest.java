@@ -39,7 +39,7 @@ public class GetNodeCapabilitiesTest
 
         JSONObject capabilities = null;
         try {
-            capabilities = UberdustClient.getInstance().getNodeCapabilities("urn:wisebed:ctitestbed:0x9979");
+            capabilities = UberdustClient.getInstance().getNodeCapabilities("urn:wisebed:ctitestbed:0x190");
             LOGGER.info(capabilities);
             assertTrue(true);
         } catch (JSONException e) {
