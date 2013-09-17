@@ -89,7 +89,7 @@ public class WSReadingsClient extends Observable {
      * Private constructor suppresses generation of a (public) default constructor.
      */
     private WSReadingsClient() {
-        PropertyConfigurator.configure(this.getClass().getClassLoader().getResource("log4j.properties"));
+//        PropertyConfigurator.configure(this.getClass().getClassLoader().getResource("log4j.properties"));
         connections = new HashMap<String, WebSocket.Connection>();
         registeredProtocols = new HashSet<String>();
         queue = new LinkedBlockingQueue<Message.Envelope>();
