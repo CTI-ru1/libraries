@@ -4,12 +4,14 @@ import ch.ethz.inf.vs.californium.coap.CodeRegistry;
 import ch.ethz.inf.vs.californium.coap.Option;
 import ch.ethz.inf.vs.californium.coap.OptionNumberRegistry;
 import ch.ethz.inf.vs.californium.coap.Request;
+import eu.wisebed.wisedb.model.Testbed;
 import org.apache.commons.httpclient.DefaultHttpMethodRetryHandler;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.params.HttpMethodParams;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -17,6 +19,8 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 
@@ -162,6 +166,27 @@ public final class UberdustClient {
         }
     }
 
+    public Testbed getTestbedById(int testbedID) throws IOException, JSONException {
+        Testbed testbed = new Testbed();
+        JSONObject testbedJSON = new JSONObject(RestClient.getInstance().callRestfulWebService(uberdustURL + "/rest/testbed/" + testbedID + "/json"));
+        testbed.setUrnPrefix(testbedJSON.getString("urnPrefix"));
+        testbed.setUrnCapabilityPrefix(testbedJSON.getString("urnCapabilityPrefix"));
+        testbed.setName(testbedJSON.getString("testbedName"));
+        testbed.setId(testbedID);
+        return testbed;
+    }
+
+    public List<Testbed> listTestbeds() throws IOException, JSONException {
+        List<Testbed> testbeds = new ArrayList<Testbed>();
+        JSONArray testbedsJSON = new JSONArray(RestClient.getInstance().callRestfulWebService(uberdustURL + "/rest/testbed/json"));
+        for (int i = 1; i < testbedsJSON.length(); i++) {
+            JSONObject testbedJSON = (JSONObject)testbedsJSON.get(i);
+            Testbed testbed = getTestbedById(testbedJSON.getInt("testbedId"));
+            testbeds.add(testbed);
+        }
+        return testbeds;
+    }
+
     public String getUrnPrefix(int testbedID) throws JSONException, IOException {
         JSONObject testbed = new JSONObject(RestClient.getInstance().callRestfulWebService(uberdustURL + "/rest/testbed/" + testbedID + "/json"));
         return testbed.get("urnPrefix").toString();
@@ -174,10 +199,10 @@ public final class UberdustClient {
 
 
     public JSONObject getNodeCapabilities(final String node) throws JSONException, IOException {
-
         JSONObject capabilities = new JSONObject(RestClient.getInstance().callRestfulWebService(uberdustURL + "/rest/testbed/1/node/" + node + "/capabilities/json"));
         return capabilities;
     }
+
 
     public JSONObject getNodes(int testbedID) throws JSONException, IOException {
         JSONObject nodes = new JSONObject(RestClient.getInstance().callRestfulWebService(uberdustURL + "/rest/testbed/" + testbedID + "/node/json"));

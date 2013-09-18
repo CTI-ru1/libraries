@@ -56,6 +56,11 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/lib/ExampleClient.jar</systemPath>
         </dependency>
+        <dependency>
+            <groupId>uberdust</groupId>
+            <artifactId>wisedb</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
 
     <build>
