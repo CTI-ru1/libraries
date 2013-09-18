@@ -34,7 +34,7 @@ public class GetNodesCapabilityLatestReadingTest
     /**
      * Rigourous Test :-)
      */
-    public void testApp() {
+    public void testApp() throws Exception {
         UberdustClient.getInstance().setUberdustURL("http://uberdust.cti.gr");
 
         JSONObject capabilities = null;

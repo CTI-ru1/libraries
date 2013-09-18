@@ -8,6 +8,8 @@ import org.apache.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+
 /**
  * Unit test for simple App.
  */
@@ -34,7 +36,7 @@ public class GetCapabilitiesTest
     /**
      * Rigourous Test :-)
      */
-    public void testApp() {
+    public void testApp() throws IOException {
         UberdustClient.getInstance().setUberdustURL("http://uberdust.cti.gr");
 
         JSONObject capabilities = null;
