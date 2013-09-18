@@ -151,7 +151,7 @@ public final class UberdustClient {
     }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         UberdustClient.getInstance();
         UberdustClient.setUberdustURL("http://192.168.1.10:8081");
         try {
@@ -162,53 +162,53 @@ public final class UberdustClient {
         }
     }
 
-    public String getUrnPrefix(int testbedID) throws JSONException {
+    public String getUrnPrefix(int testbedID) throws JSONException, IOException {
         JSONObject testbed = new JSONObject(RestClient.getInstance().callRestfulWebService(uberdustURL + "/rest/testbed/" + testbedID + "/json"));
         return testbed.get("urnPrefix").toString();
     }
 
-    public String getUrnCapabilityPrefix(int testbedID) throws JSONException {
+    public String getUrnCapabilityPrefix(int testbedID) throws JSONException, IOException {
         JSONObject testbed = new JSONObject(RestClient.getInstance().callRestfulWebService(uberdustURL + "/rest/testbed/" + testbedID + "/json"));
         return testbed.get("urnCapabilityPrefix").toString();
     }
 
 
-    public JSONObject getNodeCapabilities(final String node) throws JSONException {
+    public JSONObject getNodeCapabilities(final String node) throws JSONException, IOException {
 
         JSONObject capabilities = new JSONObject(RestClient.getInstance().callRestfulWebService(uberdustURL + "/rest/testbed/1/node/" + node + "/capabilities/json"));
         return capabilities;
     }
 
-    public JSONObject getNodes(int testbedID) throws JSONException {
+    public JSONObject getNodes(int testbedID) throws JSONException, IOException {
         JSONObject nodes = new JSONObject(RestClient.getInstance().callRestfulWebService(uberdustURL + "/rest/testbed/" + testbedID + "/node/json"));
         return nodes;
     }
 
-    public JSONObject getLinks(int testbedID) throws JSONException {
+    public JSONObject getLinks(int testbedID) throws JSONException, IOException {
         JSONObject nodes = new JSONObject(RestClient.getInstance().callRestfulWebService(uberdustURL + "/rest/testbed/" + testbedID + "/link/json"));
         return nodes;
     }
 
-    public JSONObject getCapabilities(int testbedID) throws JSONException {
+    public JSONObject getCapabilities(int testbedID) throws JSONException, IOException {
         JSONObject nodes = new JSONObject(RestClient.getInstance().callRestfulWebService(uberdustURL + "/rest/testbed/" + testbedID + "/capability/json"));
         return nodes;
     }
 
-    public JSONObject getNodeReading(int testbedID, String node, String capability, int count) throws JSONException {
+    public JSONObject getNodeReading(int testbedID, String node, String capability, int count) throws JSONException, IOException {
         JSONObject nodes = new JSONObject(RestClient.getInstance().callRestfulWebService(uberdustURL + "/rest/testbed/" + testbedID + "/node/" + node + "/capability/" + capability + "/json/limit/" + count));
         return nodes;
     }
 
-    public JSONObject getLastNodeReading(int testbedID, String node, String capability) throws JSONException {
+    public JSONObject getLastNodeReading(int testbedID, String node, String capability) throws Exception {
         JSONObject nodes = new JSONObject(RestClient.getInstance().callRestfulWebService(uberdustURL + "/rest/testbed/" + testbedID + "/node/" + node + "/capability/" + capability + "/latestreading/json"));
         return nodes;
     }
 
-    public String getNodeX(String testbedID, String node) {
-        return RestClient.getInstance().callRestfulWebService(uberdustURL + "/rest/testbed/" + testbedID + "/node/" + node + "/capability/x/latestreading").split("\t")[1];
+    public String getNodeX(String testbedID, String node) throws IOException {
+        return RestClient.getInstance().callRestfulWebService(uberdustURL + "/rest/testbed/" + testbedID + "/node/" + node + "/position/x");
     }
 
-    public String getNodeY(String testbedID, String node) {
-        return RestClient.getInstance().callRestfulWebService(uberdustURL + "/rest/testbed/" + testbedID + "/node/" + node + "/capability/y/latestreading").split("\t")[1];
+    public String getNodeY(String testbedID, String node) throws IOException {
+        return RestClient.getInstance().callRestfulWebService(uberdustURL + "/rest/testbed/" + testbedID + "/node/" + node + "/position/y");
     }
 }

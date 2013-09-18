@@ -6,11 +6,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.SocketException;
-import java.net.URL;
-import java.net.URLConnection;
+import java.net.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -59,7 +55,7 @@ public final class RestClient {
      * @param address the address
      * @return the return String
      */
-    public String callRestfulWebService(final String address) {
+    public String callRestfulWebService(final String address) throws IOException {
         final URLConnection yc;
         BufferedReader in = null;
         try {
@@ -87,13 +83,6 @@ public final class RestClient {
             }
             LOGGER.debug(inputLine.toString());
             return inputLine.toString();
-        } catch (final SocketException e) {
-            LOGGER.error(e, e);
-            System.exit(0);
-        } catch (MalformedURLException e) {
-            LOGGER.error(e, e);
-        } catch (IOException e) {
-            LOGGER.error(e, e);
         } finally {
             if (in != null) {
                 try {
@@ -105,7 +94,6 @@ public final class RestClient {
 
 
         }
-        return "0\t0";
     }
 
     public String callPut(String s) throws IOException {
@@ -124,13 +112,13 @@ public final class RestClient {
         return "";
     }
 
-    /**
-     * Main.
-     *
-     * @param args Arguments.
-     */
-    public static void main(final String[] args) {
-        RestClient.getInstance().callRestfulWebService(
-                "http://uberdust.cti.gr/rest/sendCommand/destination/urn:wisebed:ctitestbed:0x494/payload/1,ff,1");
-    }
+//    /**
+//     * Main.
+//     *
+//     * @param args Arguments.
+//     */
+//    public static void main(final String[] args) {
+//        RestClient.getInstance().callRestfulWebService(
+//                "http://uberdust.cti.gr/rest/sendCommand/destination/urn:wisebed:ctitestbed:0x494/payload/1,ff,1");
+//    }
 }
