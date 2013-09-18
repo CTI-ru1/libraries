@@ -4,6 +4,8 @@ import ch.ethz.inf.vs.californium.coap.CodeRegistry;
 import ch.ethz.inf.vs.californium.coap.Option;
 import ch.ethz.inf.vs.californium.coap.OptionNumberRegistry;
 import ch.ethz.inf.vs.californium.coap.Request;
+import eu.wisebed.wisedb.model.Link;
+import eu.wisebed.wisedb.model.Node;
 import eu.wisebed.wisedb.model.Testbed;
 import org.apache.commons.httpclient.DefaultHttpMethodRetryHandler;
 import org.apache.commons.httpclient.HttpClient;
@@ -179,12 +181,43 @@ public final class UberdustClient {
     public List<Testbed> listTestbeds() throws IOException, JSONException {
         List<Testbed> testbeds = new ArrayList<Testbed>();
         JSONArray testbedsJSON = new JSONArray(RestClient.getInstance().callRestfulWebService(uberdustURL + "/rest/testbed/json"));
-        for (int i = 1; i < testbedsJSON.length(); i++) {
-            JSONObject testbedJSON = (JSONObject)testbedsJSON.get(i);
+        for (int i = 0; i < testbedsJSON.length(); i++) {
+            JSONObject testbedJSON = (JSONObject) testbedsJSON.get(i);
             Testbed testbed = getTestbedById(testbedJSON.getInt("testbedId"));
             testbeds.add(testbed);
         }
         return testbeds;
+    }
+
+    public List<Node> listNodes(int testbedId) throws IOException, JSONException {
+        List<Node> nodes = new ArrayList<Node>();
+        JSONObject nodesJSON = new JSONObject(RestClient.getInstance().callRestfulWebService(uberdustURL + "/rest/testbed/" + testbedId + "/node/json"));
+        JSONArray nodesArr = (JSONArray) nodesJSON.get("nodes");
+        for (int i = 1; i < nodesArr.length(); i++) {
+            String anode = nodesArr.getString(i);
+            Node node = new Node();
+            node.setName(anode);
+            nodes.add(node);
+        }
+        return nodes;
+    }
+
+    public List<Link> listLinks(int testbedId) throws IOException, JSONException {
+        List<Link> links = new ArrayList<Link>();
+        JSONObject linksJSON = new JSONObject(RestClient.getInstance().callRestfulWebService(uberdustURL + "/rest/testbed/" + testbedId + "/link/json"));
+        JSONArray linksArr = (JSONArray) linksJSON.get("links");
+        for (int i = 1; i < linksArr.length(); i++) {
+            JSONObject aLink = (JSONObject) linksArr.get(i);
+            Link link = new Link();
+            Node source = new Node();
+            source.setName(aLink.getString("linkSource"));
+            Node target= new Node();
+            target.setName(aLink.getString("linkTarget"));
+            link.setSource(source);
+            link.setTarget(target);
+            links.add(link);
+        }
+        return links;
     }
 
     public String getUrnPrefix(int testbedID) throws JSONException, IOException {

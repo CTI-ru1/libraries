@@ -1,6 +1,7 @@
 package eu.uberdust.uinterface;
 
 import eu.uberdust.communication.UberdustClient;
+import eu.wisebed.wisedb.model.Node;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -9,6 +10,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Unit test for simple App.
@@ -43,6 +45,25 @@ public class GetNodesTest
         try {
             capabilities = UberdustClient.getInstance().getNodes(1);
             LOGGER.info(capabilities);
+            assertTrue(true);
+        } catch (JSONException e) {
+            assertTrue(false);
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+    }
+
+    /**
+     * Rigourous Test :-)
+     */
+    public void testApp2() throws IOException {
+        UberdustClient.getInstance().setUberdustURL("http://uberdust.cti.gr");
+
+
+        try {
+            List<Node> nodes = UberdustClient.getInstance().listNodes(1);
+            for (Node node : nodes) {
+                LOGGER.info(node);
+            }
             assertTrue(true);
         } catch (JSONException e) {
             assertTrue(false);
