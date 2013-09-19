@@ -54,7 +54,7 @@
             <artifactId>Californioum</artifactId>
             <version>1</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/lib/ExampleClient.jar</systemPath>
+            <systemPath>${project.build.directory}/../lib/ExampleClient.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>uberdust</groupId>
