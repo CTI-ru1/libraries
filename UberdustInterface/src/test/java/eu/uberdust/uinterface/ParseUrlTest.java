@@ -35,7 +35,6 @@ public class ParseUrlTest
     public void testApp() {
         final String uberdustURL = "http://uberdust.cti.gr:80";
         assertFalse(UberdustClient.getUberdustHostname(uberdustURL).contains(":"));
-
     }
 }
 

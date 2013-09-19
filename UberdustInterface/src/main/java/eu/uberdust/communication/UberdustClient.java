@@ -22,6 +22,7 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -202,6 +203,19 @@ public final class UberdustClient {
         return nodes;
     }
 
+    public List<Node> listVirtualNodes(int testbedId) throws IOException, JSONException {
+        List<Node> nodes = new ArrayList<Node>();
+        JSONObject nodesJSON = new JSONObject(RestClient.getInstance().callRestfulWebService(uberdustURL + "/rest/testbed/" + testbedId + "/virtualnode/json"));
+        JSONArray nodesArr = (JSONArray) nodesJSON.get("nodes");
+        for (int i = 1; i < nodesArr.length(); i++) {
+            String anode = nodesArr.getString(i);
+            Node node = new Node();
+            node.setName(anode);
+            nodes.add(node);
+        }
+        return nodes;
+    }
+
     public List<Link> listLinks(int testbedId) throws IOException, JSONException {
         List<Link> links = new ArrayList<Link>();
         JSONObject linksJSON = new JSONObject(RestClient.getInstance().callRestfulWebService(uberdustURL + "/rest/testbed/" + testbedId + "/link/json"));
@@ -211,7 +225,7 @@ public final class UberdustClient {
             Link link = new Link();
             Node source = new Node();
             source.setName(aLink.getString("linkSource"));
-            Node target= new Node();
+            Node target = new Node();
             target.setName(aLink.getString("linkTarget"));
             link.setSource(source);
             link.setTarget(target);
@@ -268,5 +282,26 @@ public final class UberdustClient {
 
     public String getNodeY(String testbedID, String node) throws IOException {
         return RestClient.getInstance().callRestfulWebService(uberdustURL + "/rest/testbed/" + testbedID + "/node/" + node + "/position/y");
+    }
+
+    public List<String> getNodeRooms(int testbedId, String nodeName) throws Exception {
+        String jsonObject = ((JSONObject) ((JSONArray) getLastNodeReading(testbedId, nodeName, "room").get("readings")).get(0)).getString("stringReading");
+        ArrayList<String> roomsList = new ArrayList<String>();
+        Collections.addAll(roomsList, jsonObject.split(","));
+        return roomsList;
+    }
+
+    public List<String> getNodeWorkstations(int testbedId, String nodeName) throws Exception {
+        String jsonObject = ((JSONObject) ((JSONArray) getLastNodeReading(testbedId, nodeName, "workstation").get("readings")).get(0)).getString("stringReading");
+        ArrayList<String> roomsList = new ArrayList<String>();
+        Collections.addAll(roomsList, jsonObject.split(","));
+        return roomsList;
+    }
+
+    public List<String> getNodeNodeTypes(int testbedId, String nodeName) throws Exception {
+        String jsonObject = ((JSONObject) ((JSONArray) getLastNodeReading(testbedId, nodeName, "nodetype").get("readings")).get(0)).getString("stringReading");
+        ArrayList<String> roomsList = new ArrayList<String>();
+        Collections.addAll(roomsList, jsonObject.split(","));
+        return roomsList;
     }
 }

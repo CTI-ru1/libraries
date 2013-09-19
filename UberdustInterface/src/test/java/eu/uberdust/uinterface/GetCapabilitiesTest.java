@@ -46,7 +46,7 @@ public class GetCapabilitiesTest
             assertTrue(true);
         } catch (JSONException e) {
             assertTrue(false);
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            LOGGER.error(e,e);
         }
     }
 }

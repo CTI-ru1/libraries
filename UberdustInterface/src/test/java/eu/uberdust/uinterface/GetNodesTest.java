@@ -48,7 +48,7 @@ public class GetNodesTest
             assertTrue(true);
         } catch (JSONException e) {
             assertTrue(false);
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            LOGGER.error(e,e);
         }
     }
 
@@ -67,7 +67,73 @@ public class GetNodesTest
             assertTrue(true);
         } catch (JSONException e) {
             assertTrue(false);
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            LOGGER.error(e,e);
+        }
+    }
+
+    /**
+     * Rigourous Test :-)
+     */
+    public void testGetNodeTypes4Node() throws IOException {
+        UberdustClient.getInstance().setUberdustURL("http://uberdust.cti.gr");
+
+
+        try {
+            List<String> types = UberdustClient.getInstance().getNodeNodeTypes(1, "urn:wisebed:ctitestbed:0x190");
+            for (String type : types) {
+                LOGGER.info(type);
+            }
+            assertTrue(true);
+        } catch (JSONException e) {
+            assertTrue(false);
+            LOGGER.error(e,e);
+        } catch (Exception e) {
+            assertTrue(false);
+            LOGGER.error(e,e);
+        }
+    }
+
+    /**
+     * Rigourous Test :-)
+     */
+    public void testGetRooms4Node() throws IOException {
+        UberdustClient.getInstance().setUberdustURL("http://uberdust.cti.gr");
+
+
+        try {
+            List<String> rooms = UberdustClient.getInstance().getNodeRooms(1, "urn:wisebed:ctitestbed:0x190");
+            for (String room : rooms) {
+                LOGGER.info(room);
+            }
+            assertTrue(true);
+        } catch (JSONException e) {
+            assertTrue(false);
+            LOGGER.error(e,e);
+        } catch (Exception e) {
+            assertTrue(false);
+            LOGGER.error(e,e);
+        }
+    }
+
+    /**
+     * Rigourous Test :-)
+     */
+    public void testGetWorkstations4Node() throws IOException {
+        UberdustClient.getInstance().setUberdustURL("http://uberdust.cti.gr");
+
+
+        try {
+            List<String> workstations = UberdustClient.getInstance().getNodeWorkstations(1, "urn:wisebed:ctitestbed:0x190");
+            for (String workstation : workstations) {
+                LOGGER.info(workstation);
+            }
+            assertTrue(true);
+        } catch (JSONException e) {
+            assertTrue(false);
+            LOGGER.error(e,e);
+        } catch (Exception e) {
+            assertTrue(false);
+            LOGGER.error(e,e);
         }
     }
 }
