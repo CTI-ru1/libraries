@@ -121,12 +121,16 @@ public class CachingAspect {
      */
     @Around("log()")
     public Object aroundLog(final ProceedingJoinPoint thisJoinPoint) throws Throwable {
+        LOGGER.info(thisJoinPoint.getTarget().getClass() + "," + thisJoinPoint.getKind());
         if (thisJoinPoint.getArgs().length > 0) {
-            if (thisJoinPoint.getArgs()[0] instanceof HttpServletRequest) {
-                final HttpServletRequest myRequest = (HttpServletRequest) thisJoinPoint.getArgs()[0];
-                final String requestUrl = myRequest.getRequestURL().toString();
-                LOGGER.info(myRequest.getMethod() + "," + requestUrl.substring(requestUrl.indexOf("rest")) + "," + myRequest.getRemoteAddr());
+            for (int i = 0; i < thisJoinPoint.getArgs().length; i++) {
+                if (thisJoinPoint.getArgs()[i] instanceof HttpServletRequest) {
+                    final HttpServletRequest myRequest = (HttpServletRequest) thisJoinPoint.getArgs()[i];
+                    final String requestUrl = myRequest.getRequestURL().toString();
+                    LOGGER.info(myRequest.getMethod() + "," + requestUrl.substring(requestUrl.indexOf("rest")) + "," + myRequest.getRemoteAddr());
+                }
             }
+
         }
         return thisJoinPoint.proceed();
     }
