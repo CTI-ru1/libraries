@@ -51,19 +51,19 @@ public class CachingAspect {
         final String thisJoinPointName = getJoinPointName(thisJoinPoint);
         final String thisJoinPointArgs = getJointPointArgs(thisJoinPoint);
         final String objName = thisJoinPointName + "-" + thisJoinPointArgs;
-        LOGGER.info("Caching: " + objName);
+        LOGGER.debug("Caching: " + objName);
 
 
         if (singletonManager.cacheExists(thisJoinPointName)) {
             final Cache cache = singletonManager.getCache(thisJoinPointName);
 
             if (cache.getKeysWithExpiryCheck().contains(thisJoinPointArgs.hashCode())) {
-                LOGGER.info(" HIT: " + cache.getName());
-                return cache.get(thisJoinPointArgs.hashCode()).getValue();
+                LOGGER.debug(" HIT: " + cache.getName());
+                return cache.get(thisJoinPointArgs.hashCode()).getObjectValue();
             } else {
                 final Element element = new Element(thisJoinPointArgs.hashCode(), thisJoinPoint.proceed());
                 cache.put(element);
-                LOGGER.info("MISS: " + cache.getName());
+                LOGGER.debug("MISS: " + cache.getName());
                 return element.getObjectValue();
             }
         } else {
@@ -73,13 +73,13 @@ public class CachingAspect {
 
             if (cache.getKeysWithExpiryCheck().contains((objName).hashCode())) {
 
-                LOGGER.info("HIT: " + cache.getName());
+                LOGGER.debug("HIT: " + cache.getName());
 
-                return cache.get((objName).hashCode()).getValue();
+                return cache.get((objName).hashCode()).getObjectValue();
             } else {
                 final Element element = new Element((objName).hashCode(),
                         thisJoinPoint.proceed());
-                LOGGER.info("MISS: " + cache.getName());
+                LOGGER.debug("MISS: " + cache.getName());
                 cache.put(element);
                 return element.getObjectValue();
             }
