@@ -51,7 +51,7 @@ public class CachingAspect {
         final String thisJoinPointName = getJoinPointName(thisJoinPoint);
         final String thisJoinPointArgs = getJointPointArgs(thisJoinPoint);
         final String objName = thisJoinPointName + "-" + thisJoinPointArgs;
-        LOGGER.debug("Caching: " + objName);
+        LOGGER.debug("Cachings: " + objName);
 
 
         if (singletonManager.cacheExists(thisJoinPointName)) {
@@ -155,7 +155,7 @@ public class CachingAspect {
             buf.append(arg.getClass().getSimpleName()).append("-").append(arg.hashCode());
         }
         String var = buf.toString().replaceAll("\\$", "");
-        LOGGER.info(var);
+        LOGGER.debug(var);
         return var;
     }
 }
