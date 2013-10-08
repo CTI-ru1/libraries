@@ -41,14 +41,14 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.eclipse.jetty</groupId>
+            <groupId>org.eclipse.jetty.aggregate</groupId>
             <artifactId>jetty-websocket</artifactId>
-            <version>${jetty-version}</version>
+            <version>8.1.0.v20120127</version>
         </dependency>
         <dependency>
-            <groupId>org.eclipse.jetty</groupId>
+            <groupId>org.eclipse.jetty.aggregate</groupId>
             <artifactId>jetty-servlet</artifactId>
-            <version>${jetty-version}</version>
+            <version>8.1.0.v20120127</version>
         </dependency>
         <dependency>
             <groupId>log4j</groupId>
