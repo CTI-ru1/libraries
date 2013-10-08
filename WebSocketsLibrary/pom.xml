@@ -44,13 +44,11 @@
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-websocket</artifactId>
             <version>${jetty-version}</version>
-            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-servlet</artifactId>
             <version>${jetty-version}</version>
-            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>log4j</groupId>
